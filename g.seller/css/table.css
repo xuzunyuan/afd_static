@@ -1,0 +1,254 @@
+/**
+ * style table
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version 	1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * Table
+ * - 
+ * - 
+ * Product
+ * Order
+ * 
+ */
+
+/* Table
+ ---------------------------------------- */
+
+.table {
+	max-width: 100%;
+	margin-bottom: 10px;
+	border: 1px solid #e5e5e5;
+}
+table th,table td {
+	background: #fff;
+	text-align: center;
+}
+.table th,
+.table td {
+	padding: 8px;
+	border: 1px solid #e5e5e5;
+	border-width: 1px 1px 0 1px;
+	line-height: 20px;
+	vertical-align: middle;
+}
+.table>thead th {
+	background-color: #fafafa;
+	border-top: 0;
+}
+
+/* table theme */
+.table-line th,
+.table-line td {
+	border-width: 1px 0 0 0;
+}
+.table tbody {
+	color: #666;
+}
+
+/* table full */
+.table-full {
+	width: 100% !important;
+}
+/* noborder */
+.noborder {
+	border: 0 !important;
+}
+.table.noborder,
+.table.noborder th,
+.table.noborder td {
+	border: 0 !important;
+}
+.table-fixed {
+	table-layout: fixed;
+	*table-layout: auto;
+}
+
+/* interleave */
+.interleave-odd>tr:nth-child(odd)>th,
+.interleave-odd>tr:nth-child(odd)>td {
+	background-color: #fafafa;
+}
+.interleave-even>tr:nth-child(even)>th,
+.interleave-even>tr:nth-child(even)>td {
+	background-color: #fafafa;
+}
+
+/* hover */
+table>.hover>tr:hover>th,
+table>.hover>tr:hover>td {
+	background-color: #fafafa;
+}
+
+/* alignment */
+table.table-left>thead>tr>th,
+table.table-left>thead>tr>td,
+table.table-left>tbody>tr>th,
+table.table-left>tbody>tr>td,
+table.table-left>tfoot>tr>th,
+table.table-left>tfoot>tr>td,
+
+table>thead>.table-left>th,
+table>thead>.table-left>td,
+table>tbody>.table-left>th,
+table>tbody>.table-left>td,
+table>tfoot>.table-left>th,
+table>tfoot>.table-left>td,
+
+table>thead>tr>.table-left,
+table>tbody>tr>.table-left,
+table>tfoot>tr>.table-left,
+
+.table-right>thead>tr>.table-left,
+.table-right>tbody>tr>.table-left,
+.table-right>tfoot>tr>.table-left,
+
+.table-left>thead>.table-center>.table-left,
+.table-left>tbody>.table-center>.table-left,
+.table-left>tfoot>.table-center>.table-left,
+
+.table-right>thead>.table-center>.table-left,
+.table-right>tbody>.table-center>.table-left,
+.table-right>tfoot>.table-center>.table-left {
+	text-align: left;
+}
+
+table.table-right>thead>tr>th,
+table.table-right>thead>tr>td,
+table.table-right>tbody>tr>th,
+table.table-right>tbody>tr>td,
+table.table-right>tfoot>tr>th,
+table.table-right>tfoot>tr>td,
+
+table>thead>.table-right>th,
+table>thead>.table-right>td,
+table>tbody>.table-right>th,
+table>tbody>.table-right>td,
+table>tfoot>.table-right>th,
+table>tfoot>.table-right>td,
+
+table>thead>tr>.table-right,
+table>tbody>tr>.table-right,
+table>tfoot>tr>.table-right,
+
+.table-left>thead>tr>.table-right,
+.table-left>tbody>tr>.table-right,
+.table-left>tfoot>tr>.table-right,
+
+.table-left>thead>.table-center>.table-right,
+.table-left>tbody>.table-center>.table-right,
+.table-left>tfoot>.table-center>.table-right,
+
+.table-right>thead>.table-center>.table-right,
+.table-right>tbody>.table-center>.table-right,
+.table-right>tfoot>.table-center>.table-right {
+	text-align: right;
+}
+
+table.table-center>thead>tr>th,
+table.table-center>thead>tr>td,
+table.table-center>tbody>tr>th,
+table.table-center>tbody>tr>td,
+table.table-center>tfoot>tr>th,
+table.table-center>tfoot>tr>td,
+
+.table-left>thead>.table-center>th,
+.table-left>thead>.table-center>td,
+.table-left>tbody>.table-center>th,
+.table-left>tbody>.table-center>td,
+.table-left>tfoot>.table-center>th,
+.table-left>tfoot>.table-center>td,
+
+.table-right>thead>.table-center>th,
+.table-right>thead>.table-center>td,
+.table-right>tbody>.table-center>th,
+.table-right>tbody>.table-center>td,
+.table-right>tfoot>.table-center>th,
+.table-right>tfoot>.table-center>td,
+
+.table-left>thead>tr>.table-center,
+.table-left>tbody>tr>.table-center,
+.table-left>tfoot>tr>.table-center,
+
+.table-right>thead>tr>.table-center,
+.table-right>tbody>tr>.table-center,
+.table-right>tfoot>tr>.table-center {
+	text-align: center;
+}
+
+/* table status */
+.table>thead>.danger>th,
+.table>thead>.danger>td,
+.table>tbody>.danger>th,
+.table>tbody>.danger>td,
+.table>tfoot>.danger>th,
+.table>tfoot>.danger>td {
+	background-color: #f2dede;
+}
+
+/* Product
+ ---------------------------------------- */
+
+.table-product {
+	margin-bottom: 0;
+	width: 100%;
+}
+.table-product th,
+.table-product td {
+	padding: 10px 8px;
+}
+.table-product>thead th,
+.table-product>thead td {
+	height: 40px;
+	padding: 0 8px;
+	background: #f8f8f8;
+}
+.table-product>tbody th,
+.table-product>tbody td {
+	color: #666;
+	vertical-align: top;
+	word-break: break-all;
+}
+
+/* Order
+ ---------------------------------------- */
+
+.table-order {
+	margin-top: 8px;
+	margin-bottom: 0;
+	width: 100%;
+}
+.table-order th,
+.table-order td {
+	padding: 10px 8px;
+}
+.table-order>thead th,
+.table-order>thead td {
+	height: 40px;
+	padding: 0 8px;
+	background: #f8f8f8;
+}
+.table-order>tbody th,
+.table-order>tbody td {
+	color: #666;
+	vertical-align: top;
+	word-break: break-all;
+}
+.table-order tfoot td {
+	background: #f8f8f8;
+}
+.table-order .o-total {
+	font-size: 14px;
+	text-align: right;
+}
+.table-order .o-total strong {
+	color: #f00;
+	font-size: 18px;
+}

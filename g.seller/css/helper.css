@@ -1,0 +1,119 @@
+/**
+ * style helper
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 	1.0
+ * 
+ * @colordef 	#333 				article text
+ * @colordef	#316cd6				link & visible
+ * @colordef	#ff5c00				hover & active
+ */
+
+/**
+ * CSS Menu
+ * 
+ * ProductGlobal
+ * BrandGlobal
+ * 
+ * HelperGlobal
+ * 
+ * HelperForm
+ * Deposit
+ * Layout
+ * 
+ */
+
+
+/* Helper Global
+ ---------------------------------------- */
+
+.wrap-helper .section {
+	background: #fff;
+	border: 1px solid #e5e5e5;
+}
+
+/* Helper Form
+ ---------------------------------------- */
+
+.form-helper .mod-tips {
+	margin: 10px 15px 0;
+	padding: 5px 20px;
+}
+.form-helper .mod-tips dd {
+	padding-top: 5px;
+	line-height: 20px;
+}
+.form-helper fieldset {
+	margin: 30px 0;
+	padding: 0 30px;
+}
+.form-helper .legend {
+	margin-bottom: 20px;
+}
+.form-helper .form-item {
+	margin: 0 0 20px;
+}
+.form-helper .item-label {
+	width: 160px;
+	line-height: 32px;
+}
+.form-helper .item-cont {
+	margin-left: 170px;
+	line-height: 32px;
+}
+.form-helper .legend h3 {
+	padding: 0 10px;
+	font: 700 18px/24px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+}
+
+/* Deposit Form
+ ---------------------------------------- */
+
+#deposit {
+	padding-bottom: 60px;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	color: #666;
+}
+#deposit .mod-tips {
+	margin: 10px 15px 0;
+}
+#deposit .mod-tips dd {
+	padding-top: 5px;
+	line-height: 20px;
+}
+#deposit .textInfo {
+	padding: 30px 0 0 30px;
+}
+#deposit .textInfo {
+	margin-left: 30px;
+	padding-left: 28px;
+}
+#deposit .textInfo p {
+	margin-bottom: 10px;
+}
+#deposit .bankInfo {
+	width: 530px;
+	margin: 30px 0 20px;
+	padding: 5px 30px;
+	background: #f0e7f7;
+}
+#deposit .bankInfo p {
+	margin: 15px 0;
+	font-size: 14px;
+}
+#deposit .textInfo .textMark {
+	margin-right: 6px;
+}
+#deposit h3 {
+	margin: 35px 0 0 30px;
+	font: 700 14px/24px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+}
+#deposit h3 a {
+	text-decoration: underline;
+}
+
+/* Layout
+ ---------------------------------------- */

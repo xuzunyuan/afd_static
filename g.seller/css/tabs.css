@@ -1,0 +1,102 @@
+/**
+ * style tabs
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version 	1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * Tabs
+ * Theme
+ * Tab-hotlists
+ */
+
+/* Tabs
+ ---------------------------------------- */
+
+.tab {
+}
+.tab>.tabs {
+}
+.tab>.tabs ul{
+	*zoom: 1;
+}
+.tab>.tabs ul:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.tab>.tabs li{
+	float: left;
+	cursor: pointer;
+}
+.tab>.tabbed {
+	
+}
+
+.tab>.tabbed>.tabGroup {
+	display: none;
+}
+
+/* Theme
+ ---------------------------------------- */
+
+/* Tab-hotlists
+ ---------------------------------------- */
+
+.tab-hotlists .tabs {
+	position: relative;
+	z-index: 10;
+	border-bottom: 1px solid #d82a34;
+}
+.tab-hotlists .tabs li {
+	width: 160px;
+	color: #333;
+	font: bold 14px/34px 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+	text-align: center;
+}
+.tab-hotlists .tabs .on {
+	color: #c40000;
+	font-size: 16px;
+	line-height: 31px;
+}
+.tab-hotlists .tabs .underline {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 20;
+	width: 160px;
+	height: 3px;
+	background: #d82a34;
+}
+.tab-hotlists .tabbed {
+	border: 1px solid #e5e5e5;
+	border-top: 0;
+}
+.tab-hotlists .slide-item {
+	width: 199px;
+}
+.tab-hotlists .slide .items>ul {
+	margin-left: 3px;
+}
+.tab-hotlists .items>ul>li {
+	width: 1194px;
+	margin: 0 -1px;
+	padding: 2px 0;
+}
+.tab-hotlists .saleTag {
+	top: 4px;
+}
+.tab-hotlists .mod-goods .g-img {
+	padding: 4px;
+}
+.tab-hotlists .mod-goods .g-img a {
+	width: 192px;
+	height: 192px;
+	line-height: 190px;	
+}

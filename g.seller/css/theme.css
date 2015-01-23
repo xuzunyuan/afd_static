@@ -1,0 +1,563 @@
+/**
+ * style theme
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 	1.0
+ * 
+ * @colordef 	#333 				article text
+ * @colordef	#316cd6				link & visible
+ * @colordef	#ff5c00				hover & active
+ */
+
+/**
+ * CSS Menu
+ *
+ * Season
+ * - spring
+ * - summer
+ * - autumn
+ * - winter
+ * - midwinter
+ * - newyear
+ * 
+ */
+
+/* Season Theme
+ ---------------------------------------- */
+
+#index .wrapper,
+.season #header,
+.season {
+	background-repeat: no-repeat;
+	background-position: center 0;
+}
+.season #topbar .maskBar {
+	top: 0;
+	bottom: auto;
+	height: 30px;
+	background: #fff;
+	opacity: .85;
+	filter: alpha(opacity=85);
+}
+.season #topbar,
+.season #siteNav>dl {
+	background: none;
+}
+.season #topbar>.wrap {
+	position: relative;
+	z-index: 30;
+}
+.season .lacework {
+	position: absolute;
+	top: -62px;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 85px;
+}
+.season .s-extra {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	height: 262px;
+}
+#index .mallEntrance {
+	position: relative;
+}
+#index .mallEntrance>.wrap {
+	position: relative;
+	z-index: 10;
+}
+.season .m-extra {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	height: 350px;
+}
+
+/* spring theme */
+.season-spring .serve dt .icon,
+.season-spring .serve dd .icon,
+.season-spring #hotline,
+.season-spring #season {
+	background-image: url(../img/theme/spring-elem.png);
+}
+.season-spring #header,
+.season-spring,
+#index.season-spring .wrapper {
+	background-image: url(../img/theme/spring-bg.png);
+}
+.season-spring #hotline {
+	background-position: 0 0;
+}
+.season-spring #season {
+	background-position: 0 -124px;
+}
+.season-spring #footer {
+	background: #45332c;
+	color: #776251;
+}
+.season-spring .serve {
+	background-color: #5a483d;
+}
+.season-spring .lacework {
+	background: url(../img/theme/spring-footer.png) repeat-x center 0;
+}
+.season-spring .serve dt {
+	color: #cca520;
+}
+.season-spring .serve .phoneYW {
+	border-color: #816c5c;
+}
+.season-spring .serve .phoneYW a {
+	color: #cca520;
+}
+.season-spring .serve dd,
+.season-spring .serve a {
+	color: #a38459;
+}
+.season-spring .serve .newbie dt .icon {
+	background-position: -24px -89px;
+}
+.season-spring .serve .payment dt .icon {
+	background-position: -48px -89px;
+}
+.season-spring .serve .delivery dt .icon {
+	background-position: -72px -89px;
+}
+.season-spring .serve .afterSales dt .icon {
+	background-position: -96px -89px;
+}
+.season-spring .serve .sellerGuide dt .icon {
+	background-position: -120px -89px;
+}
+.season-spring .serve .callCenter dt .icon {
+	background-position: -148px -89px;
+}
+.season-spring .serve dd .icon {
+	background-position: -24px -114px;
+}
+
+/* summer theme */
+.season-summer .serve dt .icon,
+.season-summer .serve dd .icon,
+.season-summer #hotline,
+.season-summer #season {
+	background-image: url(../img/theme/summer-elem.png);
+}
+.season-summer #header,
+.season-summer,
+#index.season-summer .wrapper {
+	background-image: url(../img/theme/summer-bg.png);
+}
+.season-summer #hotline {
+	background-position: 0 0;
+}
+.season-summer #season {
+	background-position: 0 -124px;
+}
+.season-summer #footer {
+	background: #45332c;
+	color: #776251;
+}
+.season-summer .serve {
+	background-color: #5a483d;
+}
+.season-summer .lacework {
+	background: url(../img/theme/summer-footer.png) repeat-x center 0;
+}
+.season-summer .serve dt {
+	color: #cca520;
+}
+.season-summer .serve .phoneYW {
+	border-color: #816c5c;
+}
+.season-summer .serve .phoneYW a {
+	color: #cca520;
+}
+.season-summer .serve dd,
+.season-summer .serve a {
+	color: #a38459;
+}
+.season-summer .serve .newbie dt .icon {
+	background-position: -24px -89px;
+}
+.season-summer .serve .payment dt .icon {
+	background-position: -48px -89px;
+}
+.season-summer .serve .delivery dt .icon {
+	background-position: -72px -89px;
+}
+.season-summer .serve .afterSales dt .icon {
+	background-position: -96px -89px;
+}
+.season-summer .serve .sellerGuide dt .icon {
+	background-position: -120px -89px;
+}
+.season-summer .serve .callCenter dt .icon {
+	background-position: -148px -89px;
+}
+.season-summer .serve dd .icon {
+	background-position: -24px -114px;
+}
+
+/* autumn theme */
+.season-autumn .serve dt .icon,
+.season-autumn .serve dd .icon,
+.season-autumn #hotline,
+.season-autumn #season {
+	background-image: url(../img/theme/autumn-elem.png);
+}
+.season-autumn #header,
+.season-autumn,
+#index.season-autumn .wrapper {
+	background-image: url(../img/theme/autumn-bg.png);
+}
+.season-autumn #hotline {
+	background-position: 0 0;
+}
+.season-autumn #season {
+	background-position: 0 -124px;
+}
+.season-autumn #footer {
+	background: #45332c;
+	color: #776251;
+}
+.season-autumn .serve {
+	background-color: #5a483d;
+}
+
+.season-autumn .lacework {
+	background: url(../img/theme/autumn-footer.png) repeat-x center 0;
+}
+.season-autumn .serve dt {
+	color: #cca520;
+}
+.season-autumn .serve .phoneYW {
+	border-color: #816c5c;
+}
+.season-autumn .serve .phoneYW a {
+	color: #cca520;
+}
+.season-autumn .serve dd,
+.season-autumn .serve a {
+	color: #a38459;
+}
+.season-autumn .serve .newbie dt .icon {
+	background-position: -24px -89px;
+}
+.season-autumn .serve .payment dt .icon {
+	background-position: -48px -89px;
+}
+.season-autumn .serve .delivery dt .icon {
+	background-position: -72px -89px;
+}
+.season-autumn .serve .afterSales dt .icon {
+	background-position: -96px -89px;
+}
+.season-autumn .serve .sellerGuide dt .icon {
+	background-position: -120px -89px;
+}
+.season-autumn .serve .callCenter dt .icon {
+	background-position: -148px -89px;
+}
+.season-autumn .serve dd .icon {
+	background-position: -24px -114px;
+}
+
+/* winter theme */
+.season-winter .serve dt .icon,
+.season-winter .serve dd .icon,
+.season-winter #hotline,
+.season-winter #season {
+	background-image: url(../img/theme/winter-elem.png);
+}
+.season.season-winter #topbar .maskBar {
+	background: #f5f5f5;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.season-winter #header,
+.season-winter,
+#index.season-winter .wrapper {
+	background-image: url(../img/theme/winter-bg.png);
+}
+.season-winter #hotline {
+	background-position: 0 0;
+}
+.season-winter #season {
+	background-position: 0 -124px;
+}
+#index.season-winter .banners {
+	background-image: url(../img/theme/winter-mainslide_bg.png);
+}
+.season-winter #footer {
+	background: #342b30;
+	color: #887772;
+}
+.season-winter .serve {
+	background: #4b3e3d url(../img/theme/winter-footer-bg.jpg) repeat-x;
+}
+.season-winter .lacework {
+	background: url(../img/theme/winter-footer.png) repeat-x center 0;
+}
+.season-winter .serve dt {
+	color: #fff;
+}
+.season-winter .serve .phoneYW {
+	border-color: #fff;
+}
+.season-winter .serve .phoneYW a {
+	color: #fff;
+}
+.season-winter .serve dd,
+.season-winter .serve a {
+	color: #a6a8aa;
+}
+.season-winter .serve .newbie dt .icon {
+	background-position: -24px -89px;
+}
+.season-winter .serve .payment dt .icon {
+	background-position: -48px -89px;
+}
+.season-winter .serve .delivery dt .icon {
+	background-position: -72px -89px;
+}
+.season-winter .serve .afterSales dt .icon {
+	background-position: -96px -89px;
+}
+.season-winter .serve .sellerGuide dt .icon {
+	background-position: -120px -89px;
+}
+.season-winter .serve .callCenter dt .icon {
+	background-position: -148px -89px;
+}
+.season-winter .serve dd .icon {
+	background-position: -24px -114px;
+}
+
+/* midwinter theme */
+.season-midwinter .serve dt .icon,
+.season-midwinter .serve dd .icon,
+.season-midwinter #hotline,
+.season-midwinter #season {
+	background-image: url(../img/theme/midwinter-elem.png);
+}
+.season-midwinter #header,
+.season-midwinter,
+#index.season-midwinter .wrapper {
+	background-image: url(../img/theme/midwinter-bg.png);
+}
+.season-midwinter #topbar .maskBar {
+	background: #f0f0f0;
+}
+.season-midwinter #hotline {
+	background-position: 0 0;
+}
+.season-midwinter #season {
+	background-position: 0 -124px;
+}
+#index.season-midwinter .banners {
+	background-image: url(../img/theme/midwinter-mainslide-bg.png);
+}
+#index.season-midwinter .hotlists {
+	background: url(../img/theme/midwinter-hotlists-bg.png) no-repeat center bottom;
+}
+.season-midwinter #footer {
+	background: #342b30;
+	color: #887772;
+}
+.season-midwinter .serve {
+	background: #4b3e3d url(../img/theme/midwinter-footer-bg.jpg) repeat-x;
+}
+.season-midwinter .lacework {
+	background: url(../img/theme/midwinter-footer.png) repeat-x center bottom;
+}
+.season-midwinter .s-extra {
+	background: url(../img/theme/midwinter-footer-extra.png) no-repeat center 0;
+}
+.season-midwinter .m-extra {
+	background: url(../img/theme/midwinter-mallentrance-bg.png) no-repeat center 0;
+}
+.season-midwinter .serve dt {
+	color: #fff;
+}
+.season-midwinter .serve .phoneYW {
+	border-color: #fff;
+}
+.season-midwinter .serve .phoneYW a {
+	color: #fff;
+}
+.season-midwinter .serve dd,
+.season-midwinter .serve a {
+	color: #a6a8aa;
+}
+.season-midwinter .serve .newbie dt .icon {
+	background-position: -24px -89px;
+}
+.season-midwinter .serve .payment dt .icon {
+	background-position: -48px -89px;
+}
+.season-midwinter .serve .delivery dt .icon {
+	background-position: -72px -89px;
+}
+.season-midwinter .serve .afterSales dt .icon {
+	background-position: -96px -89px;
+}
+.season-midwinter .serve .sellerGuide dt .icon {
+	background-position: -120px -89px;
+}
+.season-midwinter .serve .callCenter dt .icon {
+	background-position: -148px -89px;
+}
+.season-midwinter .serve dd .icon {
+	background-position: -24px -114px;
+}
+/* christmas theme */
+.season-christmas .serve dt .icon,
+.season-christmas .serve dd .icon,
+.season-christmas #hotline,
+.season-christmas #season {
+	background-image: url(../img/theme/christmas-elem.png);
+}
+.season.season-christmas #topbar .maskBar {
+	background: #f5f5f5;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.season-christmas #header,
+.season-christmas,
+#index.season-christmas .wrapper {
+	background-image: url(../img/theme/christmas.png);
+}
+.season-christmas #hotline {
+	background-position: 0 0;
+}
+.season-christmas #season {
+	background-position: 0 -124px;
+}
+#index.season-christmas .banners {
+	background-image: url(../img/theme/christmas-mainslide-bg.png);
+}
+.season-christmas #footer {
+	background: #E25453;
+	color: #fff;
+}
+.season-christmas .serve {
+	background: #4b3e3d url(../img/theme/christmas-footer-bg.jpg) repeat-x;
+}
+.season-christmas .lacework {
+	top: -106px;
+	height: 130px;
+	background: url(../img/theme/christmas-footer.png) repeat-x center bottom;
+}
+.season-christmas .serve dt {
+	color: #ffc14c;
+}
+.season-christmas .serve .phoneYW {
+	border-color: #fff;
+}
+.season-christmas .serve .phoneYW a {
+	color: #fff;
+}
+.season-christmas .serve dd,
+.season-christmas .serve a {
+	color: #fff;
+}
+.season-christmas .serve .newbie dt .icon {
+	background-position: -24px -89px;
+}
+.season-christmas .serve .payment dt .icon {
+	background-position: -48px -89px;
+}
+.season-christmas .serve .delivery dt .icon {
+	background-position: -72px -89px;
+}
+.season-christmas .serve .afterSales dt .icon {
+	background-position: -96px -89px;
+}
+.season-christmas .serve .sellerGuide dt .icon {
+	background-position: -120px -89px;
+}
+.season-christmas .serve .callCenter dt .icon {
+	background-position: -148px -89px;
+}
+.season-christmas .serve dd .icon {
+	background-position: -24px -114px;
+}
+
+/* newyear theme */
+.season-newyear .serve dt .icon,
+.season-newyear .serve dd .icon,
+.season-newyear #hotline,
+.season-newyear #season {
+	background-image: url(../img/theme/newyear-elem.png);
+}
+.season.season-newyear #topbar .maskBar {
+	background: #f5f5f5;
+}
+.season-newyear #header,
+.season-newyear,
+#index.season-newyear .wrapper {
+	background-image: url(../img/theme/newyear.png);
+}
+.season-newyear #hotline {
+	background-position: 0 0;
+}
+.season-newyear #season {
+	background-position: 0 -124px;
+}
+#index.season-newyear .banners {
+	background-image: url(../img/theme/newyear-mainslide-bg.png);
+}
+.season-newyear #footer {
+	background: #b9151b;
+	color: #d95357;
+}
+.season-newyear .serve {
+	background: #d32127 url(../img/theme/newyear-footer-bg.jpg) no-repeat center bottom;
+}
+.season-newyear .lacework {
+	top: -84px;
+	background: url(../img/theme/newyear-footer.png) repeat-x center bottom;
+}
+.season-newyear .serve dt {
+	color: #ffe88e;
+}
+.season-newyear .serve .phoneYW {
+	border-color: #fff;
+}
+.season-newyear .serve .phoneYW a {
+	color: #fff;
+}
+.season-newyear .serve dd,
+.season-newyear .serve a {
+	color: #fff;
+}
+.season-newyear .serve .newbie dt .icon {
+	background-position: -24px -89px;
+}
+.season-newyear .serve .payment dt .icon {
+	background-position: -48px -89px;
+}
+.season-newyear .serve .delivery dt .icon {
+	background-position: -72px -89px;
+}
+.season-newyear .serve .afterSales dt .icon {
+	background-position: -96px -89px;
+}
+.season-newyear .serve .sellerGuide dt .icon {
+	background-position: -120px -89px;
+}
+.season-newyear .serve .callCenter dt .icon {
+	background-position: -148px -89px;
+}
+.season-newyear .serve dd .icon {
+	background-position: -24px -114px;
+}

@@ -1,0 +1,105 @@
+/**
+ * style join
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 	1.0
+ * 
+ * @colordef 	#333 				article text
+ * @colordef	#316cd6				link & visible
+ * @colordef	#ff5c00				hover & active
+ */
+
+/**
+ * CSS Menu
+ * 
+ * JoinGlobal
+ * 
+ * AuditStep
+ * JoinForm
+ * 
+ * Layout
+ * 
+ */
+
+
+/* Join Global
+ ---------------------------------------- */
+
+
+/* AuditStep
+ ---------------------------------------- */
+
+.auditStep {
+	height: 70px;
+	margin-bottom: -1px;
+	padding: 0 20px;
+	background: #e5e5e5;
+	border: 1px solid #ddd;
+}
+.auditStep h2{
+	float:left;
+	padding: 23px 0;
+	color:#444;
+	font: 700 20px/24px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+}
+.auditStep .mod-step{
+	float:right;
+	padding: 14px 5px;
+}
+
+/* JoinForm
+ ---------------------------------------- */
+
+.form-join fieldset {
+	margin: 30px 0;
+	padding: 0 30px;
+}
+.form-join .legend {
+	margin-bottom: 20px;
+}
+.form-join .form-item {
+	margin: 0 0 20px;
+}
+.form-join .item-label {
+	width: 160px;
+}
+.form-join .item-cont {
+	margin-left: 170px;
+}
+.form-join .legend h3 {
+	padding: 0 10px;
+	font: 700 18px/24px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+}
+.form-join .legend h3 span {
+	margin-left: 15px;
+	color: #999;
+	font-weight: 300;
+	font-size: 12px;
+}
+.form-join .papersUpload td {
+	padding: 20px 8px;
+	color: #333;
+}
+.form-join .papersUpload .textMark {
+	margin-right: 4px;
+}
+.form-join .mod-tips {
+	margin: 10px 30px 0;
+}
+.form-join .mod-tips dd {
+	padding-top: 10px;
+	line-height: 20px;
+}
+
+/* Layout
+ ---------------------------------------- */
+
+.joinAplly {
+	background: #fff;
+	border: 1px solid #e5e5e5;
+}
+.apllyProgress .table .icon {
+	margin: 0 5px;
+}
