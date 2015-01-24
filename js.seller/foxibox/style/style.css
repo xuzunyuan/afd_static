@@ -1,0 +1,157 @@
+/**
+ * name:        style.css
+ * author:      Stefan Benicke - www.opusonline.at
+ * used at:     http://www.opusonline.at/foxitools/foxibox/
+ * copyright:   (c) 2009 Stefan Benicke (www.opusonline.at)
+ * last update: 14.10.2009
+ */
+* {
+  margin: 0;
+  padding: 0;
+}
+body,table {
+  font: 10pt 'trebuchet ms', verdana;
+  color: #000;
+}
+body {
+  margin: 1em;
+}
+h1, h2, #pics, p, div.code, table {
+  margin-bottom: 1em;
+}
+h1 {
+  font-size: 200%;
+}
+h2 {
+  font-size: 150%;
+}
+a img {
+  border: 5px solid #ddd;
+  border-bottom-width: 20px;
+  margin-right: 5px;
+}
+a img:hover {
+  border-color: #aaa;
+}
+a.solo img {
+  border-color: #ffa;
+}
+a.solo img:hover {
+  border-color: #ff5;
+}
+a {
+  color: #00f;
+  text-decoration: underline;
+}
+pre {
+  font-size: 85%;
+  color: #333;
+  padding: 0.5em;
+  border: 2px solid #ddd;
+}
+pre:hover {
+  color: #000;
+  border-color: #888;
+}
+small {
+  font-size: 85%;
+}
+#paypal-button {
+  vertical-align: middle;
+}
+.properties thead th {
+  background: #ddd;
+}
+.properties th {
+  text-align: left;
+  font-weight: bold;
+}
+.properties th, .properties td {
+  padding: 0 1em 0.2em 0;
+  border-bottom: 1px solid #ddd;
+}
+/* here's the style for foxibox */
+#foxibox_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #000;
+}
+#foxibox_loader {
+  position: absolute;
+  z-index: 102;
+  width: 32px;
+  height: 32px;
+  background: url(../images/foxibox-loading.gif) no-repeat;
+}
+#foxibox_container {
+  position: absolute;
+  z-index: 101;
+  background: #fff;
+}
+#foxibox_details {
+  position: absolute;
+  z-index: 102;
+  width: auto;
+  height: auto;
+  padding-top: 5px;
+  font: 9pt 'trebuchet ms';
+  color: #444;
+}
+#foxibox_title {
+  width: auto;
+  float: left;
+  font-weight: bold;
+}
+#foxibox_nav {
+  width: auto;
+  float: right;
+  overflow: hidden;
+}
+#foxibox_nav div {
+  width: auto;
+  float: right;
+  margin-right: 8px;
+  color: #888;
+}
+#foxibox_nav #prev {
+  display: block;
+  width: 20px;
+  height: 16px;
+  float: right;
+  background: url(../images/foxibox-arrows.gif) 0px 0px no-repeat;
+}
+#foxibox_nav #next {
+  display: block;
+  width: 20px;
+  height: 16px;
+  float: right;
+  background: url(../images/foxibox-arrows.gif) -20px 0px no-repeat;
+}
+#foxibox_details #scale {
+  display: block;
+  width: 20px;
+  height: 16px;
+  float: right;
+  background: url(../images/foxibox-arrows.gif) -60px 0px no-repeat;
+}
+#foxibox_details #close {
+  display: block;
+  width: 16px;
+  height: 16px;
+  float: right;
+  background: url(../images/foxibox-arrows.gif) -40px 0px no-repeat;
+}
+#foxibox_nav #prev:hover {
+  background-position: 0px -20px;
+}
+#foxibox_nav #next:hover {
+  background-position: -20px -20px;
+}
+#foxibox_details #scale:hover {
+  background-position: -60px -20px;
+}
+#foxibox_details #close:hover {
+  background-position: -40px -20px;
+}

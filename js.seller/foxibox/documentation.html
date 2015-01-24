@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+  name:          documentation.html
+  author:        Stefan Benicke - www.opusonline.at
+  category:      documentation for foxibox
+  origin:        http://www.opusonline.at/foxitools/foxibox/index.html
+  copyright:     (c) 2009 Stefan Benicke (www.opusonline.at)
+  license:       GNU GPLv3
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>foxibox - picture gallery with jquery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" charset="utf-8" type="text/css" href="style/style.css" />
+</head>
+
+<body>
+
+<h1>foxibox 0.2</h1>
+
+<h2>Demo</h2>
+
+<div id="pics">
+<a href="images/image1.jpg" rel="[gall1]" title="first picture">
+<img src="images/thumb_image1.jpg" alt="first picture" width="72" height="72" /></a>
+
+<a href="images/image2.jpg" rel="[gall1]">
+<img src="images/thumb_image2.jpg" alt="" width="72" height="72" /></a>
+
+<a href="images/image3.jpg" rel="[gall1]">
+<img src="images/thumb_image3.jpg" alt="" width="72" height="72" /></a>
+
+<a href="images/image4.jpg" rel="[gall2]" class="solo">
+<img src="images/thumb_image4.jpg" alt="" width="72" height="72" /></a>
+
+<a href="images/image5.jpg" rel="[gall1]">
+<img src="images/thumb_image5.jpg" alt="" width="72" height="72" /></a>
+</div><!-- /#pics -->
+
+<p>Discover 4 pictures in a gallery and the yellow ones solo.</p>
+
+<p>Control the gallery with right and left arrow keys, 'p' and 'n' for previous or next image and 'Esc' or 'c' to close.</p>
+
+<h2>Description</h2>
+
+<p>Damn small and easy program for a nice image gallery. It is designed to be easily integrated and just working fine.</p>
+
+<p>This program is under <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License v3</a>. It was developed with <a href="http://jquery.com/">jquery</a> 1.3.2 but works from 1.2.5.</p>
+
+<p>Actually the minified program is <strong>only 5.4 kB</strong> in size (gzipped 1.9 kB)! Last updated on 30th September 2009.</p>
+
+<h2>Update</h2>
+
+<p>From 0.1 to 0.2 I fixed a small bug and correct the keydown function.</p>
+
+<h2>Using</h2>
+
+<p>Include the stylesheet into the head.</p>
+
+<div class="code">
+<pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;jquery-foxibox-0.2.css&quot; /&gt;
+</code></pre>
+</div><!-- /.code -->
+
+<p>Include the jquery-library and the plugin at the end of the body or into the head.</p>
+
+<div class="code">
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.3.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-foxibox-0.2.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</div><!-- /.code -->
+
+<p>Inside the body you can organize the thumbnail pictures with each link on the original picture.</p>
+
+<p>If you use the attribute 'rel' with a number or name in brackets, all pictures with the same number or name will be in one set.</p>
+
+<p>If you use the 'title' attribute and set the option <em>title</em> to <em>true</em>, this will be shown in the image container.</p>
+
+<div class="code">
+<pre><code>&lt;a href=&quot;images/image1.jpg&quot; rel=&quot;[gall1]&quot; title=&quot;first picture&quot;&gt;
+&lt;img src=&quot;images/thumb_image1.jpg&quot; alt=&quot;first picture&quot; width=&quot;72&quot; height=&quot;72&quot; /&gt;&lt;/a&gt;
+
+&lt;a href=&quot;images/image2.jpg&quot; rel=&quot;[gall1]&quot;&gt;
+&lt;img src=&quot;images/thumb_image2.jpg&quot; alt=&quot;&quot; width=&quot;72&quot; height=&quot;72&quot; /&gt;&lt;/a&gt;
+</code></pre>
+</div><!-- /.code -->
+
+<p>Now you link the main function to your gallery inside the head or body.</p>
+
+<div class="code">
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+  $('a[rel]').foxibox();
+});
+&lt;/script&gt;
+</code></pre>
+</div><!-- /.code -->
+
+<p>So when the document is fully loaded then use the program on every link wich has the attribute rel ...</p>
+
+<p>Another possibility would be ...</p>
+
+<div class="code">
+<pre><code>$('a#first, a#second').foxibox();
+
+// in the body
+&lt;a href=&quot;images/image1.jpg&quot; title=&quot;first picture&quot; id=&quot;first&quot;&gt;
+&lt;img src=&quot;images/thumb_image1.jpg&quot; alt=&quot;first picture&quot; width=&quot;72&quot; height=&quot;72&quot; /&gt;&lt;/a&gt;
+
+&lt;a href=&quot;images/image2.jpg&quot; title=&quot;second picture&quot; id=&quot;second&quot;&gt;
+&lt;img src=&quot;images/thumb_image2.jpg&quot; alt=&quot;second picture&quot; width=&quot;72&quot; height=&quot;72&quot; /&gt;&lt;/a&gt;
+</code></pre>
+</div><!-- /.code -->
+
+<p>Please be sure to <strong>start the main function only once</strong>!</p>
+
+<h2>Properties</h2>
+
+<table class="properties">
+  <thead>
+  <tr>
+  <th>property</th>
+  <th>default</th>
+  <th>description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <th>speed</th>
+  <td>'normal'</td>
+  <td>The speed for animation effects. Values are <em>'slow'</em>, <em>'normal'</em>, <em>'fast'</em> and <em>milliseconds</em>.</td>
+  </tr>
+  <tr>
+  <th>overlayOpacity</th>
+  <td>0.5</td>
+  <td>The opacity value of the overlay. Allowed are values from <em>0</em> to <em>1</em>.</td>
+  </tr>
+  <tr>
+  <th>title</th>
+  <td>true</td>
+  <td>If <em>true</em>, the link title is shown in the image container. Allowed is <em>true</em> or <em>false</em>.</td>
+  </tr>
+  <tr>
+  <th>scale</th>
+  <td>true</td>
+  <td>If <em>true</em>, the image will be fit to the screen when it's too big. Allowed is <em>true</em> or <em>false</em>.</td>
+  </tr>
+  <tr>
+  <th>border</th>
+  <td>10</td>
+  <td>Sets the border-width in pixels. From <em>0</em> to endless.</td>
+  </tr>
+  <tr>
+  <th>textImage</th>
+  <td>''</td>
+  <td>When you have an image-set, this sets the text of the word <em>'Image'</em> like 'Image 1 of 10'.</td>
+  </tr>
+  <tr>
+  <th>textOf</th>
+  <td>'/'</td>
+  <td>When you have an image-set, this sets the text of the word <em>'of'</em> like 'Image 1 of 10'.</td>
+  </tr>
+  <tr>
+  <th>callback</th>
+  <td>&nbsp;</td>
+  <td>You can combine this plugin with other functions.</td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Download</h2>
+
+<p><strong>If you use my program please be so fair to <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7712307">donate</a>!</strong></p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxibox/jquery-foxibox-0.2.full.zip">foxibox 0.2 full</a><br />
+<small>jquery-foxibox-0.2.js, jquery-foxibox-0.2.css, foxibox-loading.gif, foxibox-arrows.gif, license-gpl-3.0.txt</small></p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxibox/jquery-foxibox-0.2.min.zip">foxibox 0.2 minified</a><br />
+<small>jquery-foxibox-0.2.min.js, jquery-foxibox-0.2.css, foxibox-loading.gif, foxibox-arrows.gif, license-gpl-3.0.txt</small></p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxibox/jquery-foxibox-0.2.zip">package of foxibox 0.2 full, minified and this documentation</a><br />
+<small>jquery-foxibox-0.2.js, jquery-foxibox-0.2.min.js, jquery-1.3.2.min.js, jquery-foxibox-0.2.css, foxibox-loading.gif, foxibox-arrows.gif, images, documentation.html, license-gpl-3.0.txt</small></p>
+
+<p>The latest version of <strong>jquery</strong> you will get on <a href="http://jquery.com/">jquery.com</a>.</p>
+
+<h2>Don't miss</h2>
+
+<p>Check out my other small and easy programs!</p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxislide/">foxislide</a><br />
+Nice image rising effect. Very easy to use.</p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxiswitch/">foxiswitch</a><br />
+Fantastic image gallery with thumbnails and controls.</p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxitip/">foxitip</a><br />
+Nice tooltips on links staying inside the window. You can even use different styles on one site. So easy to use.</p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxiblob/">foxiblob</a><br />
+Lavalamp effect on menus. You can even use different styles on one site. So easy to use.</p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxiballoon/">foxiballoon</a><br />
+Objects following your vertical scrolling like a balloon. Very easy to use.</p>
+
+<p><a href="http://www.opusonline.at/foxitools/foxicols/">foxicols</a><br />
+Equal height columns made easy.</p>
+
+<script type="text/javascript" charset="utf-8" src="script/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="script/jquery-foxibox-0.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#pics a').foxibox();
+});
+</script>
+
+</body>
+
+</html>
