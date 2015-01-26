@@ -1,5 +1,5 @@
 /*! 
- * @Copyright:一网全城电子商务平台
+ * @Copyright:afd.com
  * @Author:xuzunyuan
  * @Depends: jquery check-util
  * 
@@ -33,15 +33,15 @@ $(function(){
 		e.preventDefault();
 		
 		if($(this).hasClass('disabled')) return;
+		if(!$('#mobile').hasClass('success-gou')) return;
 		
-		$.ajax({url:'seller/register/sendValidator?mobile=' + $('#mobile').val(), context:this, dataType:'json',
+		$.ajax({url:'ajax/register/sendValidator?mobile=' + $('#mobile').val(), context:this, dataType:'json',
 			success : function(data) {
 				if(data) {
 					$(this).addClass('disabled').html('重新获取(120)');;	
-					$('#validate_msg').removeClass('error')
-						.addClass('hint')
+					$('#validate_msg').removeClass('errTxt')
 						.find('span')
-						.html('动态验证码已经发送到您的手机上，请在2分钟内完成注册！');
+						.html('动态验证码已经发送到您的手机上，请在5分钟内完成注册！');
 					
 					count = 120;
 					setTimeout(fn, 1000);
@@ -120,7 +120,7 @@ function wrappedCheckMobile() {
 			} else {
 				$('#btnSms').removeClass('disabled').html('获取短信验证码');
 				$('#validate').val('').removeClass('success-gou');
-				$('#validate_msg').removeClass('error').addClass('hint').find('span').html('点击获取手机短信验证码， 不区分大小写');
+				$('#validate_msg').removeClass('errTxt').find('span').html('点击获取手机短信验证码， 不区分大小写');
 			}
 			
 		} else {
@@ -130,7 +130,7 @@ function wrappedCheckMobile() {
 	} else {
 		$('#btnSms').addClass('disabled').html('获取短信验证码');
 		$('#validate').val('').removeClass('success-gou');
-		$('#validate_msg').removeClass('error').addClass('hint').find('span').html('点击获取手机短信验证码， 不区分大小写');
+		$('#validate_msg').removeClass('errTxt').find('span').html('点击获取手机短信验证码， 不区分大小写');
 	}
 	
 	return ret;
@@ -150,23 +150,6 @@ function checkMobile() {
 		showErrorTip(jq, '手机号码有误，请重新输入');
 		return false;
 	}	
-	
-	/**
-	var isExist = false;
-	$.ajax({url:'seller/register/existMobile?mobile=' + value, context:jq[0], dataType:'json', async:false,
-		success : function(data) {
-			if(data) {
-				showErrorTip($(this), '该手机号已被使用,请输入新手机号码');
-				isExist = true;
-			}
-		},
-		error : function() {
-			showErrorTip($(this), '系统繁忙，请稍后再试');
-			isExist = true;
-		}});	
-	
-	if(isExist) return false;
-	**/
 	
 	jq.addClass('success-gou');
 	return true;
@@ -193,7 +176,7 @@ function checkValidate() {
 	}
 	
 	var passed = false;
-	$.ajax({url:'seller/register/checkValidator?mobile=' + $('#mobile').val() + '&validator=' + value, context:jq[0], dataType:'json', async:false,
+	$.ajax({url:'ajax/register/checkValidator?mobile=' + $('#mobile').val() + '&validator=' + value, context:jq[0], dataType:'json', async:false,
 		success : function(data) {
 			if(data) {
 				passed = true;				
@@ -230,7 +213,7 @@ function checkLoginName() {
 	}
 	
 	var isExist = false;
-	$.ajax({url:'seller/register/existLoginName', type:'post', data:{'loginName':value}, 
+	$.ajax({url:'ajax/existLoginName', type:'post', data:{'loginName':value}, 
 		context:jq[0], dataType:'json', async:false,
 		success : function(data) {
 			if(data) {
@@ -265,7 +248,7 @@ function checkNickname() {
 	}
 	
 	var isExist = false;
-	$.ajax({url:'seller/register/existNickname', type:'post', data:{'nickname':value}, 
+	$.ajax({url:'ajax/existNickname', type:'post', data:{'nickname':value}, 
 		context:jq[0], dataType:'json', async:false,
 		success : function(data) {
 			if(data) {
@@ -328,14 +311,14 @@ function focusHandler(event) {
 	var jq = $(event.target), msg = $('#' + jq.attr('id') + '_msg');
 	
 	jq.removeClass('success-gou');
-	msg.removeClass('error').addClass('hint');
+	msg.removeClass('errTxt');
 	msg.find('span').html(msg.attr('tip'));
 }
 
 function showErrorTip(jq, tip) {
 	var msg = $('#' + jq.attr('id') + '_msg');		
 	
-	msg.removeClass('hint').addClass('error');
+	msg.addClass('errTxt');
 	if(tip) msg.find('span').html(tip);
 }
 
