@@ -27,13 +27,13 @@ Seller.prototype = {
 		if(!__s) return;
 		
 		var arr = __s.split('|');
-		if(arr.length != 5) return;
+		if(arr.length < 4) return;
 		
 		this.sellerId = (arr[0] ? arr[0] : 0);
 		this.sellerLoginId = (arr[1] ? arr[1] : 0);
 		this.nickName = (arr[2] ? arr[2] : null);
 		this.loginName = (arr[3] ? arr[3] : null);
-		this.type = (arr[4] ? arr[4] : null);
+		this.type = (arr.length <= 4 ? null : (arr[4] ? arr[4] : null));
 		
 		this.isLogined = this.validateLogin();
 	},
