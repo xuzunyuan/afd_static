@@ -14,6 +14,7 @@ function Seller() {
 	this.nickName = null;
 	this.loginName = null;
 	this.type = null;
+	this.isPaidDeposit = null;
 	
 	this.isLogined = false;
 	
@@ -27,13 +28,14 @@ Seller.prototype = {
 		if(!__s) return;
 		
 		var arr = __s.split('|');
-		if(arr.length < 4) return;
+		if(arr.length != 6) return;
 		
 		this.sellerId = (arr[0] ? arr[0] : 0);
 		this.sellerLoginId = (arr[1] ? arr[1] : 0);
 		this.nickName = (arr[2] ? arr[2] : null);
 		this.loginName = (arr[3] ? arr[3] : null);
-		this.type = (arr.length <= 4 ? null : (arr[4] ? arr[4] : null));
+		this.type = (arr[4] ? arr[4] : null);
+		this.isPaidDeposit = (arr[5] ? arr[5] : null);
 		
 		this.isLogined = this.validateLogin();
 	},
