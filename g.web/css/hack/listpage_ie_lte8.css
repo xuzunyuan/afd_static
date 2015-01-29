@@ -1,0 +1,27 @@
+/**
+ * style listpage [IE LTE 8 HACK]
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version     1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * 
+ * 
+ */
+
+/* 
+ ---------------------------------------- */
+
+.screening table {
+	table-layout: fixed;
+}
+
+.screening th {
+	width: 115px;
+}

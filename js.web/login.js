@@ -1,14 +1,33 @@
 $(function(){
 	var isLogin = validUser();
-	alert(isLogin);
+	if(isLogin){
+		$("#unLogin").addClass("hide");
+		$("#login").removeClass("hide");
+	}else{
+		$("#unLogin").removeClass("hide");
+		$("#login").addClass("hide");
+	}
 	
 	function validUser(){
 		var u = $.cookie("_u");
 		var um = $.cookie("_um");
 		var ut = $.cookie("_ut");
+		
+		if(!!u){
+			var us = u.split("|");
+			var userName = us[1];
+			var nickName = us[2];
+			if(!!nickName && nickName!="null"){
+				$("#name").append(nickName);
+			}else{
+				$("#name").append(userName);
+			}
+		}
+		
 		if(!u||!um||!ut){
 			return false;
 		}
+		
 		var uts = ut.split("|");
 		var expired = uts[0];
 		var timeDiff = uts[1];

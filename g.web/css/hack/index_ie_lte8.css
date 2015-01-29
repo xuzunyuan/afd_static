@@ -1,0 +1,32 @@
+/**
+ * style index [IE LTE 8 HACK]
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version     1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * 
+ * 
+ */
+
+/* 
+ ---------------------------------------- */
+
+.classify li {
+	background: url(../../img/circular_bg2.png) no-repeat 0 0px;
+}
+.classify li:hover{
+
+}
+.classify .image {
+	background: none;
+}
+.classify .image:hover .img {
+	display: none;
+}
