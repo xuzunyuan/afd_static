@@ -26,6 +26,16 @@ CheckUtil.chnLength = function(value) {
 };
 
 /**
+ * 计算字符串长度，中文字符按3位累计
+ */
+CheckUtil.dbLength = function(value) {
+	if(!value) return 0;
+	
+	value = value.replace(/[^\x00-\xff]/g, '111');
+	return value.length;
+};
+
+/**
  * 限制控件只允许输入数字
  */
 CheckUtil.limitDigital = function(jq) {
@@ -55,6 +65,27 @@ CheckUtil.limitChnLength = function(jq, len) {
 		
 		while(newLen <= len) {
 			newLen += (value.charCodeAt(pos) > 255 ? 2 : 1);
+			pos ++;
+		}	
+		
+		var newValue = value.substr(0, --pos);
+		jq.val(newValue);
+	});
+};
+
+/**
+ * 限制控件输入字数，1个中文算三个
+ */
+CheckUtil.limitDbLength = function(jq, len) {
+	jq.bind('input propertychange', function(e){
+		var value = jq.val();
+		if(!value) return;
+		
+		if(CheckUtil.dbLength(value) <= len) return;		
+		var pos = Math.floor(len / 3), newLen = CheckUtil.dbLength(value.substr(0, pos));
+		
+		while(newLen <= len) {
+			newLen += (value.charCodeAt(pos) > 255 ? 3 : 1);
 			pos ++;
 		}	
 		
