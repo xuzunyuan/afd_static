@@ -1,0 +1,121 @@
+/**
+ * style popup
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version 	1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * Popup
+ * Theme
+ * 
+ * Layout
+ */
+
+/* Popup
+ ---------------------------------------- */
+
+.popup {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 990;
+	background: #fff;
+	border: 1px solid #d2d2d2;
+	-webkit-box-shadow:2px 2px 4px #333;
+	-moz-box-shadow:2px 2px 4px #333;
+	box-shadow:2px 2px 4px #333;
+}
+.popup .close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	display: block;
+	width: 24px;
+	height: 24px;
+	background-position: -160px -77px;
+	cursor: pointer;
+}
+.popup .close:hover {
+	background-position: -184px -77px;
+}
+.popup .hd {
+	height: 40px;
+	padding: 0 40px 0 8px;
+	background: #eee;
+	line-height: 40px;
+	cursor: default ;
+}
+.popup .hd h2 {
+	font-size: 14px;
+}
+.popup .bd {
+	*zoom: 1;
+}
+.popup .bd:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.popup .btnWrap {
+	padding: 10px 0;
+	text-align: center;
+}
+.popup .btnWrap .btn {
+	margin-right: 20px;
+}
+
+
+/* Theme
+ ---------------------------------------- */
+
+.popup-primary .hd{
+	background: #eee;
+}
+.popup-info .hd {
+	background: none;
+}
+
+/* Pay
+ ---------------------------------------- */
+
+.pop-pay {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -105px 0 0 -400px;
+	width: 800px;
+	height: 210px;
+}
+.pop-pay>.bd {
+	padding: 0 30px 10px;
+}
+.pop-pay h2 {
+	margin-bottom: 30px;
+	color: #333;
+	font-size: 22px;
+	font-weight: 300;
+}
+.pop-pay p {
+	margin-bottom: 20px;
+	padding: 0 0 0 30px;
+	line-height: 26px;
+}
+.pop-pay .icon {
+	margin-right: 20px;
+}
+.pop-pay p b {
+	color: #666;
+	margin-right: 30px;
+}
+.pop-pay p a {
+	margin: 0 15px 0 5px;
+}
+
+/* Layout
+ ---------------------------------------- */

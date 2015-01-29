@@ -1,0 +1,169 @@
+/**
+ * style global
+ *
+ * @project
+ * @copyright
+ * @author		zhanghaibin
+ * @version 	1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * Base
+ * Common
+ * - mask
+ * - position
+ * - loading
+ */
+
+/* Base
+ ---------------------------------------- */
+
+html {
+	overflow-y: scroll;
+}
+body {
+	min-width: 1000px;
+	color: #333;
+	background: #f0f0f0;
+	font: 12px/1.3  'Helvetica Neue', Helvetica,'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB', tahoma, arial, \5b8b\4f53, sans-serif;
+}
+input, button {
+	outline: 0;
+}
+table {
+	max-width: 100%;
+}
+a {
+	color: #316cd6;
+	text-decoration: none;
+}
+a:hover{
+	color: #e65143;
+	text-decoration: underline;
+}
+
+/* Common
+ ---------------------------------------- */
+
+.textMark {
+	font-family: simsun ,"Lantinghei SC" !important;
+}
+.clearfix:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.clearfix {
+	*zoom: 1;
+}
+.clear {
+	clear: both !important;
+}
+.float-left {
+	float: left !important;
+}
+.float-right {
+	float: right !important;
+}
+.block {
+	display: block !important;
+}
+.hide {
+	display: none !important;
+}
+.hidden {
+	visibility: hidden !important;
+}
+/* show */
+.show {
+	display: block !important;
+}
+.show-inline {
+	display: inline !important;
+}
+.show-iblock {
+	display: inline-block !important;
+}
+.disabled:hover {
+	cursor: default !important;
+}
+.full-block {
+	display: block;
+	width: 100% !important;
+}
+
+/* text align */
+.text-left {
+	text-align: left !important;
+}
+.text-right {
+	text-align: right !important;
+}
+.text-center {
+	text-align: center !important;
+}
+.text-nowrap {
+	white-space: nowrap !important;
+}
+
+/* mask */
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 900;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .3;
+	filter: alpha(opacity=30);
+}
+.maskBar {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 20;
+	width: 100%;
+	background: #000;
+	opacity: .5;
+	filter: alpha(opacity=50);
+}
+
+/* position */
+.static {
+	position: static !important;
+}
+.absolute {
+	position: absolute !important;
+	top: 0;
+}
+.fixed {
+	position: fixed !important;
+	top: 0;
+}
+
+/* loading */
+.loading,
+.loadMask {
+	background: url(../img/loading.gif) no-repeat center center;
+}
+.load {
+	background: url(../img/load.gif) no-repeat center center;
+}
+/* loading error*/
+.loading-err {
+	background: url(../img/not-load.gif) no-repeat center center;
+}
+
+.loadMask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}

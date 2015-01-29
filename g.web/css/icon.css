@@ -1,0 +1,200 @@
+/**
+ * style icon
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version 	1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * Frame
+ * 18*18
+ * 20*20
+ * 24*24
+ * 26*26
+ * 40*40
+ */
+
+.icon {
+	display: inline-block;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+
+/* Frame
+ ---------------------------------------- */
+
+/* right */
+.i-rightXS {/* extra small */
+	
+}
+.i-rightSM {/* samll */
+	width: 26px;
+	height: 26px;
+	background-position: -53px -77px;
+}
+.i-right {
+	width: 40px;
+	height: 40px;
+	background-position: -160px -103px;
+}
+.i-rightLG {/* large */
+	width: 50px;
+	height: 50px;
+	background-position: 0 -143px;
+}
+.i-rightXL {/* extra large */
+	width: 74px;
+	height: 74px;
+	background-position: 0 -143px;
+}
+
+/* danger */
+.i-dangerXS {/* extra small */
+	
+}
+.i-dangerSM {/* samll */
+	width: 26px;
+	height: 26px;
+	background-position: 0 -83px;
+}
+.i-danger {
+	width: 40px;
+	height: 40px;
+	background-position: 0 -43px;
+}
+.i-dangerLG {/* large */
+	width: 50px;
+	height: 50px;
+	background-position: -74px -143px;
+}
+.i-dangerXL {/* extra large */
+	width: 74px;
+	height: 74px;
+	background-position: -74px -143px;
+}
+
+/* grave */
+.i-graveXS {/* extra small */
+	
+}
+.i-graveSM {/* samll */
+	width: 26px;
+	height: 26px;
+	background-position: -80px -77px;
+}
+.i-grave {
+	
+}
+.i-graveLG {/* large */
+	
+}
+.i-graveXL {/* extra large */
+	
+}
+
+/* 16*16
+ ---------------------------------------- */
+
+/* 18*18
+ ---------------------------------------- */
+
+.i-msgSM, .i-favorite, .i-cartXS, .i-share {
+	width: 18px;
+	height: 18px;
+}
+.i-msgSM {
+	background-position: 0 -39px;
+}
+.i-favorite {
+	background-position: -20px -39px;
+}
+.i-cartXS {
+	background-position: -40px -39px;
+}
+.i-share {
+	background-position: -60px -39px;
+}
+
+/* 20*20
+ ---------------------------------------- */
+
+.i-warn, .i-cartSM,
+.i-gold, .i-clock, .i-ok, .i-err,
+.i-zoom, .i-horn {
+	width: 20px;
+	height: 20px;
+}
+.i-warn {
+	background-position: -21px -57px;
+}
+.i-cartSM {
+	background-position: -62px -57px;
+}
+
+.i-clock {
+	background-position: -40px 0;
+}
+.i-gold {
+	background-position: -60px 0;
+}
+.i-ok {
+	background-position: -80px 0;
+}
+.i-err {
+	background-position: -100px 0;
+}
+.i-zoom {
+	background-position: -120px 0;
+}
+.i-horn {
+	background-position: -140px 0;
+}
+
+/* 24*24
+ ---------------------------------------- */
+
+.i-assure {
+	width: 24px;
+	height: 24px;
+}
+.i-assure {
+	background-position: -132px -77px;
+}
+
+/* 26*26
+ ---------------------------------------- */
+
+.i-msg {
+	width: 26px;
+	height: 26px;	
+}
+
+.i-msg {
+	background-position: 0 -77px;
+}
+
+/* 36*36
+ ---------------------------------------- */
+
+.i-cart, .i-menu, .i-card, .i-over {
+	width: 36px;
+	height: 36px;	
+}
+
+.i-cart {
+	background-position: 0 -103px;
+}
+.i-menu {
+	background-position: -36px -103px;
+}
+.i-card {
+	background-position: -72px -103px;
+}
+.i-over {
+	background-position: -208px -103px;
+}

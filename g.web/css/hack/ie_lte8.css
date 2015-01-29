@@ -1,0 +1,25 @@
+/**
+ * IE LTE 8 HACK
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version     1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * 
+ * 
+ */
+
+/* 
+ ---------------------------------------- */
+
+/* img zoom */
+.mod-showcase [class*="unit-"] a:hover img,
+.showList .gs-banner a:hover img {
+	filter: alpha(opacity=70);
+}

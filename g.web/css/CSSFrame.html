@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS框架</title>
+	<link rel="stylesheet" type="text/css" href="allstyle.min.css" />
+	<!--<link rel="stylesheet" type="text/css" href="allstyle.css" />-->
+	<!--[if lte IE 8]><link rel="stylesheet" type="text/css" href="hack/index_ie_lte8.css" /><![endif]-->
+	<style>
+		body {
+			padding: 10px;
+			/*background: #f9f9f9;*/
+		}
+		body>h2 {
+			margin-bottom: 10px;
+			padding:5px 10px;
+			border-bottom: 1px solid #ddd;
+			color: #333;
+			font-size: 18px;
+		}
+		.content>h3{
+			color: #333;
+			font-size: 14px;
+			line-height: 2;
+		}
+		.content {
+			*zoom: 1;
+			position: relative;
+			margin-bottom: 20px;
+			padding: 0 5px;
+		}
+		.content:after {
+			display: table;
+			clear: both;
+			content: " ";
+		}
+		p {
+			color: #333;
+			font-size: 12px;
+			line-height: 2;
+		}
+		.table-wrap {
+			display:inline-block;
+			*display: inline;
+			*zoom: 1;
+			width: 23%;
+			margin-right: 1%;
+			vertical-align: top;
+		}
+		.table caption {
+			line-height: 30px;
+		}
+		.arrow-wrap {
+			padding: 10px;
+			background: #dfeae2;
+		}
+		.arrow-wrap .arrow>i {
+			border-color: #dfeae2;
+		}
+		.tooltip {
+			float: left;
+			margin-right: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>全局样式</h2>
+	<div class="content">
+		<p><b>符号样式（宋体）</b></p>
+		<p><b>
+			.textMark {
+				font-family: simsun !important;
+			}</b>
+		</p>
+		<p><img src="global-css.jpg"/></p>
+	</div>
+	<h2>颜色</h2>
+	<div class="content">
+		<p class="lightColor">浅色</p>
+		<p class="tipColor">提示色</p>
+		<p class="warnColor">警告色</p>
+	</div>
+	<h2>按钮</h2>
+	<div class="content">
+		<h3>button &amp; input</h3>
+		<input type="button" value="按钮" class="btn btn-def xl" />
+		<input type="button" value="按钮" class="btn btn-primary xl" />
+		<input type="button" value="按钮" class="btn btn-bezelFree xl" />
+		<span>height : 38px</span>
+		<br />
+		<br />
+		<input type="button" value="按钮" class="btn btn-def lg" />
+		<input type="button" value="按钮" class="btn btn-primary lg" />
+		<input type="button" value="按钮" class="btn btn-bezelFree lg" />
+		<span>height : 30px</span>
+		<br />
+		<br />
+		<input type="button" value="按钮" class="btn btn-def" />
+		<input type="button" value="按钮" class="btn btn-primary" />
+		<input type="button" value="按钮" class="btn btn-bezelFree" />
+		<span>height : 26px</span>
+		<br />
+		<br />
+		<input type="button" value="按钮" class="btn btn-def sm" />
+		<input type="button" value="按钮" class="btn btn-primary sm" />
+		<input type="button" value="按钮" class="btn btn-bezelFree sm" />
+		<span>height : 22px</span>
+		<br />
+		<br />
+		<h3>&lt;a&gt; &amp; &lt;span&gt;</h3>
+		<a href="#" class="btn btn-def xl">按钮</a>
+		<span class="btn btn-primary xl">按钮</span>
+		<span class="btn btn-bezelFree xl">按钮</span>
+		<br /><br />
+		<span class="btn btn-def lg">按钮</span>
+		<a href="#" class="btn btn-primary lg">按钮</a>
+		<a href="#" class="btn btn-bezelFree lg">按钮</a>
+		<br /><br />
+		<a href="#" class="btn btn-def">按钮</a>
+		<a href="#" class="btn btn-primary">按钮</a>
+		<a href="#" class="btn btn-bezelFree">按钮</a>
+		<br /><br />
+		<a href="#" class="btn btn-def sm">按钮</a>
+		<a href="#" class="btn btn-primary sm">按钮</a>
+		<a href="#" class="btn btn-bezelFree sm">按钮</a>
+		<br /><br />
+		<h3>padding</h3>
+		<input type="button" value="按钮" class="btn btn-primary lg p-lg" /><span>padding: 0 35px</span>
+	</div>
+	<h2>输入框</h2>
+	<div class="content">
+		<input type="text" class="txt sm w-sm" /><span class="note"> 70px</span>
+		<br />
+		<br />
+		<input type="text" class="txt" /><span class="note"> 116px</span>
+		<br />
+		<br />
+		<input type="text" class="txt lg w-lg" /><span class="note"> 170px</span>
+		<br />
+		<br />
+		<input type="text" class="txt lg w-lgl" /><span class="note"> 240px</span>
+		<br />
+		<br />
+		<input type="text" class="txt xl w-xl" /><span class="note"> 420px</span>
+		<br />
+		<br />
+		<input type="text" class="txt txt-radius sm w-sm" /><span class="note"> 70px</span>
+		<br />
+		<br />
+		<input type="text" class="txt txt-radius" /><span class="note"> 116px</span>
+		<br />
+		<br />
+		<input type="text" class="txt txt-radius lg w-lg" /><span class="note"> 170px</span>
+		<br />
+		<br />
+		<input type="text" class="txt txt-radius xl w-xl" /><span class="note"> 420px</span>
+		<br />
+		<br />
+		<h3>固定电话</h3>
+		<div class="txt-tel">
+			<input type="text" class="txt telArea" /><i>-</i
+			><input type="text" class="txt telNum" /><i>-</i
+			><input type="text" class="txt telExt" />
+		</div>
+		<h3>日期时间</h3>
+		<div class="txt-tel">
+			<input type="text" class="txt txt-date" /><br /><br />
+			<div class="txt-section"><input type="text" class="txt txt-date"><i>到</i><input type="text" class="txt txt-date"></div>
+		</div>
+		<br />
+		<br />
+		<h3>区间</h3>
+		<div class="txt-section xs"><input type="text" class="txt"><i>到</i><input type="text" class="txt"></div><span class="note">height:22px</span>
+		<br />
+		<br />
+		<div class="txt-section"><input type="text" class="txt"><i>到</i><input type="text" class="txt"></div><span class="note">height:26px</span>
+		<h3>搜索框</h3>
+		<div class="searchGroup">
+			<input type="text" class="txt lg w-lg" />
+			<i class="icon i-zoom"></i>
+		</div><br /><br />
+		<div class="searchGroup">
+			<input type="text" class="txt lg w-lgl" />
+			<i class="icon i-zoom"></i>
+		</div><br /><br />
+		<div class="searchGroup">
+			<input type="text" class="txt lg w-xl" />
+			<i class="icon i-zoom"></i>
+		</div>
+	</div>
+	<h2>下拉框</h2>
+	<div class="content">
+		<select name="" id="">
+			<optgroup label="组1">
+				<option value="0" disabled="disabled">请选择</option>
+				<option value="1">请选择</option>
+			</optgroup>
+			<optgroup label="组2">
+				<option value="3">请选择</option>
+				<option value="4">请选择</option>
+			</optgroup>
+		</select>
+		<br /><br />
+		<select name="" id="" class="select xs">
+			<optgroup label="组1">
+				<option value="0" disabled="disabled">请选择</option>
+				<option value="1">请选择</option>
+			</optgroup>
+			<optgroup label="组2">
+				<option value="3">请选择</option>
+				<option value="4">请选择</option>
+			</optgroup>
+		</select>
+		<span>class="select xs"</span>
+		<span>height : 22px</span>
+		<br /><br />
+		<select name="" id="" class="select sm">
+			<optgroup label="组1">
+				<option value="0" disabled="disabled">请选择</option>
+				<option value="1">请选择</option>
+			</optgroup>
+			<optgroup label="组2">
+				<option value="3">请选择</option>
+				<option value="4">请选择</option>
+			</optgroup>
+		</select>
+		<span>class="select sm"</span>
+		<span>height : 24px</span>
+		<br /><br />
+		<select name="" id="" class="select">
+			<optgroup label="组1">
+				<option value="0" disabled="disabled">请选择</option>
+				<option value="1">请选择</option>
+			</optgroup>
+			<optgroup label="组2">
+				<option value="3">请选择</option>
+				<option value="4">请选择</option>
+			</optgroup>
+		</select>
+		<span>class="select"</span>
+		<span>height : 26px</span>
+		<br /><br />
+		<select name="" id="" class="select lg">
+			<optgroup label="组1">
+				<option value="0" disabled="disabled">请选择</option>
+				<option value="1">请选择</option>
+			</optgroup>
+			<optgroup label="组2">
+				<option value="3">请选择</option>
+				<option value="4">请选择</option>
+			</optgroup>
+		</select>
+		<span>class="select lg"</span>
+		<span>height : 28px</span>
+		<br /><br />
+		<select name="" id="" class="select xl">
+			<optgroup label="组1">
+				<option value="0" disabled="disabled">请选择</option>
+				<option value="1">请选择</option>
+			</optgroup>
+			<optgroup label="组2">
+				<option value="3">请选择</option>
+				<option value="4">请选择</option>
+			</optgroup>
+		</select>
+		<span>class="select xl"</span>
+		<span>height : 30px</span>
+	</div>
+	<h2>单选按钮  &amp; 复选按钮</h2>
+	<div class="content">
+		<label><input type="radio" class="radio" />单选按钮</label>
+		<label><input type="checkbox" class="chk" />复选按钮</label>
+		<br /><br />
+		<input type="radio" class="radio" id="radio" /><label for="radio">单选按钮</label>
+		<input type="checkbox" class="chk" id="checkbox" /><label for="checkbox">复选按钮</label>
+	</div>
+	<h2>多行文本框</h2>
+	<div class="content">
+		<textarea name="" id="" cols="60" rows="5" placeholder="宽高可调，IE不支持"></textarea><br /><br />
+		<textarea name="" id="" cols="60" rows="5" class="resize-h" placeholder='宽度可调，IE不支持class="resize-h"'></textarea><br /><br />
+		<textarea name="" id="" cols="60" rows="5" class="resize-v" placeholder='高度可调，IE不支持class="resize-v"'></textarea><br /><br />
+		<textarea name="" id="" cols="60" rows="5" class="resize-none" placeholder='宽高不可调class="resize-none"'></textarea>
+	</div>
+	<h2>控件状态</h2>
+	<div class="content">
+		<h3>按钮禁用</h3>
+		<input type="button" value="按钮" class="btn btn-def" disabled="" />
+		<a class="btn btn-primary disabled">按钮</a>
+		<span class="note"><b>&lt;input&gt;</b>或<b>&lt;button&gt;</b>按钮禁用时只需增加<strong>disabled=""</strong>属性，<b>&lt;a&gt;</b>按钮禁用时需要增加<strong>class="disabled"</strong></span>
+		<br /><br />
+		<h3>默认状态</h3>
+		<input type="text" class="txt w-xl" /><span class="note">默认提示信息</span>
+		<div class="note">下方默认提示信息，使用&lt;div&gt;</div>
+		<br /><br />
+		<h3>验证错误状态</h3>
+		<input type="text" class="txt w-xl errIpt" placeholder='输入框高亮，增加class="errIpt"' /><span class="note errTxt">错误提示信息 class="errTxt"</span>
+		<div class="note errTxt">下方错误提示信息，使用&lt;div&gt;</div>
+		<br /><br />
+		<h3>验证正确状态</h3>
+		<input type="text" class="txt w-xl successIpt" placeholder='输入框高亮，增加class="successIpt"' />
+	</div>
+	<h2>提示信息</h2>
+	<div class="content">
+		<span class="note">提示信息<b>“用&lt;b&gt;标签加粗”</b>提示信息!</span>
+		<br /><br />
+		<span class="note">提示信息<strong>“用&lt;strong&gt;标签加粗，且带醒目颜色”</strong>提示信息!</span>
+	</div>
+	<h2>表格</h2>
+	<div class="content">
+		<div class="table-wrap">
+			<table class="table table-left">
+				<caption>居左</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table">
+				<caption>居中-默认</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table table-right">
+				<caption>居右</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<br />
+		<div class="table-wrap">
+			<table class="table table-left">
+				<caption>居左混合</caption>
+				<thead>
+					<tr class="table-center">
+						<th class="table-left">1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th class="table-right">4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td class="table-center">3</td>
+						<td>4</td>
+						<td>4</td>
+						<td class="table-right">4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td class="table-center">3</td>
+						<td>4</td>
+						<td>4</td>
+						<td class="table-right">4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td class="table-center">tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td class="table-right">tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table">
+				<caption>居中混合</caption>
+				<thead>
+					<tr>
+						<th class="table-left">1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th class="table-right">4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="table-left">1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td class="table-right">4</td>
+					</tr>
+					<tr>
+						<td class="table-left">1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td class="table-right">4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="table-left">tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td class="table-right">tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table table-right">
+				<caption>居右混合</caption>
+				<thead>
+					<tr class="table-center">
+						<th class="table-left">1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th class="table-right">4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="table-left">1</td>
+						<td>2</td>
+						<td class="table-center">3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td class="table-left">1</td>
+						<td>2</td>
+						<td class="table-center">3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="table-left">tfoot</td>
+						<td>tfoot</td>
+						<td class="table-center">tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<br />
+		<div class="table-wrap">
+			<table class="table table-line">
+				<caption>线状表格（table-line）</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table table-line noborder">
+				<caption>无外框-线状表格（noborder）</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<br />
+		<div class="table-wrap">
+			<table class="table table-line">
+				<caption>鼠标经过效果（hover）</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody class="hover">
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table table-line noborder">
+				<caption>隔行变色-奇数（interleave-odd）</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody class='interleave-odd'>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table table-line">
+				<caption>隔行变色-偶数（interleave-even）</caption>
+				<thead>
+					<tr>
+						<th>1</th>
+						<th>2</th>
+						<th>3</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+						<th>4</th>
+					</tr>
+				</thead>
+				<tbody class="interleave-even">
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+						<td>4</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+						<td>tfoot</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+	<h2>表单</h2>
+	<div class="content">
+		<form class="form">
+			<fieldset>
+				<div class="legend">legend</div>
+				<div class="formGroup">
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<input type="text" class="txt w-xl" />
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<div class="txt-tel"
+							><input type="text" class="txt telArea"><i>-</i
+								><input type="text" class="txt telNum"><i>-</i
+								><input type="text" class="txt telExt"
+							></div>
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<input type="text" class="txt" /><input type="button" class="btn btn-def" value="按 钮" />
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<label><input type="radio" class="radio" checked="checked" />单选按钮</label><label><input type="checkbox" class="chk" />复选按钮</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<input type="text" class="txt w-lg" />
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<select name="" id="" class="select">
+								<option value="0">请选择</option>
+								<option value="0">请选择</option>
+							</select><select name="" id="" class="select">
+								<option value="0">请选择</option>
+								<option value="0">请选择</option>
+							</select><select name="" id="" class="select">
+								<option value="0">请选择</option>
+								<option value="0">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-cont col-offset-2">
+							<input type="button" class="btn btn-def" value="提 交" />
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<br />
+		<h3>form-inline</h3>
+		<form class="form form-inline">
+			<fieldset>
+				<div class="legend">legend</div>
+				<div class="formGroup">
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<input type="text" class="txt w-xl" />
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<div class="txt-tel"
+							><input type="text" class="txt telArea"><i>-</i
+								><input type="text" class="txt telNum"><i>-</i
+								><input type="text" class="txt telExt"
+							></div>
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<input type="text" class="txt" /><input type="button" class="btn btn-def" value="按 钮" />
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<label><input type="radio" class="radio" checked="checked" />单选按钮</label><label><input type="checkbox" class="chk" />复选按钮</label>
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<input type="text" class="txt w-lg" />
+						</div>
+					</div>
+					<div class="form-item">
+						<div class="item-label"><label><em>*</em>label</label></div>
+						<div class="item-cont">
+							<select name="" id="" class="select">
+								<option value="0">请选择</option>
+								<option value="0">请选择</option>
+							</select><select name="" id="" class="select">
+								<option value="0">请选择</option>
+								<option value="0">请选择</option>
+							</select><select name="" id="" class="select">
+								<option value="0">请选择</option>
+								<option value="0">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-item block">
+						<div class="item-cont col-offset-2">
+							<input type="button" class="btn btn-def" value="提 交" />
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<h2>Tips Pop</h2>
+	<div class="content">
+		<div class="mod-tipsPop tips-help">
+			<i class="icon"></i>
+			<div class="tip text-nowrap">市场参考价格</div>
+		</div>
+		<div class="mod-tipsPop tips-help tip-rb">
+			<i class="icon"></i>
+			<div class="tip" style="width: 100px">市场参考价格市场参考价格市场参考价格市场参考价格市场参考价格</div>
+		</div>
+		<div class="mod-tipsPop tip-lt">
+			<i class="icon"></i>
+			<div class="tip text-nowrap">市场参考价格</div>
+		</div>
+		<div class="mod-tipsPop tip-lb">
+			<i class="icon"></i>
+			<div class="tip text-nowrap">市场参考价格</div>
+		</div>
+		<div class="mod-tipsPop tips-help">
+			<i class="icon"></i>
+			<div class="tip text-nowrap">市场参考价格</div>
+		</div>
+	</div>
+	<h2>Tips</h2>
+	<div class="content">
+		<p>无结果  class="mod-tips fruitless"</p>
+		<div class="mod-tips fruitless">您还没有发布过商品？现在就 <a href="#">发布商品</a></div>
+		<br />
+		<div class="mod-tips fruitless">没有找到符合条件的商品！</div>	</div>
+	<h2>箭头</h2>
+	<div class="content arrow-wrap">
+		<i class="arrow top-solid xs"></i>
+		<i class="arrow right-solid xs"></i>
+		<i class="arrow bottom-solid xs"></i>
+		<i class="arrow left-solid xs"></i>
+		<span class="note">8*4(px)</span>
+		<br /><br />
+		<i class="arrow top-solid sm"></i>
+		<i class="arrow right-solid sm"></i>
+		<i class="arrow bottom-solid sm"></i>
+		<i class="arrow left-solid sm"></i>
+		<span class="note">12*6(px)</span>
+		<br /><br />
+		<i class="arrow top-solid"></i>
+		<i class="arrow right-solid"></i>
+		<i class="arrow bottom-solid"></i>
+		<i class="arrow left-solid"></i>
+		<span class="note">14*7(px)</span>
+		<br /><br />
+		<i class="arrow top-solid lg"></i>
+		<i class="arrow right-solid lg"></i>
+		<i class="arrow bottom-solid lg"></i>
+		<i class="arrow left-solid lg"></i>
+		<span class="note">18*9(px)</span>
+		<br /><br />
+		<i class="arrow top-solid xl danger"></i>
+		<i class="arrow right-solid xl white"></i>
+		<i class="arrow bottom-solid xl muted"></i>
+		<i class="arrow left-solid xl"></i>
+		<span class="note">30*15(px)</span>
+		<br /><br /><br /><br />
+		<span class="arrow top-hollow xs danger"><b></b><i></i></span>
+		<span class="arrow right-hollow xs"><b></b><i></i></span>
+		<span class="arrow bottom-hollow xs"><b></b><i></i></span>
+		<span class="arrow left-hollow xs"><b></b><i></i></span>
+		<br /><br />
+		<span class="arrow top-hollow sm danger"><b></b><i></i></span>
+		<span class="arrow right-hollow sm"><b></b><i></i></span>
+		<span class="arrow bottom-hollow sm"><b></b><i></i></span>
+		<span class="arrow left-hollow sm"><b></b><i></i></span>
+		<br /><br />
+		<span class="arrow top-hollow danger"><b></b><i></i></span>
+		<span class="arrow right-hollow"><b></b><i></i></span>
+		<span class="arrow bottom-hollow"><b></b><i></i></span>
+		<span class="arrow left-hollow"><b></b><i></i></span>
+		<br /><br />
+		<span class="arrow top-hollow lg danger"><b></b><i></i></span>
+		<span class="arrow right-hollow lg"><b></b><i></i></span>
+		<span class="arrow bottom-hollow lg"><b></b><i></i></span>
+		<span class="arrow left-hollow lg"><b></b><i></i></span>
+		<br /><br />
+		<span class="arrow top-hollow xl danger"><b></b><i></i></span>
+		<span class="arrow right-hollow xl white"><b></b><i></i></span>
+		<span class="arrow bottom-hollow xl"><b></b><i></i></span>
+		<span class="arrow left-hollow xl muted"><b></b><i></i></span>
+	</div>
+	<h2>弹出层</h2>
+	<div class="content" style="height:200px">
+		<div class="popup" style="width: 400px; position:relative;">
+			<div class="hd">
+				<h2>弹出层</h2><i class="close"></i>
+			</div>
+			<div class="bd">
+				
+			</div>
+			<div class="btnWrap">
+				<input type="button" class="btn btn-primary" value="确 定" />
+			</div>
+		</div>
+		<br /><br />
+		<div class="popup popup-info" style="width: 400px; position:relative;">
+			<div class="hd">
+				<i class="close"></i>
+			</div>
+			<div class="bd">
+				
+			</div>
+			<div class="btnWrap">
+				<a href="javascript:void(0)" class="btn btn-def">确 定</a>
+			</div>
+		</div>
+	</div>
+	<h2>提示框</h2>
+	<div class="content" style="height:300px">
+		<div class="tooltip guide-TL" style="width: 300px;position:relative;">
+			<span class="arrow top-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-TL</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-TC" style="width: 300px;position:relative;">
+			<span class="arrow top-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-TC</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-TR" style="width: 300px;position:relative;">
+			<span class="arrow top-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-TR</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<br class="clear" /><br />
+		<div class="tooltip guide-RT" style="width: 300px;position:relative;">
+			<span class="arrow right-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-RT</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-RM" style="width: 300px;position:relative;">
+			<span class="arrow right-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-RM</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-RB" style="width: 300px;position:relative;">
+			<span class="arrow right-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-RB</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<br class="clear" /><br />
+		<div class="tooltip guide-BL" style="width: 300px;position:relative;">
+			<span class="arrow bottom-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-BL</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-BC" style="width: 300px;position:relative;">
+			<span class="arrow bottom-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-BC</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-BR" style="width: 300px;position:relative;">
+			<span class="arrow bottom-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="hd">
+					<h2>guide-BR</h2>
+				</div>
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<br class="clear" /><br />
+		<div class="tooltip guide-LT" style="width: 300px;position:relative;">
+			<span class="arrow left-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-LM" style="width: 300px;position:relative;">
+			<span class="arrow left-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+		<div class="tooltip guide-LB" style="width: 300px;position:relative;">
+			<span class="arrow left-hollow sm"><b></b><i></i></span>
+			<div class="wrap" style=" height:;">
+				<div class="bd">内容内容内容</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,462 @@
+/**
+ * style register
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 	1.0
+ * 
+ * @colordef 	#333 				article text
+ * @colordef	#316cd6				link & visible
+ * @colordef	#ff5c00				hover & active
+ */
+
+/**
+ * CSS Menu
+ * 
+ * 
+ * 
+ * 
+ * Layout
+ * 
+ */
+
+
+/* Register
+ ---------------------------------------- */
+
+#regsignin,
+#regsignin #header,
+#regsignin #footer {
+	background: #f0f0f0;
+}
+
+#regsignin #header>.wrap,
+#regsignin #container>.wrap,
+#regsignin #footer>.wrap {
+	width: 990px;
+}
+#regsignin #container>.wrap {
+	padding: 20px 0;
+}
+.checkHint{
+	position: static;
+	*position:relative;
+	display: table;
+	color: #999;
+}
+.checkHint .hintBox{
+	position: static;
+	*position:absolute;
+	display: table-cell;
+	vertical-align: middle;
+	top: 50%;
+	width: 100%;
+}
+.checkHint .hintBox span{
+	display: block;
+	position: relative;
+	top: -50%;
+	width: 100%;
+	line-height: 16px;
+}
+.loginBtn, .regBtn {
+	display: block;
+	width: 100%;
+	height: 38px;
+	font-size: 16px;
+}
+
+/* Layout
+ ---------------------------------------- */
+
+/* login */
+.wrap-login .signinForm,
+.wrap-register .signinForm,
+.regSuccess .signinForm{
+	padding:20px 0;
+	background:#fff;
+	border:1px solid #e4e4e4;
+}
+.wrap-login .pic{
+	float:left;
+	width:431px;
+	padding:20px 56px;
+	background:url(../img/border01.png) no-repeat right center;
+}
+.wrap-login .pic img{
+	width:430px;
+	height:278px;
+}
+.wrap-login .note {
+	padding: 0;
+}
+/* wrap-login form */
+.wrap-login .form{
+	float:right;
+	width:368px;
+	padding:20px 40px 0 0;
+	color:#666;
+}
+.wrap-login .form h2,
+.wrap-register .form h2{
+	margin-bottom:20px;
+	color:#444;
+	font-weight:normal;
+	font-size:18px;
+	line-height:40px;
+}
+.wrap-login .form-item {
+	width:350px;
+	margin:0 auto 10px;
+}
+.wrap-login .form-item .item-label,
+.wrap-register .form-item .item-label{
+	width:80px;
+	color:#666;
+	font-size:14px;
+	line-height:32px;
+	margin-right: 0;
+}
+.wrap-login .form-item .item-cont{
+	position:relative;
+	top:0;
+	left:0;
+	float: right;
+	width: 264px;
+	margin-left: 0;
+}
+.wrap-login .txt {
+	width: 230px;
+}
+.wrap-login .item-user{
+	margin-bottom:32px;
+}
+.wrap-login .item-user .txt {
+	background: url(../img/user.jpg) no-repeat 234px center;
+	padding-right: 24px;
+}
+.wrap-login .item-pw .txt {
+	background: url(../img/pw.jpg) no-repeat 234px center;
+	padding-right: 24px;
+}
+.wrap-login .item-checkCode{
+	margin-bottom:15px;
+}
+.wrap-login .item-save .chk,
+.wrap-login .item-save label{
+	float:left;
+}
+.wrap-login .form-item .forgetPW{
+	float:right;
+	color:#333;
+}
+.wrap-login .form-item .forgetPW:hover{
+	color:#ec6519;
+}
+.wrap-login .item-checkCode dd{
+	line-height:32px;
+}
+.wrap-login .item-checkCode .txt{
+	float:left;
+	width:80px;
+	height:20px;
+	padding:5px;
+	margin-right:8px;
+	line-height:20px;
+}
+.wrap-login .item-checkCode span{
+	margin-right:5px;
+}
+.wrap-login .item-checkCode img{
+	float:left;
+	width:62px;
+	height:32px;
+	margin-right:8px;
+	cursor:pointer;
+}
+.wrap-login .item-join{
+	color:#999;
+	text-align:right;
+}
+/* wrap-login note */
+.wrap-login .note{
+	position:absolute;
+	top:36px;
+	left:0;
+	overflow:hidden;
+	max-width:250px;
+	height:22px;
+	line-height:22px;
+	white-space:nowrap;
+}
+
+
+
+
+/* register */
+.wrap-register .signinForm{
+	padding:30px 56px 30px;
+}
+.wrap-register .form{
+	float: left;
+}
+.wrap-register .form-item{
+	width: 660px;
+	margin-bottom: 20px;
+}
+.wrap-register .form-item .item-label{
+	width: 100px;
+}
+.wrap-register .form-item .item-cont {
+	width: 550px;
+	float: right;
+	margin-left: 0;
+}
+.wrap-register .checkHint{
+	float: left;
+	width: 240px;
+	height: 32px;
+	padding-left: 10px;
+}
+.wrap-register .checkHint span{
+	line-height:16px;
+}
+.wrap-register .checkHint .icon{
+	margin:-2px 2px 0 0;
+}
+.wrap-register .txt{
+	width: 250px;
+	float: left;
+}
+.wrap-register .item-auth .txt{
+	width: 125px;
+}
+.wrap-register .item-agree p{
+	padding-bottom: 10px;
+}
+.wrap-register .item-agree p span{
+	padding-left: 26px;
+}
+
+.wrap-register .item-agree label{
+	color:#999;
+}
+.wrap-register .item-auth .btn{
+	overflow: hidden;
+	float: left;
+	width: 110px;
+	height: 30px;	
+	margin-right: 13px;
+	color:#666;
+	padding: 0;
+	line-height:30px;
+}
+.wrap-register .regBtn{
+	width: 265px;
+}
+.wrap-register .reg-login{
+	float: right;
+	width: 150px;
+	height:240px;
+	margin-top:60px;
+	padding:0 0 0 40px;
+	background: url(../img/border01.png) no-repeat left center;	
+	text-align: center;
+}
+.wrap-register .reg-login img{
+	width: 104px;
+	height: 104px;
+	margin:30px 0 15px;
+}
+.wrap-register .reg-login p{
+	padding-bottom: 10px;
+	color: #494949;
+}
+.wrap-register .reg-login .btn{
+	width: 90px;
+	height: 30px;
+	color:#333;
+	font-size:14px;
+	line-height:30px;
+}
+.wrap-register .reg-login .lnk:hover{
+	color:#ec6519;
+}
+
+/* register Success */
+.regSuccess .signinForm{
+	height:340px;
+}
+.regSuccess dl{
+	padding:20px 80px;
+}
+.regSuccess dt{
+	float:left;
+	width:60px;
+}
+.regSuccess dd{
+	float:left;
+}
+.regSuccess dd h3{
+	margin:10px 0 25px 0;
+	font:22px/30px "microsoft yahei";
+}
+.regSuccess dd p{
+	margin-bottom:15px;
+	color:#666;
+	font-size:15px;
+	line-height:20px;
+}
+.regSuccess dd strong{
+	margin:0 4px;
+	color:#f00;
+}
+.regSuccess dd .goto{
+	display:block;
+	width:135px;
+	height:38px;
+	margin-top:30px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	color:#fff;
+	font-size:16px;
+	line-height:38px;
+	text-align:center;
+	text-decoration:none;
+}
+
+
+
+/* findpw */
+.findpw .auditStep{
+	height: 58px;
+	margin-bottom: -1px;
+	padding: 0 20px;
+	border: 1px solid #e4e4e4;
+	background: #fff;
+}
+.findpw .auditStep h2{
+	float: left;
+	color: #444;
+	font: bold 18px/58px "microsoft yahei";
+	font-weight: normal;
+}
+.auditStep .mod-step {
+float: right;
+padding: 7px 5px 3px;
+}
+.findpw .form {
+	padding: 50px 100px;
+	min-height: 542px;
+	background: #fff;
+	border: 1px solid #e4e4e4;
+}
+.findpw .form-item{
+	width: 660px;
+}
+.findpw .form-item .item-label{
+	width: 100px;
+	color: #666;
+	font-size: 14px;
+	line-height: 32px;
+}
+.findpw .item-cont{
+	width: 550px;
+}
+.findpw .item-cont .txt{
+	float: left;
+	height: 20px;
+	padding:5px;
+	line-height: 22px;
+}
+.findpw .item-cont .textC{
+	width: 250px;	
+}
+.findpw .form .item-cont .checkHint{
+	height: 32px;
+	line-height: 32px;
+	margin-top: 0;
+}
+.findpw .item-code{
+	float: left;
+	width: 63px;
+	height: 32px;
+	background: #D6D6D6;
+	font-size: 20px;
+	font-family: "黑体";
+	text-align: center;
+	line-height: 32px;
+	cursor: default;
+}
+.findpw .changeone{
+	float: left;
+	padding:5px 0 0 15px;
+}
+.findpw .nextBtn{
+	display: block;
+	width: 120px;
+	height: 30px;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	line-height: 30px;
+}
+.findpw .btnC{
+	width: 110px;
+	height: 30px;
+	font-size: 16px;
+}
+.findpw .nextBtn:hover{
+	text-decoration: none;
+}
+.findpw .phoneCode{
+	float: left;
+	margin-right: 20px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 32px;
+}
+.findpw .checkCode{
+	float: left;
+	margin-right: 15px;
+}
+.findpw .form{
+	min-height: 300px;
+}
+.findpw .form .warn{
+	padding-top: 5px;
+}
+.findpw .form .item-cont .checkHint strong{
+	color: #f00;
+}
+.findpw .form .item-cont .checkHint span{
+	line-height: 20px;
+}
+.findpw .successWarn{
+	width:260px;
+	margin-top:30px;
+}
+.findpw .successWarn dt{
+	float:left;
+	width:60px;
+}
+.findpw .successWarn dd{
+	float:left;
+	font-size:12px;
+	line-height:20px;
+}
+.findpw .successWarn h3{
+	margin-bottom:5px;
+	font:20px/38px "microsoft yahei";
+}
+.findpw .hint{
+	color: #656565;
+}
+.findpw .successWarn .btn{
+	display: block;
+	width: 70px;
+	text-align: center;
+	line-height: 28px;
+}
