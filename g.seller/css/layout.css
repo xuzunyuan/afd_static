@@ -19,7 +19,7 @@
  * Screening
  * Paging
  * TableElement
- * 
+ * deal
  */
 
 /* AsideNav
@@ -367,4 +367,75 @@
 .requestError .re-text h4{
 	margin-bottom:20px;
 	font-size:17px;
+}
+/*deal-----------------------------------*/
+.deal .topBar {
+	height: 30px;
+	line-height: 30px;
+	background: rgb(235,235,235);
+}
+.deal #header>.wrap {
+	width: 990px;
+	height: 30px;
+	margin:0 auto;
+	line-height: 30px;
+	color: #6c6c6c;
+}
+.deal .header .logo {
+	float: left;
+	width: 246px;
+	height: 106px;
+	background: url(../img/logo1.png) no-repeat;
+	text-indent: -999em;
+}
+.deal .header {
+	position: relative;
+	z-index: 400;
+	width: 990px;
+	height: 106px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.deal .header .logo a {
+	display: block;
+	height: 100%;
+	height: 75px;
+}
+.deal .logout{
+	font-size: 12px;
+	width: 990px;
+	margin: 0 auto;
+}
+.deal .dealNav{
+	height: 35px;
+	width: 100%;
+	background: #7a39b2;
+}
+.deal .dealNav p{
+	margin-left: 182px;
+	line-height: 35px;
+	color: #fff;
+	background: #6b30a0;
+	width: 170px;
+	height: 35px;
+	text-align: center;
+	padding:0 20px;
+	font-size: 16px;
+}
+.deal .deal-content{
+	width: 990px;
+	margin: 20px auto;
+}
+.deal .deal-content h1{
+	font-size: 18px;
+	text-align: center;
+	padding-bottom: 10px;
+}
+.deal .deal-content p{
+	font-size: 14px;
+	line-height: 2;
+}
+.deal .deal-content h4{
+	font-size: 14px;
+	padding:5px 0;
 }

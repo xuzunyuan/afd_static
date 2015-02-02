@@ -1,5 +1,5 @@
 $(function(){
-	$('#frm').find('input["dblength"],textarea["dblength"]').each(function(){
+	$('#frm').find('input[dblength],textarea[dblength]').each(function(){
 		var jq = $(this);
 		CheckUtil.limitDbLength(jq, jq.attr('dblength'));
 	});
@@ -13,9 +13,6 @@ $(function(){
 function initValidate() {
 	$('#frm').validate({
 		onBlur : true,
-		eachInvalidField : function() {
-			location.hash = '#' + $(this).attr('data-describedby');		
-		},
 		conditional : {
 			confirmTel : function() {
 				return ($('#telArea').val().length >= 3 && $('#tel').val().length >= 7);
