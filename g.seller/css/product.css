@@ -290,3 +290,128 @@
 .table .o-deliverStatus .tipsPop-deliver {
 	margin-left: 20px;
 }
+/*specialmaintain*/
+.specialmaintain .mainCaption h2{
+	padding-top: 7px;
+}
+.specialmaintain .mod-step{
+	float: right;
+	line-height: 17px;
+}
+.specialmain{
+	margin: 12px 0;
+	background: #fff;
+	border:1px solid #dcdcdc;
+}
+.specialmain .hd{
+	*zoom: 1;
+	padding: 20px;
+}
+.specialmain .hd:after,
+.specialmain .hd-left p{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.specialmain .hd h2{
+	float: left;
+	margin-right: 10px;
+	padding-bottom: 6px;
+	font-size: 18px;
+	font-weight: normal;
+}
+.specialmain .hd-left{
+	float: left;
+}
+.specialmain .hd-left>span{
+	float: left;
+	height: 20px;
+	padding: 0 10px;
+	margin-top: 1px;
+	background: #22AB37;
+	color: #fff;
+	line-height: 23px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px; 
+	border-radius:3px;
+}
+.specialmain .hd-left p{
+	*zoom: 1;
+}
+.specialmain .hd-left p span{
+	padding: 0;
+	margin-right: 20px;
+}
+.specialmain .hd-left p a{
+	color: #666;
+
+}
+.specialmain .hd-left p i{
+	vertical-align: top;
+	margin-right: 5px;
+}
+.specialmain  .hd-right{
+	float: right;
+	margin-top: 10px;
+}
+.specialmain  .hd-right a{
+	margin-left: 2px;
+}
+.specialmain  .hd-right b{
+	font-size: 26px;
+	vertical-align: top;
+	color: #666;
+	*vertical-align: middle;
+}
+.specialmain  .hd-right i{
+	vertical-align: top;
+	margin: 5px 8px 0 0;
+	*margin-top: 0;
+}
+.specialmain .bd{
+	height: 320px;
+	border-top: 1px solid #dcdcdc;
+}
+.specialList table{
+	margin-bottom: 10px;
+}
+.specialList table td{
+	vertical-align: middle;
+}
+.specialList tr.tr-head td{
+	height: 30px;
+	line-height: 30px;
+	text-align: left;
+}
+.specialList tr.tr-head span{
+	margin-right:80px; 
+}
+.specialList tr.tr-head span a{
+	color: #333;
+}
+.specialList .select{
+	width: 80px;
+	margin-right: 5px;
+}
+.specialList td .txt{
+	width: 80px;
+	text-align: center;
+}
+.specialList td.td-operate{
+	border-left: 1px solid #dcdcdc;
+}
+.specialList td.td-operate p{
+	margin-bottom: 10px;
+}
+.specialList td .btn-primary{
+	width: 64px;
+}
+.specialList .pagingBtn{
+	float: left;
+}
+.specialList .pagingBtn a{
+	margin-right: 5px;
+}
+.specialList .pagingBtn .btn-def{
+	width: 64px;
+}

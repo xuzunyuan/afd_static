@@ -22,7 +22,7 @@
  * HelperForm
  * Deposit
  * Layout
- * 
+ * overview
  */
 
 
@@ -117,3 +117,117 @@
 
 /* Layout
  ---------------------------------------- */
+ /*overview*/
+.overview{
+	margin: 10px;
+	*zoom: 1;
+	color: #333;
+}
+.overview:after,
+.overL-hd:after,
+.overL-hd ul{
+	display: table;
+	clear: both;
+	content: " ";s
+}
+.over-left{
+	width: 720px;
+	float: left;
+}
+.overL-hd{
+	*zoom: 1;
+	padding:20px 10px;
+	margin-bottom: 15px;
+	border: 1px solid #dcdcdc;
+}
+.overL-hd h4{
+	float: left;
+	margin:0px 50px 10px 0;
+	font-size: 16px;
+}
+.overL-hd p{
+	float: left;
+	margin-top: 4px;
+}
+.overL-hd ul{
+	*zoom: 1;
+	padding-top: 15px;
+}
+.overL-hd ul li{
+	float: left;
+	margin-right: 52px;
+}
+.overL-hd ul li b{
+	margin: 0 3px;
+}
+.overL-main{
+	border: 1px solid #dcdcdc;
+}
+.overL-main .hd{
+	height: 32px;
+	padding-left: 10px;
+	line-height: 33px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.overL-main h4{
+	font-size: 14px;
+}
+.overL-main .bd{
+	padding: 15px 10px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.overL-main .bd.last{
+	border: none;
+}
+.overL-main .remindMain{
+	padding: 20px 10px;
+	background:#FEFAF3;
+}
+.overL-main .remindMain ul{
+	margin-top: 10px;
+}
+.overL-main .remindMain h4{
+	font-size: 13px;
+}
+.overL-main .remindMain li{
+	line-height: 2.5;
+}
+.overL-main .remindMain a{
+	margin-right: 70px;
+	color: #666;
+}
+.over-right{
+	overflow: hidden;
+	float: right;
+	width: 270px;
+}
+.over-right .guide{
+	margin-bottom: 6px;
+	border: 1px solid #dcdcdc;
+}
+.over-right h4{
+	height: 35px;
+	padding-left:10px; 
+	line-height: 36px;
+	font-size: 14px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.over-right ul{
+	padding: 10px;
+}
+.over-right li{
+	line-height: 2;
+}
+.over-right li a{
+	margin-left: 6px;
+	color: #333;
+}
+.over-right .sideImg{
+	width: 268px;
+	height: 70px;
+	margin-bottom: 10px;
+	border: 1px solid #dcdcdc;
+}
+.over-right .sideImg img{
+	max-width: 100%;
+}

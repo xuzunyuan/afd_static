@@ -22,8 +22,8 @@
 
 .popup {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 50%;
+	left: 50%;
 	z-index: 990;
 	background: #fff;
 	border: 1px solid #d2d2d2;
@@ -63,7 +63,8 @@
 	content: " ";
 }
 .popup .btnWrap {
-	padding: 10px 0 0;
+	padding: 10px 0;
+	text-align: center;
 }
 .popup .btnWrap .btn {
 	margin-right: 20px;
@@ -72,7 +73,6 @@
 
 /* Theme
  ---------------------------------------- */
-
 .popup-primary .hd{
 	margin: -1px -1px 0;
 	background: #9050c7;
@@ -103,6 +103,10 @@
 }
 .popup-primary .popup-doc p {
 	margin-bottom: 8px;
+}
+.popup-primary .btnWrap {
+	padding: 10px 0 0;
+	text-align: left;
 }
 
 .popup-info .hd {

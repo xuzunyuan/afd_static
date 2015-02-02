@@ -336,3 +336,35 @@
 .table .o-deliverStatus>span {
 	margin-right: 15px;
 }
+/* requestError */
+.requestError #container{
+	min-height:460px;
+	background: #fff;
+}
+.requestError #footer{
+	padding-top:30px;
+}
+
+.requestError .re-content{
+	width:660px;
+	margin:80px auto;
+}
+.requestError .ico{
+	float:left;
+	width:200px;
+	margin-right:50px;
+}
+.requestError .re-text{
+	float:left;
+	width:410px;
+	color:#7b7b7b;
+}
+.requestError .re-text h3,
+.requestError .re-text h4{
+	padding-left:10px;
+	font:25px/normal "microsoft yahei";
+}
+.requestError .re-text h4{
+	margin-bottom:20px;
+	font-size:17px;
+}

@@ -87,7 +87,6 @@ select:focus {
 .errTxt {
 	color: #f00 !important;
 }
-
 /* note */
 .note {
 	color: #999;
@@ -426,6 +425,7 @@ select,
 .select {
 	width: 116px;
 	height: 22px;
+	background: #fff;
 	border: 1px solid #c5c5c5;
 	outline: 0;
 }

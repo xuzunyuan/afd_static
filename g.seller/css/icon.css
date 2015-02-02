@@ -92,10 +92,20 @@
 .i-graveXL {/* extra large */
 	
 }
-
+/*13*13
+-------------------------------------*/
+.i-write{
+	width: 13px;
+	height: 13px;
+	background-position: -61px -29px;
+}
 /* 16*16
  ---------------------------------------- */
-
+.i-upload{
+	width: 16px;
+	height: 16px;
+	background-position: -82px -28px;
+}
 /* 18*18
  ---------------------------------------- */
 
