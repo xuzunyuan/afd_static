@@ -60,6 +60,7 @@ CheckUtil.limitChnLength = function(jq, len) {
 		var value = jq.val();
 		if(!value) return;
 		
+		if(value.length * 2 <= len) return;
 		if(CheckUtil.chnLength(value) <= len) return;		
 		var pos = Math.floor(len / 2), newLen = CheckUtil.chnLength(value.substr(0, pos));
 		
@@ -81,6 +82,7 @@ CheckUtil.limitDbLength = function(jq, len) {
 		var value = jq.val();
 		if(!value) return;
 		
+		if(value.length * 3 <= len) return;
 		if(CheckUtil.dbLength(value) <= len) return;		
 		var pos = Math.floor(len / 3), newLen = CheckUtil.dbLength(value.substr(0, pos));
 		
