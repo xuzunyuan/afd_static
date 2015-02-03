@@ -93,7 +93,9 @@ select:focus {
 .errTxt {
 	color: #f00 !important;
 }
-
+.successColor {
+	color: #339734!important;
+}
 /* note */
 .note {
 	color: #999;

@@ -70,7 +70,7 @@
 .i-danger {
 	width: 40px;
 	height: 40px;
-	background-position: 0 -43px;
+	background-position: -120px -102px;
 }
 .i-dangerLG {/* large */
 	width: 50px;
@@ -109,7 +109,7 @@
 /* 16*16
  ---------------------------------------- */
 
-.i-ok {
+.i-ok,.i-watch{
 	width: 16px;
 	height: 16px;
 }
@@ -117,7 +117,9 @@
 .i-ok {
 	background-position: -32px -10px;
 }
-
+.i-watch{
+	background-position: -89px -59px;
+}
 /* 18*18
  ---------------------------------------- */
 
@@ -220,4 +222,15 @@
 	width: 12px;
 	height: 12px;
 	background-position: 0px -254px;
+}
+/*10*10*/
+.i-goup,.i-decline{
+	width: 10px;
+	height: 10px;
+}
+.i-decline{
+	background-position: -70px -27px;
+}
+.i-goup{
+	background-position: -80px -27px;
 }

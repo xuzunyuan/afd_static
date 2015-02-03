@@ -21,8 +21,6 @@
 	min-height: 670px;
 }
 
-
-
 /*memb-sidebar*/
 .memb-sidebar{
 	float: left;
@@ -452,4 +450,16 @@
 .memg-bd .safetySet dd p{
 	width: 375px;
 	line-height: 1.5;
+}
+/*signinForm----------------*/
+.signinForm .auditStep{
+	background: none;
+	border: none;
+}
+.signinForm .auditStep h2{
+	color: #333;
+	font-weight: bold;
+}
+.findpw .form{
+	border-top: 1px solid #dcdcdc !important;
 }

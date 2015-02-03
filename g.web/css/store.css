@@ -300,6 +300,7 @@
 ------------------------------------------*/
 .goodRec{
 	width: 1000px;
+	margin-bottom: 60px;
 }
 .goodRec .rec-hd{
 	height: 38px;

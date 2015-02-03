@@ -2123,3 +2123,68 @@
 	color:#959595;
 	font:normal 12px arial;
 }
+/*mod-activegoods*/
+.mod-activegoods{
+	float: left;
+	width: 240px;
+	height: 340px;
+	margin:0 0 8px 8px;
+	background: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.mod-activegoods .g-m{
+	border: 1px solid #EBEBE9;
+}
+.mod-activegoods .g-m:hover{
+	-webkit-box-shadow: 2px 2px 10px #b2b2b2;
+}
+.mod-activegoods .g-img{
+	width: 238px;
+	height: 238px;
+	line-height: 236px;
+	text-align: center;
+}
+.mod-activegoods .g-img img{
+	vertical-align: middle;
+}
+.mod-activegoods .g-info .hd{
+	width: 236px;
+	height: 29px;
+	margin-left: 1px;
+	line-height: 29px;
+	text-align: center;
+	font-size: 14px;
+	background: #FF7D43;
+	color: #fff;
+}
+.mod-activegoods .g-info .bd{
+	*zoom: 1;
+	padding:7px 15px;
+}
+.mod-activegoods .g-info .bd:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.mod-activegoods .g-info .price{
+	float: left;
+}
+.mod-activegoods .g-info .nowPrice{
+	font-size: 30px;
+	font-weight: bold;
+	color: #EA263C;
+}
+.mod-activegoods .g-info .nowPrice span{
+	font-size: 16px;
+}
+.mod-activegoods .g-info .befPrice{
+	font-size: 14px;
+	color: #333;
+	text-decoration: line-through;
+}
+.mod-activegoods .g-info .onbuy{
+	float: right;
+	margin-top: 18px;
+}
