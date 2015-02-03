@@ -30,6 +30,7 @@
  * Evaluate
  * Help
  * SuperMarket
+ * GoodsShow
  * 
  */
 
@@ -262,14 +263,14 @@
 	color: #333;
 }
 .mod-goods .price {
-	color: #666;
+	color: #999;
 	font-family: 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
 	white-space: nowrap;
-
 }
 .mod-goods .price .now {
-	margin-right: 10px;
-	color: #c00;
+	margin-right: 20px;
+	color: #5B1B96;
+	font-weight: bold;
 }
 .mod-goods .price .now ins {
 	margin-left: 2px;
@@ -282,7 +283,6 @@
 .mod-goods .price .btn {
 	vertical-align: top;
 }
-
 .mod-goods .g-volume {
 	height: 24px;
 	line-height: 24px;
@@ -372,41 +372,33 @@
 	display: block;
 }
 
-.g-def .g-img {
+/* def theme */
+.mod-goods.g-def {
 	border: 1px solid #e5e5e5;
 }
-.g-def .price {
-	height: 28px;
-	line-height: 28px;
+.mod-goods.g-def>a {
+	overflow:hidden;
+	display: block;
+	text-decoration: none;
 }
-.g-def .price .now {
-	font-size: 18px;
+.mod-goods.g-def img {
+	width: 100%;
+	height: 234px;
 }
-.g-def .price .now ins {
-	font-size: 24px;
+.mod-goods.g-def .maskBar {
+	height: 32px;
 }
-.g-def .g-volume .appraise em,
-.g-def .g-volume em {
-	color: #666;
-}
-
-/* size */
-.mod-goods.sm .g-info {
-	padding: 2px 6px;
-}
-
-.mod-goods.sm .g-info h3 {
-	margin-bottom: 2px;
-}
-.mod-goods.sm .price {
-	height: 24px;
-	line-height: 24px;
-}
-.mod-goods.sm .price .now {
-	font-size: 16px;
-}
-.mod-goods.sm .price .now ins {
-	font-size: 18px;
+.mod-goods.g-def .g-info {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 40;
+	width: 100%;
+	height: 32px;
+	padding: 0;
+	color: #fff;
+	line-height: 32px;
+	text-align: center;
 }
 
 /* Step Module
@@ -498,6 +490,40 @@
 	font: 12px/24px 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
 	text-align: center;
 	white-space: nowrap;
+}
+
+/* theme */
+.mod-step.theme-reg .num {
+	background: url(../img/step-1.png) no-repeat -36px 0;
+}
+
+.mod-step.theme-reg .first .num {
+	background-position: 0 0;
+}
+.mod-step.theme-reg .last .num {
+	background-position: -72px 0;
+}
+.mod-step.theme-reg .over .num {
+	background-position: 0px -36px;
+	color: #fff;
+}
+.mod-step.theme-reg .now .num {
+	background-position: -36px -36px;
+	color: #fff;
+}
+.mod-step.theme-reg .first.over .num {
+	background-position: 0 -36px;
+}
+.mod-step.theme-reg .first.now .num {
+	background-position: 0 -36px;
+}
+
+.mod-step.theme-reg .last.now .num {
+	background-position: -72px -36px;
+}
+.mod-step.theme-reg .over .strip-over,
+.mod-step.theme-reg .now .strip-over {
+	background: #5d1b9a;
 }
 
 /* OrderGoods Module
@@ -1858,4 +1884,307 @@
 }
 .mod-toolbar .mod-faces{
 	margin:0 0 1px 1px;
+}
+
+/* address-mod */
+.address-mod{
+	height:189px;
+	margin-bottom:10px;
+	border:1px solid #dcdcdc;
+}
+.address-mod .address-title{
+	height:33px;
+	padding-left:15px;
+	background:#dcdcdc;
+}
+.address-mod .address-title h5{
+	float:left;
+	color:#626262;
+	font-size:12px;
+	line-height:33px;
+}
+.address-mod .address-title h5 a{
+	visibility:hidden;
+	font-weight:normal;
+}
+.address-mod .address-title a.default{
+	visibility:visible;
+	margin-left: 10px;
+	color:#999;
+	cursor: default;
+}
+.address-mod .address-title a:hover.default{
+	text-decoration: none;
+}
+.address-mod .address-title .operation{
+	float:right;
+}
+.address-mod .address-title .operation a{
+	float:left;
+	margin-right:15px;
+	line-height:33px;
+}
+.address-mod table{
+	width:100%;
+	margin-top:11px;
+	vertical-align:top;
+}
+.address-mod table th{
+	vertical-align:top;
+	height:26px;
+	color:#959595;
+	font-weight:normal;
+	text-align:right;
+}
+.address-mod table td{
+	vertical-align:top;
+	color:#626262;
+	text-align: left;
+}
+.address-mod:hover{
+	border-color:#BDA3ED;
+}
+.address-mod:hover .address-title{
+	background: #E9E8EE;
+}
+.address-mod:hover .address-title h5 a{
+	visibility:visible;
+	margin-left: 10px;
+}
+.address-mod.on{
+	border-color:#BDA3ED;
+}
+.address-mod.last{
+	margin-bottom: 0px;
+}
+
+
+/* GoodsShow Module
+ ---------------------------------------- */
+
+.mod-goodsShow {
+	width: 670px;
+	height: 240px;
+	background: #fff;
+}
+.mod-goodsShow>a {
+	display: block;
+	height: 240px;
+	border: 1px solid #e5e5e5;
+	color: #666;
+	text-decoration: none;
+}
+.mod-goodsShow .g-info {
+	overflow: hidden;
+	float: left;
+	width: 180px;
+	height: 240px;
+	padding: 0 10px;
+	min-height: 1em;
+	text-align: center;
+}
+.mod-goodsShow .g-info img {
+	width: 140px;
+	height: 50px;
+	margin: 32px 0 26px;
+	vertical-align: bottom;
+}
+.mod-goodsShow .g-text {
+	overflow:hidden;
+	height: 32px;
+	margin: 0 0 10px;
+	color: #666;
+	line-height: 16px;
+}
+.mod-goodsShow .g-price {
+	margin: 0 0 26px;
+	color: #f05a96;
+	font-size: 28px;
+}
+.mod-goodsShow .g-price em {
+	font-size: 12px;
+}
+.mod-goodsShow .g-time {
+	font-size: 12px;
+	color: #999;
+	line-height: 16px;
+}
+.mod-goodsShow .g-img {
+	float: left;
+	width: 468px;
+	height: 240px;
+	min-height: 1em;
+}
+.mod-goodsShow .g-img img {
+	width: 100%;
+	height: 240px;
+}
+/* hover */
+.mod-goodsShow>a:hover {
+	border-color: #f05a96;
+	-webkit-box-shadow: 2px 2px 10px #b2b2b2;
+	color: #666;
+}
+/* train-nav
+ -------------------------------------------*/
+.train-nav{
+	zoom:1;
+}
+.train-nav1{
+	padding-bottom:30px;
+}
+.train-nav:after{
+	overflow:hidden;
+	visibility:hidden;
+	display:block;
+	height:0;
+	content:"";
+	clear:both;
+}
+.train-nav li{
+	position:relative;
+	float:left;
+	width:222px;
+	height:32px;
+	margin-right:27px;
+	background:url(../img/train-nav-bg.gif) repeat-x;
+	line-height:32px;
+	text-align:center;
+}
+.train-nav li.bef{
+	background: url(../img/train-nav-bg-bef.gif) repeat-x;
+}
+.train-nav li.bef a,
+.train-nav li.bef a:hover{
+	color: #fff;
+}
+.train-nav li.first-child{
+	width:225px;
+	margin-left:0;
+	border-left:1px solid rgb(207,207,207);
+}
+.train-nav li.last-child{
+	width:225px;
+	margin-right:0;
+	border-right:1px solid rgb(207,207,207);
+}
+.train-nav li i{
+	position:relative;
+	float:left;
+	width:17px;
+	height:32px;
+}
+.train-nav li i.head{
+	float:right;
+	right:-17px;
+	background:url(../img/train-nav-head.gif) 0 -32px no-repeat;
+}
+.train-nav li.bef i.head{
+	background:url(../img/train-nav-head-bef.gif) no-repeat;
+}
+.train-nav li i.end{
+	left:-17px;
+	background:url(../img/train-nav-end.gif) 0 -32px no-repeat;
+}
+.train-nav li.bef i.end{
+	background:url(../img/train-nav-end-bef.gif) no-repeat;
+}
+.train-nav li a,
+.train-nav li a:hover{
+	float:left;
+	width: 176px;
+	color:#626262;
+	font-family:'\5b8b\4f53',SIMSUN;
+	font-size:12px;
+	text-decoration:none;
+	text-align:center;
+}
+.train-nav li.first-child a{
+	margin-left:20px;
+}
+.train-nav li.on{
+	background:url(../img/train-nav-bg-on.gif) repeat-x;
+}
+.train-nav li.on i.head{
+	background:url(../img/train-nav-head.gif) 0 0 no-repeat;
+}
+.train-nav li.on i.end{
+	background:url(../img/train-nav-end.gif) 0 0 no-repeat;
+}
+.train-nav li.on a{
+	color:#fff;
+}
+.train-nav li .follow{
+	position:absolute;
+	top:40px;
+	left:50%;
+	width:120px;
+	margin-left:-60px;
+	color:#959595;
+	font:normal 12px arial;
+}
+/*mod-activegoods*/
+.mod-activegoods{
+	float: left;
+	width: 240px;
+	height: 340px;
+	margin:0 0 8px 8px;
+	background: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.mod-activegoods .g-m{
+	border: 1px solid #EBEBE9;
+}
+.mod-activegoods .g-m:hover{
+	-webkit-box-shadow: 2px 2px 10px #b2b2b2;
+}
+.mod-activegoods .g-img{
+	width: 238px;
+	height: 238px;
+	line-height: 236px;
+	text-align: center;
+}
+.mod-activegoods .g-img img{
+	vertical-align: middle;
+}
+.mod-activegoods .g-info .hd{
+	width: 236px;
+	height: 29px;
+	margin-left: 1px;
+	line-height: 29px;
+	text-align: center;
+	font-size: 14px;
+	background: #FF7D43;
+	color: #fff;
+}
+.mod-activegoods .g-info .bd{
+	*zoom: 1;
+	padding:7px 15px;
+}
+.mod-activegoods .g-info .bd:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.mod-activegoods .g-info .price{
+	float: left;
+}
+.mod-activegoods .g-info .nowPrice{
+	font-size: 30px;
+	font-weight: bold;
+	color: #EA263C;
+}
+.mod-activegoods .g-info .nowPrice span{
+	font-size: 16px;
+}
+.mod-activegoods .g-info .befPrice{
+	font-size: 14px;
+	color: #333;
+	text-decoration: line-through;
+}
+.mod-activegoods .g-info .onbuy{
+	float: right;
+	margin-top: 18px;
 }

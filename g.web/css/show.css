@@ -1,0 +1,80 @@
+@charset "utf-8";
+/**
+ * style show
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 		1.0
+ * 
+ * @colordef 	#666 				article text
+ * @colordef	 	#   					link & visible
+ * @colordef	 	#e65143				hover & active
+ */
+
+/**
+ * CSS Menu
+ *
+ * MainBanner
+ * Hotlists
+ * Layout
+ */
+
+
+/* Global
+ ---------------------------------------- */
+#container .wrap {
+	padding: 0 0 66px;
+}
+#index #container {
+	padding: 14px 0 0;
+}
+
+/* Hotlists
+ ---------------------------------------- */
+
+.hotlists>.hd {
+	height: 40px;
+	*zoom: 1;
+}
+.hotlists>.hd:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.hotlists>.hd h2 {
+	float: left;
+	margin: 9px 0 0;
+}
+.hotlists>.hd h2 img {
+	height: 22px;
+}
+.hotlists>.bd {
+	
+}
+
+.hotlists>.bd .mod-goodsShow {
+	margin: 0 0 10px;
+}
+
+/* MainBanner
+ ---------------------------------------- */
+
+#mainBanner>.wrap {
+	position: relative;
+	overflow: hidden;
+	min-width: 1000px;
+	margin: 0 auto;
+	height: 400px;
+}
+#mainBanner img {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 1920px;
+	height: 400px;
+	margin: 0 0 0 -960px;
+}
+
+/* Layout
+ ---------------------------------------- */
