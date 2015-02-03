@@ -17,59 +17,69 @@ function publish(){
 	};
 	
 	this.validateTitle = function(){
-		var title = $('input[name=title]').val();
-		if($.trim(title).length == 0 ){
-			alert("请输入商品标题！");
+		var jq = $('input[name=title]');
+		if($.trim(jq.val()).length == 0 ){
+			jq.parent().next().text("请填写商品标题！");
 			return;
-		}else if(title.length > 20 ){
-			alert("字数超长或有误，请填写20个字以内的标题！");
+		}else if(jq.val().length > 20 ){
+			jq.parent().next().text("字数超长或有误，请填写30个字以内的标题！");
 			return;
+		}else{
+			jq.parent().next().text("");
 		}	
 	};
 	
-	this.validateArtNo = function(obj){
-		this.limitDigital($(obj));
-	 	var artNo = $("input[name=artNo]").val();
-		if($.trim(artNo).length == 0 ){
-			alert("请输入货号！");
+	this.validateArtNo = function(){
+		var regArtNo = /^[a-zA-Z0-9]{12,16}$/;
+	 	var jq = $("input[name=artNo]");
+		if($.trim(jq.val()).length == 0 ){
+			jq.parent().next().text("请填写货号！");
 			return;
-		}else if(artNo.length > 20 ){
-			alert("字数超长或有误，请填写20个字以内的货号！");
+		}else if(!regArtNo.test(jq.val())){
+			jq.parent().next().text("输入有误，请重新填写货号！");
 			return;
+		}else{
+			jq.parent().next().text("");
 		}
 	};
 	
 	this.validateBrand = function(){
-		brand = $('select[name=brand] :selected').val();
-		if(brand < 0){
-			alert("请选择品牌");
+		jq = $('select[name=brand] :selected');
+		if(jq.val() < 0){
+			jq.parent().parent().next().text("请选择品牌！");
 			return;
+		}else{
+			jq.parent().parent().next().text("");
 		}
 	}
 
 	this.valaidateAttr = function(){
 		ref = true;
-		var attrs = $('[name="attr"]');
-		attrs.each(function(){
+		var jq = $('[name="attr"]');
+		jq.each(function(){
 			var require = $(this).attr('require'),
 			displayMode = $(this).attr('displayMode'),
 			attrName = $(this).attr('attrName'),
 			attrId = $(this).attr('attrId');
-
+			
 			if(require == 'false') return;
 			if(displayMode =='1'){
 				var attrValue = $('[name="attrValue"][attrId="' + attrId + '"]').val();
-				if(!attrValue){
-					alert("请选择属性");
+				if(!!!attrValue){
+					jq.prev().parent().next().text("请选择属性'" + attrName + "'");
 					ref = false;
-					return; 
+					return ref;
+				}else{
+					jq.prev().parent().next().text("");
 				}
 			}else{
 				var chks = $('[name="attrValue2"][attrId="' + attrId + '"]').filter(":checked");
 				if (chks.length == 0) {
-					alert("请勾选属性");
+					jq.prev().parent().next().text("请选择属性'" + attrName + "'");
 					ref = false;
-					return;
+					return ref;
+				}else{
+					jq.prev().parent().next().text("");
 				}
 			}
 		});
@@ -78,72 +88,120 @@ function publish(){
 	
 	this.validateSpec = function(){
 		ref = true;
-		var specIds = $('ul[specId]');
-		for(var i = 1; i <= specIds.length;i++){
+		var jq = $('ul[specId]');
+		for(var i = 1; i <= jq.length;i++){
 			var specId = $('ul[var="'+i+'"]').attr('specId');
 			var chks = $('[name="specValue"][skuSpecId="'+specId+'"]').filter(":checked");
 			if (chks.length == 0) {
-				alert("请勾选规格");
+				$("#spacErr").text("请选择规格！");
 				ref = false;
 				return ref;
 			}else{
-				ref = this.validateSkuSalePrice();
-				ref = this.validateSkuMarketPrice();
-				ref = this.validateSkuStockBalance();
+				$("#spacErr").text("");
+				if(!this.validateSkuSalePrice() || !this.validateSkuMarketPrice() || !this.validateSkuStockBalance()){
+					ref = false;
+				}
 			}
 		}
 		return ref ;
 	};
 	
-	this.validateSkuSalePrice = function(obj){
+	this.validateSkuSalePrice = function(){
 		ref = true;
-		this.limitDigital($(obj));
+		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		var skuSalePrices = $('[name="skuSalePrice"]');
 		skuSalePrices.each(function(){
 			salePrice = $(this).val();
-			if(salePrice == 0 || salePrice > 999998){
-				alert("销售价格有误，请输入大于0且小于999999");
+			marketPrice = $(this).next().val();
+			if(!regPrice.test(salePrice)){
+				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
 				ref = false;
+			}else if(!!!salePrice){
+				$('#precErrMsg').text("请输入单价！");
+				ref = false;
+			}else if(marketPrice >salePrice){
+				$('#precErrMsg').text("特卖价应小于单价！");
+				ref = false;
+			}else if(salePrice == 0 || salePrice =='0.0' || salePrice =='0.00'){
+				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
+				ref = false;
+			}else{
+				$('#precErrMsg').text("");
 			}
 		});
 		
 		return ref;
 	};
 	
-	this.validateSkuMarketPrice = function(obj){
+	this.validateSkuMarketPrice = function(){
+		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		ref = true;
-		this.limitDigital($(obj));
 		var skuMarketPrices = $('[name="skuMarketPrice"]');
 		skuMarketPrices.each(function(){
 			marketPrice = $(this).val();
-			if(marketPrice == 0 || marketPrice > 999998){
-				alert("特卖价格有误，请输入大于0且小于999999");
+			salePrice = $(this).prev().val();
+			
+			if(!regPrice.test(marketPrice)){
+				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
 				ref = false;
+			}else if(!!!marketPrice){
+				$('#precErrMsg').text("请输入特卖价！");
+				ref = false;
+			}else if(marketPrice >salePrice){
+				$('#precErrMsg').text("特卖价应小于单价！");
+				ref = false;
+			}else if(marketPrice == 0 || marketPrice =='0.0' || marketPrice =='0.00'){
+				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
+				ref = false;
+			}else{
+				$('#precErrMsg').text("");
 			}
 		});
 		return ref;
 	};
 	
 	this.validateSkuStockBalance = function(obj){
+		var regBalance = /^[1-9][\d]{0,4}$/;
 		ref = true;
-		this.limitDigital($(obj));
 		var skuStockBalances = $('[name="skuStockBalance"]');
 		skuStockBalances.each(function(){
 			stockBalance = $(this).val();
-			if(stockBalance == 0 || stockBalance > 999998){
-				alert("商品数量有误，请输入大于0且小于999999");
+			if(!!!stockBalance){
+				$('#precErrMsg').text("请填写数量！");
 				ref = false;
+			}if(!regBalance.test(stockBalance)){
+				$('#precErrMsg').text("商品数量有误，请输入大于0且小于999999！");
+				ref = false;
+			}else{
+				$('#precErrMsg').text("");
 			}
 		});
 		return ref;
 	};
 	
+	this.validateSkuImg = function(){
+		var totalImgCount = $('#skuImg li').length;
+		var jq = $('input[name="skuImgUrl"]');
+		jq.each(function(){
+			var flg = $(this).attr('flg');
+			var imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
+			if(imgUrl == ""){
+				$('#errSkuImg').text("请上传全部的sku图片");
+				return false;
+			}else{
+				$('#errSkuImg').text("");	
+			}
+		});
+	};
+	
 	this.validateDetail = function(){
 		ref = true;
-		var detail = $('#detail').val();
-		if(!!!detail){
-			alert('商品描述必填');
+		var jq = $('#detail');
+		if(!!!jq.val()){
+			jq.parent().parent().next().text("请填写商品描述！");
 			ref = false;
+		}else{
+			jq.parent().parent().next().text("");
 		}
 		return ref;
 	}
@@ -158,13 +216,12 @@ function publish(){
 			this.validateDetail();
 			ref = false;
 		}
-		
-		ref = this.valaidateAttr();
-		ref = this.validateSpec();
-		
+		if(!this.valaidateAttr() | !this.validateSpec() | !this.validateSkuImg()){
+			ref = false;
+		};
 		return ref;
 	};
-	
+
 	
 	this.modifyBc = function(){
 		alert("modifyBc");
@@ -196,13 +253,12 @@ function publish(){
 				'specValueName' : specValueName});
 		}
 		
-		
 		var selectedArr = [];
 		for (var key in selectedSpec) {
 			selectedArr.push(selectedSpec[key]);
 		}
 		 
-		selectedArr.sort(function(a, b) {// TODO 排序
+		selectedArr.sort(function(a, b) {
 			return (parseInt(a['specOrder']) < parseInt(b['specOrder']) ? -1 : 1);
 		});
 		
@@ -267,73 +323,9 @@ function publish(){
 		if (!publish.checkFromData()) {
 			return false;
 		}
-		
-//		this.prepareData();
-		
+///		this.prepareData(); TODO 
 		$('#publishForm').submit();
 	};
-	
-//	this.prepareData = function(){
-//		var attrs = $('[name=attr]'), attrValueId = '', attrValueName = '';
-//		
-//		attrs.each(function() {
-//			var displayMode = $(this).attr('displayMode'),
-//			attrId = $(this).attr('attrId'),
-//			attrName = $(this).attr('attrName');
-//			
-//			if(displayMode == 1){
-//				var attrValue = $('[name="attrValue"][attrId="' + attrId + '"]').val();
-////				if (!attrValue) { 
-////					alert("请选择属性");
-////					return ;
-////				}
-//				
-//				
-//				var arr = attrValue.split('|||');
-//				if(arr[2] == true){ //含有子属性
-//					var attrValue2 = $('[name="attrValue2"][attrValueId="' + arr[0] + '"]').val();
-////					if (!attrValue2) return;
-//					
-//					var arr2 = attrValue2.split('|||');
-//					
-//					attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + arr[0] + '>>>' + arr2[0];
-//					attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + arr[1] + '>>>' + arr2[1];
-//					
-//				}else{ 
-//					attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + arr[0];
-//					attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + arr[1];
-//				}
-//				
-//			}else{
-//				var chks = $('[name="attrValue"][attrId="' + attrId + '"]').filter(":checked");
-////				if (chks.length == 0) {
-////				alert("请选择属性");
-////				return ;
-////				}
-//				if (chks.length == 0) return;
-//				var chkValueId = '', chkValueName = '';
-//				
-//				chks.each(function() {
-//					var tmpValueId = $(this).attr('attrValueId'), tmpValueName = $(this).attr('attrValueName');
-//					
-//					chkValueId = chkValueId + (chkValueId ? ",,," : '') + tmpValueId;
-//					chkValueName = chkValueName + (chkValueName ? ",,," : '') + tmpValueName;
-//				});
-//				
-//				attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + chkValueId;
-//				attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + chkValueName;
-//				
-//			}
-//			
-//			$('#attrValueId').val(attrValueId);
-//			$('#attrValueName').val(attrValueName);
-//			
-//		});
-//		
-////		var attrs = $("[name=attrValue]  :selected").val();
-////		alert(attrs);
-//	};
-
 }
 
 function editSpec(obj){
@@ -389,12 +381,12 @@ function generateSpec(selectedArr){
 	
 	$(rows).each(function() {
 		table.find('tbody').append(this);
+		table.find('tbody').parent().after('<div class="note errTxt" id="precErrMsg"></div>');
 	});
 	
 	table.prev().show();
 	table.show();
 	skuImgDiv.show();
-	
 }
 
 
@@ -411,9 +403,9 @@ function recurse(arr, i){
 			html[j] = "<td>"+item.values[j].specValueName+"</td>";
 			if(i == 0){
 				html[j] = "<tr> "+ html[j] +
-						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onkeyup='publish.validateSkuSalePrice(this);' /></td>" +
-						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onkeyup='publish.validateSkuMarketPrice(this);' /></td>" +
-						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onkeyup='publish.validateSkuStockBalance(this);' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
+						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
 		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'>" +
 		         		"<input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'>" +
 		         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' >" +
@@ -439,9 +431,9 @@ function recurse(arr, i){
 						'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName + '|||' + next.specValues[k].skuSpecName};
 				
 				if (i == 0) {
-					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onkeyup='publish.validateSkuSalePrice(this);' /></td>" +
-							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onkeyup='publish.validateSkuMarketPrice(this);' /></td>" +
-							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onkeyup='publish.validateSkuStockBalance(this);' /></td>" +
+					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
+							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
+							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
 			         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'>" +
 			         		"<input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'>" +	
 			         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''>" +
@@ -459,6 +451,7 @@ function recurse(arr, i){
 			}
 		}
 	}
+	
 	return {'html' : html, 'specValues' : specValues};
 }
 
