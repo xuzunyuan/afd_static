@@ -463,3 +463,62 @@
 .findpw .form{
 	border-top: 1px solid #dcdcdc !important;
 }
+/*salereturnList*/
+.salereturnList{
+	position: relative;
+	z-index: 70;
+	margin-bottom: 10px;
+}
+.salereturnList table tbody td{
+	color: #666;
+	border-right: 1px solid #dcdcdc;
+}
+.salereturnList .ordernum{
+	margin-left: 5px;
+	text-align: left;
+}
+.salereturnList table th span{
+	margin-right: 20px;
+}
+.salereturnList .salemeg{
+	padding: 10px 5px 10px 10px;
+}
+.salereturnList .salemeg dl{
+	float: left;
+}
+.salereturnList .salemeg a{
+	color: #666;
+}
+.salereturnList .salemeg span{
+	display: inline-block;
+	width: 60px;
+	margin:0 3px;
+}
+.salereturnList td li{
+	text-align: left;
+	margin-left: 25px;
+}
+.salereturnList .mask{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: none;
+	background: #ececec;
+	opacity: .3;
+	filter: alpha(opacity=30);
+}
+.salereturnList.unusual .mask{
+	display: block;
+}
+.salereturnList.unusual .errTxt{
+	color: #666 !important;
+}
+.salereturnList.unusual .lookdel a{
+	position: relative;
+	z-index: 150;
+}
+.salereturnList.unusual .salemeg dt{
+	position: relative;
+	z-index: 150;
+}

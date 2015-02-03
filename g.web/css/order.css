@@ -1300,7 +1300,8 @@
 	content: " ";
 }
 .orderDetail .orderFlow>div,
-.salereturn .bd{
+.salereturn .bd,
+.salesDetail .orderFlow>div{
 	margin-bottom: 10px;
 	background: #fff;
 	border: 1px solid #dcdcdc;
@@ -1512,7 +1513,7 @@
 	color: #f00;
 }
 .sale-goods{
-	padding:10px 0 40px 35px;
+	padding:10px 0 30px 35px;
 }
 .sale-goods select{
 	width: 260px;
@@ -1529,26 +1530,120 @@
 	margin-bottom: 5px;
 }
 .sale-goods .uploadImg,
-.sale-goods .uploadImg ul{
+.uploadImg ul{
 	*zoom:1;
 }
 .sale-goods .uploadImg:after,
-.sale-goods .uploadImg ul:after{
+.uploadImg ul:after{
 	display: table;
 	clear: both;
 	content: " ";
 }
-.sale-goods .uploadImg li{
+.uploadImg li{
 	float: left;
+	overflow: hidden;
 	width: 80px;
-	height: 80px;
 	margin-right: 10px;
-	border: 1px solid #dcdcdc;
 }
-.sale-goods .uploadImg li img{
-	width: 80px;
-	height: 80px;
+.uploadImg li img{
+	width: 78px;
+	height: 78px;
+	border: 1px solid #dcdcdc;
 }
 .sale-goods .uploadImg li p{
 	text-align: center;
+}
+.sale-goods .form .form-item{
+	margin: 18px 0;
+}
+
+/*salesDetail
+----------------------------------------*/
+.salesDetail .waitseller{
+	width: 875px;
+	padding: 10px;
+	margin-bottom: 5px;
+	background:#fff;
+	border: 1px solid #dcdcdc;
+}
+.salesDetail .waitseller h3{
+	font-size: 14px;
+}
+.salesDetail .waitseller ul{
+	*zoom: 1;
+	margin-top: 5px;
+}
+.salesDetail .waitseller ul:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.salesDetail .waitseller li{
+	float: left;
+	width: 230px;
+	margin-right:60px;
+	line-height: 2;
+}
+.salesDetail .tooltip .wrap{
+	border-color: #dcdcdc;
+}
+.salesDetail .tooltip>.arrow b{
+	border-color: #ccc;
+}
+.salesDetail .cartList-group .row.head th{
+	color: #999;
+}
+.salerturnDetail{
+	padding: 25px 20px 25px 0;
+}
+.salerturnDetail dl,
+.selleraccept dl{
+	line-height: 2;
+}
+.salerturnDetail dt,
+.selleraccept dt{
+	width: 80px;
+	float: left;
+	text-align: right;
+}
+.salerturnDetail dd,
+.selleraccept dd{
+	margin-left: 85px;
+}
+.salerturnDetail dd .uploadImg{
+	margin-top: 10px;
+}
+.selleraccept{
+	width: 875px;
+	padding: 10px;
+	margin-bottom: 5px;
+	background:#FFF2DF;
+	border:1px solid #FFD195;
+}
+.selleraccept dt{
+	width: 70px;
+}
+.selleraccept dd{
+	margin-left: 75px;
+}
+.selleraccept .errTxt{
+	margin-left: 10px;
+}
+.salesDetail .waitsellers{
+	padding: 10px 0;
+	border: none;
+	background: none;
+	color: #666;
+}
+.selleraccept.true {
+	padding: 25px 15px;
+}
+.selleraccept.true h2{
+	color: #333;
+	font-size:16px; 
+	font-weight: normal;
+	margin-left: 20px;
+}
+.selleraccept.true dd {
+	padding-top: 6px;
 }
