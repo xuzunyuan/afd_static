@@ -455,7 +455,7 @@ function recurse(arr, i){
 				ul.append("<li><div class='mod-upload'><img src='${ctx }/static/img/upload_img.jpg' alt='' /></div>" +
 						"<p>"+item.skuSpecName+"："+specValueName+"</p>" +
 						"<div class='btnWrap'>" +
-						"<input type='button' name='uploadImg' value='设为主图' flg='" + item.values[j].specValueId + "'> class='btn btn-def' /></div></li>");
+						"<input type='button' name='uploadImg' onclick='uploadSkuImg(this);' value='设为主图' flg='" + item.values[j].specValueId + "' class='btn btn-def' /></div></li>");
 			}
 		}
 	}
