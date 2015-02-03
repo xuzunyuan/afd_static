@@ -116,6 +116,65 @@
 .pop-pay p a {
 	margin: 0 15px 0 5px;
 }
-
+/*pop-cancel*/
+.pop-order{
+	top: 50%;
+	left: 50%;
+	margin-top: -108px;
+	margin-left: -305px;
+	width: 610px;
+	height: 215px;
+}
+.pop-order .bd dt{
+	float: left;
+	width: 80px;
+	height: 80px;
+}
+.pop-order .bd dd{
+	margin-left: 100px;
+}
+.pop-order .bd h2{
+	margin-bottom: 15px;
+	font-size: 24px;
+	font-weight: normal;
+}
+.pop-order .bd .btn{
+	margin-right: 10px;
+}
+.pop-order .order-cancel{
+	*zoom: 1;
+	display: inline-block;
+	margin: 20px 0 0 130px;
+}
+.pop-order .order-cancel:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.pop-order .order-cancel select{
+	width: 260px;
+	margin-bottom: 20px;
+}
+.pop-order .order-delivery{
+	margin: 20px 0 0 70px;
+}
+.pop-order .bd h2{
+	width: 350px;
+	line-height: 1.8;
+	font-size: 22px;
+}
+.pop-order .returnModify {
+	font-size: 14px;
+}
 /* Layout
  ---------------------------------------- */
+
+.pop-addAddr .hd h2 {
+	font-size: 20px;
+	color:#5d1b9a;
+}
+.pop-addAddr .bd {
+	margin: 0 10px;
+	padding: 16px 0 0;
+	border-top: 1px solid #ddd;
+}

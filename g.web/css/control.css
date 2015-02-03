@@ -20,6 +20,7 @@
  * - text
  * - tel text
  * - select
+ * - area select
  * - textarea
  */
 
@@ -56,10 +57,16 @@ input[type="reset"] {
 .btn[disabled]:hover,
 .btn[disabled]:active,
 .btn[disabled]:focus {
-	background: url(../img/control/btn-disabled.jpg) no-repeat 0 center !important;
+	background: #e5e5e5 url(../img/control/btn-disabled.jpg) repeat-x 0 center !important;
 	border: 1px solid #e7e7e7 !important;
 	color: #999 !important;
 	cursor: default !important;
+}
+.txt[disabled],
+.txt[disabled]:hover {
+	background: #e5e5e5 !important;
+	color: #999 !important;
+	border: 1px solid #ccc !important;
 }
 .txt:hover,
 textarea:hover,
@@ -81,8 +88,7 @@ select:focus {
 .errIpt,
 .errIpt:focus,
 .errIpt:hover {
-	background: #ffe8e8 !important;
-	border: 1px solid #ef7f7f !important;
+	border: 1px solid #f00 !important;
 }
 .errTxt {
 	color: #f00 !important;
@@ -160,7 +166,7 @@ span.btn:hover {
 /* button theme */
 .btn-def {
 	background: url(../img/control/btnbg.jpg) repeat-x 0 10%;
-	border-color: #c5c5c5;
+	border-color: #c9c9c9;
 }
 .btn-def:hover {
 	background-position: 0 30%;
@@ -171,17 +177,17 @@ span.btn:hover {
 .btn-primary,
 a.btn-primary,
 span.btn-primary {
-	background: #7a39b2;
-	border-color: #7a39b2;
+	background: #5d1b9a;
+	border-color: #5d1b9a;
 	color: #fff;
 }
 .btn-primary:hover {
-	background: #a26cd0;
-	border-color: #a26cd0;
+	background: #8349b8;
+	border-color: #8349b8;
 }
 .btn-primary:active {
-	background: #a26cd0;
-	border-color: #a26cd0;
+	background: #8349b8;
+	border-color: #8349b8;
 }
 .btn-assist,
 a.btn-assist,
@@ -247,18 +253,31 @@ span.btn.lg {
 	padding: 0 20px;
 	line-height: 28px;
 }
+.btn.lgl {
+	/* large */
+	height: 42px;
+	padding: 0 20px;
+	*padding: 0 10px;
+	font-size: 14px;
+}
+a.btn.lgl,
+span.btn.lgl {
+	height: 40px;
+	padding: 0 20px;
+	line-height: 40px;
+}
 .btn.xl {
 	/* extra large */
-	height: 38px;
+	height: 46px;
 	padding: 0 30px;
 	*padding: 0 15px;
 	font-size: 16px;
 }
 a.btn.xl,
 span.btn.xl {
-	height: 36px;
+	height: 44px;
 	padding: 0 30px;
-	line-height: 36px;
+	line-height: 44px;
 }
 
 /* button padding */
@@ -281,6 +300,15 @@ a.btn.p-lg,
 span.btn.p-lg {
 	padding: 0 26px;
 }
+.btn.p-lgl {
+	/* large */
+	padding: 0 56px;
+	*padding: 0 20px;
+}
+a.btn.p-lgl,
+span.btn.p-lgl {
+	padding: 0 56px;
+}
 .btn.p-xl {
 	/* large */
 	padding: 0 80px;
@@ -296,7 +324,7 @@ span.btn.p-xl {
 	width: 106px;
 	height: 16px;
 	padding: 4px 4px;
-	border: 1px solid #c5c5c5;
+	border: 1px solid #c9c9c9;
 	font-size: 12px;
 	line-height: 16px;
 }
@@ -320,6 +348,7 @@ span.btn.p-xl {
 }
 .txt.xl {
 	/* extra large */
+	padding: 9px 4px;
 }
 
 /* text width */
@@ -483,6 +512,113 @@ select,
 .select.w-xl {
 	width: 180px;
 }
+
+/* area select */
+.selectArea {
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 300px;
+	vertical-align: middle;
+}
+.selectArea .inputArea {
+	height: 30px;
+	padding: 0 4px;
+	border: 1px solid #c9c9c9;
+	line-height: 30px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.selectArea .inputArea>em {
+	margin: 0 4px;
+	color: #999;
+}
+.selectArea .inputArea .arrow {
+	float: right;
+	margin: 12px 0 0;
+}
+.selectArea .inputArea .arrow b {
+	border-width: 8px;
+	border-color: #ccc;
+}
+.selectArea .inputArea .arrow i {
+	border-width: 6px;
+	bottom: 2px;
+	left: 2px;
+}
+.selectArea .inputArea:hover .arrow b {
+	border-color:#aaa;
+}
+.selectArea-list {
+	position: absolute;
+	top: 31px;
+	left: 0;
+	z-index: 20;
+	display: none;
+	width: 300px;
+}
+.selectArea.open .selectArea-list {
+	display: block;
+}
+.selectArea-list .tab {
+	background: #fff;
+	border: 1px solid #c9c9c9;
+}
+.selectArea-list .tabs {
+	overflow:hidden;
+}
+.selectArea-list .tabs ul {
+	height: 35px;
+	margin-left: -2px;
+	border-bottom: 1px solid #c9c9c9;
+}
+.selectArea-list .tabs li {
+	width: 74px;
+	height: 35px;
+	background: #f0f0f0;
+	border-left: 1px solid #c9c9c9;
+	line-height: 35px;
+	text-align: center;
+	cursor: pointer;
+}
+.selectArea-list .tabs li.curr,
+.selectArea-list .tabs li.curr:hover {
+	background: #fff;
+	height: 35px;
+	border-bottom: 1px solid #fff;
+	color: #ff0087;
+}
+.selectArea-list .tabs li:hover {
+	background: #f9f9f9;
+}
+.selectArea-list .tabGroup {
+	padding: 10px;
+}
+
+.selectArea-list .areaList {
+	line-height: 24px;
+}
+.selectArea-list .areaList>dt {
+	float: left;
+	width: 40px;
+	text-align: center;
+}
+
+.selectArea-list .areaList>dd {
+	margin-left: 40px;
+}
+.selectArea-list .areaList>dd span {
+	display: inline-block;
+	margin: 0 10px;
+}
+.selectArea-list .areaList>dd a {
+	color: #4d4d4d;
+}
+
 
 /* textarea */
 textarea {

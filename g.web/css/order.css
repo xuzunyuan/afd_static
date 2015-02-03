@@ -1279,3 +1279,162 @@
 	
 	height: 40px;
 }
+/*submitorder*/
+.orderDetail.hd{
+	height: 34px;
+}
+.orderDetail .orderFlow>div{
+	margin-bottom: 10px;
+	background: #fff;
+	border: 1px solid #dcdcdc;
+}
+.orderFlow-process{
+	padding: 10px;
+}
+.orderFlow-process .train-nav{
+	margin:12px 0 5px; 
+}
+.orderFlow-process .tooltip{
+	position: relative;
+}
+.orderFlow-process .tooltip>.arrow{
+	top: -9px;
+	*top: 6px;
+}
+.orderFlow-process .tooltip.guide-TL>.arrow{
+	left: 10%;
+}
+.orderFlow-process .tooltip.guide-TC>.arrow{
+	left: 36%;
+}
+.orderFlow-process .tooltip.guide-TC.three>.arrow{
+	left: 61%;
+}
+.orderFlow-process .tooltip.guide-TR>.arrow{
+	left: 87%;
+}
+.orderFlow-process .tooltip>.arrow b{
+	border-color:#9971E5;
+}
+.orderFlow-process .arrow.xl>i{
+	border-color: #F8F7FD;
+}
+.orderFlow-process .tooltip .wrap{
+	background: #F8F7FD;
+	border: 1px solid #BEA4EE;
+}
+.orderFlow-process .tooltip .bd{
+	padding: 20px 22px;
+}
+.orderFlow-process .tooltip h2{
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+.orderFlow-process .tooltip p{
+	line-height: 2;
+}
+.orderFlow-process .tooltip .btnGro a{
+	margin-right: 15px;
+}
+.orderFlow .orderMeg{
+	padding: 10px;
+}
+.orderMeg h2{
+	height: 30px;
+	padding-left: 15px;
+	margin-bottom: 8px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #5E1B9C;
+	border-bottom: 1px solid #dcdcdc;
+}
+.orderMeg .getMeg{
+	margin-bottom: 10px;
+	border-bottom: 1px dashed #dcdcdc;
+}
+.orderMeg ul{
+	padding: 5px 0 10px 15px;
+}
+.orderMeg ul li{
+	line-height: 2;
+}
+.orderMeg li span{
+	padding-left: 10px;
+}
+.orderMeg .buyerMeg h3{
+	padding-left: 15px;
+}
+.orderMeg .buyerMeg ul{
+	*zoom: 1;
+}
+.orderMeg .buyerMeg ul:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.orderMeg .buyerMeg li{
+	float: left;
+	width: 300px;
+	margin-right: 10px;
+}
+.orderFlow .cartList-group,
+.orderFlow .cartList-group table{
+	border: none;
+}
+.orderFlow .cartList-group .row.head th{
+	height: 40px;
+	padding:0; 
+	line-height: 40px;
+	color: #b4b4b4;
+	background: #f8f8f8;
+}
+.orderFlow .cartList-group.merchBill .mod-orderGoods>dd{
+	width: 228px;
+}
+.orderFlow .cartList-group .nowPrice{
+	color: #666;
+	font-weight: bold;
+}
+.orderFlow .cartList-group .subtotal{
+	font-weight: bold;
+}
+.orderFlow .storeTotal span{
+	vertical-align: middle;
+	margin-left: 10px;
+	font-size: 24px;
+	color: #F2699D;
+}
+.orderFlow-process .logistics{
+	padding: 25px 20px 5px;
+}
+.orderFlow-process .logistics h2{
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.orderFlow-process .logistics dl{
+	*zoom: 1;
+	margin-bottom: 8px;
+}
+.orderFlow-process .logistics dl:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.orderFlow-process .logistics dl dt,
+.orderFlow-process .logistics dl dd{
+	float: left;
+}
+.orderFlow-process .logistics dl dt{
+	width: 80px;
+	text-align: left;
+}
+.orderFlow-process .logistics li{
+	margin-bottom: 6px;
+	color: #999;
+}
+.orderFlow-process .logistics li.on{
+	color: #333;
+}
+.orderFlow-process .logistics li span{
+	margin-right: 8px;
+}
