@@ -16,6 +16,16 @@ function publish(){
 		});
 	};
 	
+	this.limitPrice = function(jq) {
+		jq.bind('input propertychange', function(e){
+			var jq = $(this), value = jq.val();
+			var newValue = value.replace(/[^\d^\.]/g, ''); 
+			if(value !== newValue) {
+				jq.val(newValue);
+			}	
+		});
+	};
+	
 	this.validateTitle = function(){
 		var jq = $('input[name=title]');
 		if($.trim(jq.val()).length == 0 ){
@@ -106,20 +116,21 @@ function publish(){
 		return ref ;
 	};
 	
-	this.validateSkuSalePrice = function(){
+	this.validateSkuSalePrice = function(obj){
+		this.limitPrice($(obj));
 		ref = true;
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		var skuSalePrices = $('[name="skuSalePrice"]');
 		skuSalePrices.each(function(){
-			salePrice = $(this).val();
-			marketPrice = $(this).next().val();
+			salePrice = parseFloat($(this).val());
+			marketPrice = parseFloat($(this).parent().next().children().val());
 			if(!regPrice.test(salePrice)){
 				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
 				ref = false;
 			}else if(!!!salePrice){
 				$('#precErrMsg').text("请输入单价！");
 				ref = false;
-			}else if(marketPrice >salePrice){
+			}else if(marketPrice > salePrice){
 				$('#precErrMsg').text("特卖价应小于单价！");
 				ref = false;
 			}else if(salePrice == 0 || salePrice =='0.0' || salePrice =='0.00'){
@@ -133,13 +144,14 @@ function publish(){
 		return ref;
 	};
 	
-	this.validateSkuMarketPrice = function(){
+	this.validateSkuMarketPrice = function(obj){
+		this.limitPrice($(obj));
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		ref = true;
 		var skuMarketPrices = $('[name="skuMarketPrice"]');
 		skuMarketPrices.each(function(){
-			marketPrice = $(this).val();
-			salePrice = $(this).prev().val();
+			marketPrice = parseFloat($(this).val());
+			salePrice = parseFloat($(this).parent().prev().children().val());
 			
 			if(!regPrice.test(marketPrice)){
 				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
@@ -147,7 +159,7 @@ function publish(){
 			}else if(!!!marketPrice){
 				$('#precErrMsg').text("请输入特卖价！");
 				ref = false;
-			}else if(marketPrice >salePrice){
+			}else if(marketPrice > salePrice){
 				$('#precErrMsg').text("特卖价应小于单价！");
 				ref = false;
 			}else if(marketPrice == 0 || marketPrice =='0.0' || marketPrice =='0.00'){
@@ -161,6 +173,7 @@ function publish(){
 	};
 	
 	this.validateSkuStockBalance = function(obj){
+		this.limitDigital($(obj));
 		var regBalance = /^[1-9][\d]{0,4}$/;
 		ref = true;
 		var skuStockBalances = $('[name="skuStockBalance"]');
@@ -180,6 +193,7 @@ function publish(){
 	};
 	
 	this.validateSkuImg = function(){
+		var ref = true;
 		var totalImgCount = $('#skuImg li').length;
 		var jq = $('input[name="skuImgUrl"]');
 		jq.each(function(){
@@ -187,11 +201,12 @@ function publish(){
 			var imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
 			if(imgUrl == ""){
 				$('#errSkuImg').text("请上传全部的sku图片");
-				return false;
+				ref =  false;
 			}else{
 				$('#errSkuImg').text("");	
 			}
 		});
+		return ref;
 	};
 	
 	this.validateDetail = function(){
@@ -308,9 +323,8 @@ function publish(){
 					
 					if (oldSkuImgUrlValue[j]) {
 						var flg = $(newSkuImgUrl[i]).attr('flg');
-						
 						$('input[name="skuImgUrl"][flg="' + flg + '"]').val(oldSkuImgUrlValue[j]);
-						$('input[name="uploadImg"][flg="' + flg + '"]').closest('li').children('.mod-upload').find('img').attr("src",oldSkuImgUrlValue[j]);
+						$('img[flg="' + flg + '"]').attr("src",oldSkuImgUrlValue[j]);
 					}
 					break;
 				}
@@ -318,13 +332,48 @@ function publish(){
 		}
 	};
 	
+	this.setDefaultImg = function(obj){
+		ref = true;
+		var jq = $(obj).closest('li').children('.mod-upload').find('img');
+		flg = parseInt(jq.attr("flg"));
+		imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
+		if(imgUrl){
+			var img = $('input[name="imgUrl"]');
+				img.val(imgUrl);
+				img.attr('flg',flg);
+			$('input[name="setImgBtn"]').show();
+			$(obj).hide();
+		}else{
+			alert('请上传sku图片');
+			ref = false;
+		}
+		
+		return ref;
+	};
 	
 	this.saveProduct = function(){
 		if (!publish.checkFromData()) {
 			return false;
 		}
-///		this.prepareData(); TODO 
-		$('#publishForm').submit();
+
+		$.ajax({
+			url : "../product/save",
+			data : $('#publishForm').serialize(),
+			type : "post",
+			cache : false,
+			async : false,
+			success : function(data) {
+				if (data > 0) {
+//					tipsWindown("发布商品成功","submit:<p class='meg'><em>*</em>新发布的商品5分钟后会在\"待上架商品\"列表中显示</p> <p>您可在<a href=\"${ctx}/product/stockProd?m=12\">库存商品管理</a>中查看、修改已发布的商品</P>","","1","john");
+					alert("success");
+				} else {
+					alert("error");
+//					tipsWindown("","text:发布商品失败，网络异常请联系网络管理员！","2000","1");
+				}
+			}
+		});
+		
+//		$('#publishForm').submit();
 	};
 }
 
@@ -384,6 +433,11 @@ function generateSpec(selectedArr){
 		table.find('tbody').parent().after('<div class="note errTxt" id="precErrMsg"></div>');
 	});
 	
+	var flg = $('input[name="imgUrl"]').attr('flg');
+	if(parseInt(flg)>0){
+		$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').hide();
+	}
+	
 	table.prev().show();
 	table.show();
 	skuImgDiv.show();
@@ -403,20 +457,20 @@ function recurse(arr, i){
 			html[j] = "<td>"+item.values[j].specValueName+"</td>";
 			if(i == 0){
 				html[j] = "<tr> "+ html[j] +
-						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
-						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
-						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onkeyup='publish.validateSkuSalePrice(this);' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onkeyup='publish.validateSkuMarketPrice(this);' /></td>" +
+						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onkeyup='publish.validateSkuStockBalance(this);' /></td>" +
 		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'>" +
 		         		"<input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'>" +
-		         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' >" +
+		         		"<input type='hidden' name='skuImgUrl' onchange='publish.validateSkuImg();' flg='" + item.values[j].specValueId + "' value='' >" +
 		         		"</td></tr>";
 				
 				var specValueName = item.values[j].specValueName;
 				if (specValueName != null && specValueName != "") {
-					ul.append("<li><div class='mod-upload'><img src='${ctx }/static/img/upload_img.jpg' alt='' /></div>" +
+					ul.append("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
 							"<p>"+item.skuSpecName+"："+specValueName+"</p>" +
 							"<div class='btnWrap'>" +
-							"<input type='button' name='uploadImg' onclick='uploadSkuImg(this);' value='上传图片' flg='" + item.values[j].specValueId + "' class='btn btn-def' /></div></li>");
+							"<input type='button' value='设为主图' name='setImgBtn' onclick='publish.setDefaultImg(this);' flg='' class='btn btn-def' /></div></li>");
 				}
 			}
 		}
@@ -431,12 +485,12 @@ function recurse(arr, i){
 						'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName + '|||' + next.specValues[k].skuSpecName};
 				
 				if (i == 0) {
-					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
-							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
-							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
+					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onkeyup='publish.validateSkuSalePrice();' /></td>" +
+							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onkeyup='publish.validateSkuMarketPrice(this);' /></td>" +
+							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onkeyup='publish.validateSkuStockBalance();' /></td>" +
 			         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'>" +
 			         		"<input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'>" +	
-			         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''>" +
+			         		"<input type='hidden' name='skuImgUrl' onchange='publish.validateSkuImg();' flg='" + item.values[j].specValueId + "' value=''>" +
 							"</td></tr>";
 				}
 				html[j * count + k] = row;	
@@ -444,10 +498,10 @@ function recurse(arr, i){
 			
 			var specValueName = item.values[j].specValueName;
 			if (specValueName != null && specValueName != "") {
-				ul.append("<li><div class='mod-upload'><img src='${ctx }/static/img/upload_img.jpg' alt='' /></div>" +
+				ul.append("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
 						"<p>"+item.skuSpecName+"："+specValueName+"</p>" +
 						"<div class='btnWrap'>" +
-						"<input type='button' name='uploadImg' onclick='uploadSkuImg(this);' value='设为主图' flg='" + item.values[j].specValueId + "' class='btn btn-def' /></div></li>");
+						"<input type='button' value='设为主图' name='setImgBtn' onclick='publish.setDefaultImg(this);' class='btn btn-def' /></div></li>");
 			}
 		}
 	}
@@ -467,7 +521,7 @@ KindEditor.ready(function(K) {
 	             'clearhtml', 'quickformat', '|', 'fullscreen', '|', 'formatblock', 
 	             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 
 	             'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', 
-	             '|', 'image', 'table', 'hr', 'emoticons', 'map',  'pagebreak', 'link', 'unlink'
+	             '|', 'image', 'table', 'hr', 'emoticons', 'pagebreak', 'link', 'unlink'
 	            ],
 		afterCreate : function() {
 			var self = this;
@@ -486,7 +540,7 @@ KindEditor.ready(function(K) {
 		},
 		afterChange:function() {
 			this.sync();
-			$("#detail_warn").html("");
+//			$("#detail_warn").html("");
 	//		checkLength($("#detail"),'detail_warn', 40000);
 		},
 		// 图片地址
@@ -494,32 +548,6 @@ KindEditor.ready(function(K) {
 	    }
 	});
 });
-
-
-function skuImgClick() {
-	var jq = $(this);
-	new AjaxUpload(jq, {
-		action: '../image/saveImg',
-		filename: 'filename',
-		autoSubmit: true,
-		multiple: true,
-      
-		onComplete: function(file, response) {
-			response = eval("("+response+")");
-			if (!!response.url) {
-				jq.parent().find('img').attr("src",response.url);
-				var flg = jq.attr('flg');
-
-				if (flg) {
-					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(splitString(response.url));
-				}
-			} else {
-				alert(response.message);
-				return;
-			}
-		}
-	});
-}
 
 function uploadSkuImg(jq) {
 	new AjaxUpload(jq, {
@@ -530,7 +558,7 @@ function uploadSkuImg(jq) {
 		onComplete: function(file, response) {
 			response = eval("("+response+")");
 			if (!!response.url) {
-				$(jq).closest('li').children('.mod-upload').find('img').attr("src",response.url);
+				$(jq).attr("src",response.url);
 				var flg = $(jq).attr('flg');
 				if (flg) {
 					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(response.url);
@@ -542,6 +570,7 @@ function uploadSkuImg(jq) {
 		}
 	});
 }
+
 
 //function strLenCalc(obj, checklen, maxlen) {
 //	var v = obj.val(), maxlen = !maxlen ? 100 : maxlen, curlen = maxlen, len = v.length;
