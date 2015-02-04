@@ -600,7 +600,12 @@ select,
 .selectArea-list .tabGroup {
 	padding: 10px;
 }
-
+.selectArea-list .tabGroup.city dt{
+	display: none;
+}
+.selectArea-list .tabGroup.city dd{
+	margin-left: 0;
+}
 .selectArea-list .areaList {
 	line-height: 24px;
 }
