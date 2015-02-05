@@ -1,5 +1,8 @@
 $(function(){
 	publish = new publish();
+	$('#title').bind('input propertychange', function() {
+		checkLength($(this), 'title_warn', 60);
+	});
 });
 	
 function publish(){
@@ -37,6 +40,16 @@ function publish(){
 		}else{
 			jq.parent().next().text("");
 		}	
+	};
+	
+	this.validateSubtitle = function(){
+		var jq = $('input[name=subtitle]');
+		if($.trim(jq.val()).length > 100 ){
+			jq.parent().next().text("商品卖点字数超长！");
+			return;
+		}else{
+			jq.parent().next().text("");
+		}
 	};
 	
 	this.validateArtNo = function(){
@@ -116,8 +129,7 @@ function publish(){
 		return ref ;
 	};
 	
-	this.validateSkuSalePrice = function(obj){
-		this.limitPrice($(obj));
+	this.validateSkuSalePrice = function(){
 		ref = true;
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		var skuSalePrices = $('[name="skuSalePrice"]');
@@ -144,8 +156,7 @@ function publish(){
 		return ref;
 	};
 	
-	this.validateSkuMarketPrice = function(obj){
-		this.limitPrice($(obj));
+	this.validateSkuMarketPrice = function(){
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		ref = true;
 		var skuMarketPrices = $('[name="skuMarketPrice"]');
@@ -172,8 +183,7 @@ function publish(){
 		return ref;
 	};
 	
-	this.validateSkuStockBalance = function(obj){
-		this.limitDigital($(obj));
+	this.validateSkuStockBalance = function(){
 		var regBalance = /^[1-9][\d]{0,4}$/;
 		ref = true;
 		var skuStockBalances = $('[name="skuStockBalance"]');
@@ -223,9 +233,12 @@ function publish(){
 	
 	this.checkFromData = function(){
 		ref = true;
-		var title = $('input[name=title]').val(), artNo = $('input[name=artNo]').val(),brand = $('select[name=brand] :selected').val(),detail = $('#detail').val();
+		var title = $('input[name=title]').val(), subtitle = $('input[name=subtitle]').val(),
+		artNo = $('input[name=artNo]').val(),brand = $('select[name=brand] :selected').val(),detail = $('#detail').val();
+		
 		if(!!!title || !!! artNo || brand < 0 || !!!detail){
 			this.validateTitle();
+			this.validateSubtitle();
 			this.validateArtNo();
 			this.validateBrand();
 			this.validateDetail();
@@ -304,6 +317,12 @@ function publish(){
 		}
 		
 		generateSpec(selectedArr);
+		
+		//校验
+//		table.find('[name="skuMarketPrice"]').bind("blur", this.validateSku);
+//		table.find('[name="skuSalePrice"]').bind("blur", this.validateSku);
+		table.find('[name="skuStockBalance"]').bind("blur", this.validateSkuStockBalance);
+		
 		
 		// 恢复原有数据
 		var newSkuSalePrice = table.find('input[name="skuSalePrice"]'),
@@ -433,8 +452,9 @@ function generateSpec(selectedArr){
 		table.find('tbody').parent().after('<div class="note errTxt" id="precErrMsg"></div>');
 	});
 	
+	
 	var flg = $('input[name="imgUrl"]').attr('flg');
-	if(parseInt(flg)>0){
+	if(parseInt(flg) > 0){
 		$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').hide();
 	}
 	
@@ -457,20 +477,24 @@ function recurse(arr, i){
 			html[j] = "<td>"+item.values[j].specValueName+"</td>";
 			if(i == 0){
 				html[j] = "<tr> "+ html[j] +
-						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onkeyup='publish.validateSkuSalePrice(this);' /></td>" +
-						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onkeyup='publish.validateSkuMarketPrice(this);' /></td>" +
-						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onkeyup='publish.validateSkuStockBalance(this);' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
+						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
 		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'>" +
 		         		"<input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'>" +
-		         		"<input type='hidden' name='skuImgUrl' onchange='publish.validateSkuImg();' flg='" + item.values[j].specValueId + "' value='' >" +
+		         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' >" +
 		         		"</td></tr>";
 				
 				var specValueName = item.values[j].specValueName;
 				if (specValueName != null && specValueName != "") {
-					ul.append("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
+					var jq = $("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' /></div>" +
 							"<p>"+item.skuSpecName+"："+specValueName+"</p>" +
 							"<div class='btnWrap'>" +
 							"<input type='button' value='设为主图' name='setImgBtn' onclick='publish.setDefaultImg(this);' flg='' class='btn btn-def' /></div></li>");
+					jq.appendTo(ul);
+					jq.find('img').each(function(){
+						uploadSkuImg(this);
+					});
 				}
 			}
 		}
@@ -485,23 +509,27 @@ function recurse(arr, i){
 						'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName + '|||' + next.specValues[k].skuSpecName};
 				
 				if (i == 0) {
-					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onkeyup='publish.validateSkuSalePrice();' /></td>" +
-							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onkeyup='publish.validateSkuMarketPrice(this);' /></td>" +
-							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onkeyup='publish.validateSkuStockBalance();' /></td>" +
+					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
+							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
+							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
 			         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'>" +
 			         		"<input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'>" +	
-			         		"<input type='hidden' name='skuImgUrl' onchange='publish.validateSkuImg();' flg='" + item.values[j].specValueId + "' value=''>" +
+			         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''>" +
 							"</td></tr>";
 				}
+				
 				html[j * count + k] = row;	
 			}
-			
 			var specValueName = item.values[j].specValueName;
 			if (specValueName != null && specValueName != "") {
-				ul.append("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
+				var jq = $("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
 						"<p>"+item.skuSpecName+"："+specValueName+"</p>" +
 						"<div class='btnWrap'>" +
 						"<input type='button' value='设为主图' name='setImgBtn' onclick='publish.setDefaultImg(this);' class='btn btn-def' /></div></li>");
+				jq.appendTo(ul);
+				jq.find('img').each(function(){
+					uploadSkuImg(this);
+				});
 			}
 		}
 	}
@@ -540,8 +568,8 @@ KindEditor.ready(function(K) {
 		},
 		afterChange:function() {
 			this.sync();
-//			$("#detail_warn").html("");
-	//		checkLength($("#detail"),'detail_warn', 40000);
+			$("#detail_warn").html("");
+			checkLength($("#detail"),'detail_warn', 40000);
 		},
 		// 图片地址
 	    afterUpload : function(url) {
@@ -549,8 +577,25 @@ KindEditor.ready(function(K) {
 	});
 });
 
-function uploadSkuImg(jq) {
-	new AjaxUpload(jq, {
+//validate editor
+function checkLength(obj, detail_warn, maxlen) {
+	var v = obj.val(), maxlen = !maxlen ? 100 : maxlen, curlen = maxlen, len = v.length;
+	for (var i = 0; i < v.length; i++) {
+		if (v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
+			curlen -= 1;
+		}
+	}
+	if (curlen >= len) {
+		$("#"+detail_warn).html("还可输入 <strong>" + Math.floor((curlen - len) / 2)
+				+ "</strong>个字").css('color', '');
+	} else {
+		$("#"+detail_warn).html("还可输入 <strong>0</strong>个字").css('color', '').css('color', '#FF0000');
+		obj.val(v.substring(0, len-Math.floor((len - curlen) / 2)));
+	}
+}
+
+function uploadSkuImg(obj) {
+	new AjaxUpload(obj, {
 		action: '../image/saveImg',
 		filename: 'filename',
 		autoSubmit: true,
@@ -558,10 +603,11 @@ function uploadSkuImg(jq) {
 		onComplete: function(file, response) {
 			response = eval("("+response+")");
 			if (!!response.url) {
-				$(jq).attr("src",response.url);
-				var flg = $(jq).attr('flg');
+				$(obj).attr("src",response.url);
+				var flg = $(obj).attr('flg');
 				if (flg) {
 					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(response.url);
+					publish.validateSkuImg();
 				}
 			} else {
 				alert(response.message);
@@ -570,21 +616,3 @@ function uploadSkuImg(jq) {
 		}
 	});
 }
-
-
-//function strLenCalc(obj, checklen, maxlen) {
-//	var v = obj.val(), maxlen = !maxlen ? 100 : maxlen, curlen = maxlen, len = v.length;
-//	for (var i = 0; i < v.length; i++) {
-//		if (v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
-//			curlen -= 1;
-//		}
-//	}
-//	
-//	if (curlen >= len) {
-//		$("#" + checklen).html("还可输入 <strong>" + Math.floor((curlen - len) / 2)
-//						+ "</strong>个字").css('color', '');
-//	} else {
-//		$("#" + checklen).html("还可输入 <strong>0</strong>个字").css('color', ''); 
-//		obj.val(v.substring(0, len-Math.floor((len - curlen) / 2)));
-//	}
-//}
