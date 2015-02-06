@@ -6,7 +6,7 @@ $(function(){
 });
 	
 function publish(){
-	
+
 	this.limitDigital = function(jq) {
 		jq.bind('input propertychange', function(e){
 			var jq = $(this), value = jq.val();
@@ -247,6 +247,9 @@ function publish(){
 		if(!this.valaidateAttr() | !this.validateSpec() | !this.validateSkuImg()){
 			ref = false;
 		};
+		
+		prepareAttrData(); 
+		
 		return ref;
 	};
 
@@ -254,7 +257,6 @@ function publish(){
 	this.modifyBc = function(){
 		alert("modifyBc");
 	};
-	
 	
 	this.generateSku = function(obj){
 		editSpec(obj);
@@ -319,8 +321,6 @@ function publish(){
 		generateSpec(selectedArr);
 		
 		//校验
-//		table.find('[name="skuMarketPrice"]').bind("blur", this.validateSku);
-//		table.find('[name="skuSalePrice"]').bind("blur", this.validateSku);
 		table.find('[name="skuStockBalance"]').bind("blur", this.validateSkuStockBalance);
 		
 		
@@ -343,7 +343,7 @@ function publish(){
 					if (oldSkuImgUrlValue[j]) {
 						var flg = $(newSkuImgUrl[i]).attr('flg');
 						$('input[name="skuImgUrl"][flg="' + flg + '"]').val(oldSkuImgUrlValue[j]);
-						$('img[flg="' + flg + '"]').attr("src",oldSkuImgUrlValue[j]);
+						$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ oldSkuImgUrlValue[j]);
 					}
 					break;
 				}
@@ -358,7 +358,7 @@ function publish(){
 		imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
 		if(imgUrl){
 			var img = $('input[name="imgUrl"]');
-				img.val(imgUrl);
+				img.val(splitString(imgUrl));
 				img.attr('flg',flg);
 			$('input[name="setImgBtn"]').show();
 			$(obj).hide();
@@ -382,7 +382,7 @@ function publish(){
 			cache : false,
 			async : false,
 			success : function(data) {
-				if (data > 0) {
+				if (data.success > 0) {
 //					tipsWindown("发布商品成功","submit:<p class='meg'><em>*</em>新发布的商品5分钟后会在\"待上架商品\"列表中显示</p> <p>您可在<a href=\"${ctx}/product/stockProd?m=12\">库存商品管理</a>中查看、修改已发布的商品</P>","","1","john");
 					alert("success");
 				} else {
@@ -452,7 +452,6 @@ function generateSpec(selectedArr){
 		table.find('tbody').parent().after('<div class="note errTxt" id="precErrMsg"></div>');
 	});
 	
-	
 	var flg = $('input[name="imgUrl"]').attr('flg');
 	if(parseInt(flg) > 0){
 		$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').hide();
@@ -462,7 +461,6 @@ function generateSpec(selectedArr){
 	table.show();
 	skuImgDiv.show();
 }
-
 
 function recurse(arr, i){
 	var item = arr[i], html = [], specValues = [];
@@ -537,6 +535,101 @@ function recurse(arr, i){
 	return {'html' : html, 'specValues' : specValues};
 }
 
+//validate editor
+function checkLength(obj, detail_warn, maxlen) {
+	var v = obj.val(), maxlen = !maxlen ? 100 : maxlen, curlen = maxlen, len = v.length;
+	for (var i = 0; i < v.length; i++) {
+		if (v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
+			curlen -= 1;
+		}
+	}
+	if (curlen >= len) {
+		$("#"+detail_warn).html("还可输入 <strong>" + Math.floor((curlen - len) / 2)
+				+ "</strong>个字").css('color', '');
+	} else {
+		$("#"+detail_warn).html("还可输入 <strong>0</strong>个字").css('color', '').css('color', '#FF0000');
+		obj.val(v.substring(0, len-Math.floor((len - curlen) / 2)));
+	}
+}
+
+function uploadSkuImg(obj) {
+	new AjaxUpload(obj, {
+		action: '../image/saveImg',
+		filename: 'filename',
+		autoSubmit: true,
+		multiple: true,
+		onComplete: function(file, response) {
+			response = eval("("+response+")");
+			if (!!response.url) {
+				$(obj).attr("src",response.url);
+				var flg = $(obj).attr('flg');
+				if (flg) {
+					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(splitString(response.url));
+					publish.validateSkuImg();
+				}
+			} else {
+				alert(response.message);
+				return;
+			}
+		}
+	});
+}
+
+function splitString(url) {
+ 	imgUrl = url.split("=");
+ 	return imgUrl[1];
+}
+
+// prepare attr
+function prepareAttrData() {
+	var attrs = $('[name="attr"]'), attrValueId = '', attrValueName = '';
+	
+	attrs.each(function() {
+		var displayMode = $(this).attr('displayMode'),
+			attrId = $(this).attr('attrId'),
+			attrName = $(this).attr('attrName');
+		
+		if (displayMode == '1') {
+			var value = $('[name="attrValue"][attrId="' + attrId + '"]').val();
+			if (!value) return;
+			
+			var arr = value.split('|||');
+			if (arr[2] === 'true') {
+				var value2 = $('[name="attrValue2"][attrValueId="' + arr[0] + '"]').val();
+				if (!value2) return;
+				
+				var arr2 = value2.split('|||');
+				
+				attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + arr[0] + '>>>' + arr2[0];
+				attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + arr[1] + '>>>' + arr2[1];
+				
+			} else {
+				attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + arr[0];
+				attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + arr[1];
+			}
+			
+		} else {
+			var chks = $('[name="attrValue"][attrId="' + attrId + '"]').filter(":checked");
+			if (chks.length == 0) return;
+			var chkValueId = '', chkValueName = '';
+			
+			chks.each(function() {
+				var tmpValueId = $(this).attr('attrValueId'), tmpValueName = $(this).attr('attrValueName');
+				
+				chkValueId = chkValueId + (chkValueId ? ",,," : '') + tmpValueId;
+				chkValueName = chkValueName + (chkValueName ? ",,," : '') + tmpValueName;
+			});
+			
+			attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + chkValueId;
+			attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + chkValueName;
+		}
+	});
+	
+	$('input[name="attrValueId"]').val(attrValueId);
+	$('input[name="attrValueName"]').val(attrValueName);
+}
+
+
 KindEditor.ready(function(K) {
 		K.create('textarea[name="detail"]', {
 		uploadJson : '../image/saveImg',
@@ -576,43 +669,3 @@ KindEditor.ready(function(K) {
 	    }
 	});
 });
-
-//validate editor
-function checkLength(obj, detail_warn, maxlen) {
-	var v = obj.val(), maxlen = !maxlen ? 100 : maxlen, curlen = maxlen, len = v.length;
-	for (var i = 0; i < v.length; i++) {
-		if (v.charCodeAt(i) < 0 || v.charCodeAt(i) > 255) {
-			curlen -= 1;
-		}
-	}
-	if (curlen >= len) {
-		$("#"+detail_warn).html("还可输入 <strong>" + Math.floor((curlen - len) / 2)
-				+ "</strong>个字").css('color', '');
-	} else {
-		$("#"+detail_warn).html("还可输入 <strong>0</strong>个字").css('color', '').css('color', '#FF0000');
-		obj.val(v.substring(0, len-Math.floor((len - curlen) / 2)));
-	}
-}
-
-function uploadSkuImg(obj) {
-	new AjaxUpload(obj, {
-		action: '../image/saveImg',
-		filename: 'filename',
-		autoSubmit: true,
-		multiple: true,
-		onComplete: function(file, response) {
-			response = eval("("+response+")");
-			if (!!response.url) {
-				$(obj).attr("src",response.url);
-				var flg = $(obj).attr('flg');
-				if (flg) {
-					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(response.url);
-					publish.validateSkuImg();
-				}
-			} else {
-				alert(response.message);
-				return;
-			}
-		}
-	});
-}
