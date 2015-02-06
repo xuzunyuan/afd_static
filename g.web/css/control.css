@@ -542,6 +542,12 @@ select,
 .selectArea .inputArea .arrow {
 	float: right;
 	margin: 12px 0 0;
+	*margin-top:-18px;
+}
+@-moz-document url-prefix(){
+	.selectArea .inputArea .arrow{
+		margin-top: -18px;
+	}
 }
 .selectArea .inputArea .arrow b {
 	border-width: 8px;
