@@ -439,3 +439,8 @@
 	font-size: 14px;
 	padding:5px 0;
 }
+.submit-btn{
+	width: 98px;
+	margin-top: 5px;
+	text-align: center;
+}
