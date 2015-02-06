@@ -766,6 +766,9 @@
 .shippingAddr.noAddress .shippingForm {
 	display: block;
 }
+.shippingAddr.unfold .addressList{
+	height: auto;
+}
 /* shippingForm */
 .cartList .shippingForm {
 	display: none;
