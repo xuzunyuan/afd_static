@@ -43,6 +43,7 @@
 		 $(obj).children().attr('rel', 'loaded');
 		 $.ajax({
 			  type: 'POST',
+			  async: false,
 			  url: opts.contentPage,
 			  data: opts.contentData,
 			  success: function(data){
