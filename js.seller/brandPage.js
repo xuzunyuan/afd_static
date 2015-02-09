@@ -1,96 +1,114 @@
 $(function(){
 	CheckUtil.limitDbLength($('#categories'), 1000);
-	//initValidate();
-	//initSubmit();
+	initValidate();
+	initSubmit();
 	
 	initUpload();	
+	initSearch();
 });
 
 function initValidate() {
 	$('#frm').validate({
 		onBlur : true,
-		conditional : {		
-			confirmBizManEmail : function() {
-				return CheckUtil.checkEmail($(this).val());
-			}
-		},
 		description : {
-			coName : {
-				required : '请填写公司名称',
-				pattern : '请填写公司名称'
+			trademarkCert : {
+				required : '请上传商标注册证/商标受理通知书'
 			},
-			coBln : {
-				required : '请填写营业执照注册号'
+			authCert : {
+				required : '请上传品牌授权书'
 			},
-			lpName : {
-				required : '请填写法人姓名'
+			otherCert : {
+				required : '请上传其他资质'
 			},
-			registerCapital : {
-				required : '请填写注册资本'
-			},
-			bizScope : {
-				required : '请填写经营范围'
-			},
-			btImg : {
-				required : '请上传营业执照副本扫描件'
-			},
-			orgCodeImg : {
-				required : '请上传组织机构代码电子版'
-			},
-			taxImg : {
-				required : '请上传税务登记电子版'
-			},
-			bankLicenseImg : {
-				required : '请上传银行开户许可证电子版'
-			},
-			bizManName : {
-				required : '请填写联系人姓名'
-			},
-			bizManMobile : {
-				required : '请填写联系人手机号码',
-				pattern : '请正确填写联系人手机号码' 
-			},			
-			bizManEmail : {
-				required : '请填写电子邮箱',
-				conditional : '请填写正确的电子邮箱'
-			}				
+			categories : {
+				required : '请填写经营类目'
+			}
 		}
 	});
 }
 
 function initSubmit() {
 	$('#frm').submit(function(e){
-		if(!$('#chkProtocol').prop('checked')) {
-			$('#protocol_msg').html('请选择同意阿凡达商家入驻条款');
+		if($('#sellerBrandId').val()) return true;
+		
+		var jqBrandName = $('#brandName'),
+			 keyword = jqBrandName.val(),
+			 jqBrandId = $('#brandId');
+		
+		if(!keyword) {
+			showErrMsg('brandId_msg', '请选择品牌');
+			return false;
+		}
+
+		if(!jqBrandId.val() || jqBrandId.attr('brandName') != keyword) {
+			var found = false;
+			
+			$.ajax({url: ctx +'/ajax/matchBrand', dataType:'json', async:false, data: {'keyword' : keyword},
+				success : function(data) {
+					if(data) {
+						found = true;
+						jqBrandId.val(data.brandId);
+										
+					} else {
+						showErrMsg('brandId_msg', '请选择品牌');
+					}
+				},
+				error : function(req, e) {
+					showErrMsg('brandId_msg', '请选择品牌');
+				}});
+			
+			if(!found) return false;
+		}
+		
+		found = false;
+		$.ajax({url: ctx +'/ajax/existBrand', dataType:'json', async:false, 
+				data: {'sellerId' : $.seller.sellerId, 'brandId' : jqBrandId.val()},
+			success : function(data) {
+				if(data) {
+					found = true;
+					showErrMsg('brandId_msg', '您已经申请了该品牌，不能重复申请');									
+				} 
+			},
+			error : function(req, e) {
+				found = true;
+				showErrMsg('brandId_msg', '系统繁忙，请稍后再试');
+			}});
+		
+		if(found) return false;
+		
+		return true;
+	});
+	
+	$('#frm').submit(function(e){
+		if($(':checked[name="authType"]').length == 0) {
+			showErrMsg('authType_msg', '请选择授权类型');
 			return false;
 		}
 	});
 	
-	$('#chkProtocol').change(function(e){
-		if($(e.target).prop('checked')) {
-			$('#protocol_msg').html('');
-		} else {
-			$('#protocol_msg').html('请选择同意阿凡达商家入驻条款');
+	$('[name="authType"]').change(function(e){
+		if($(':checked[name="authType"]').length > 0) {
+			showErrMsg('authType_msg', '');
 		}
 	});
 	
 	$('#frm').submit(function(e){
-		var startDt = $('#sBtStartDate').val();
+		var startDt = $('#sAuthStartDate').val();
 		
 		if(!startDt) {
-			showErrMsg('btDate_msg', '请选择营业期限开始日期');
+			showErrMsg('authDate_msg', '请选择授权有效期开始日期');
 			return false;
 		}
 		
-		var endDt = $('#sBtEndDate').val();
+		var endDt = $('#sAuthEndDate').val();
 		if(endDt && endDt <= startDt) {
-			showErrMsg('btDate_msg', '营业期限截止日期必须大于开始日期');
+			showErrMsg('authDate_msg', '授权有效期截止日期必须大于开始日期');
 			return false;
 		}
 	});	
 	
-	$('#sBtStartDate,#sBtEndDate').focus(function(e){
-		$(e.target).parent().siblings('div.errTxt').html('');
+	$('#sAuthStartDate,#sAuthEndDate').focus(function(e){
+		showErrMsg('authDate_msg', '');
 	});
 }
 
@@ -144,4 +162,55 @@ function uploadify(btn, img, hidden) {
 				}
 			}		
 			);			
+}
+
+function initSearch(){
+	$('#brandName').keydown(function(e){
+		if(e.which == 13) {
+			e.preventDefault();
+			search();
+		}
+	});	
+	
+	$('#searchBtn').click(function(e){
+		search();
+	});
+}
+
+function search() {
+	if($('#sellerBrandId').val()) return;
+	
+	var jqBrandName = $('#brandName'),
+		 keyword = jqBrandName.val(),
+		 jqResult = $('#searchResult'),
+		 jqTip = $('#brandId_msg'),
+		 jqBrandId = $('#brandId');
+	
+	if(!keyword) return;
+	jqResult.empty();
+	jqTip.html('');
+	
+	$.ajax({url: ctx +'/ajax/queryBrand', dataType:'json', async:false, data: {'keyword' : keyword},
+		success : function(data) {
+			if(data && data.length > 0) {
+				$(data).each(function(){
+					$('<li>' + this.showName + '</li>')
+						.appendTo(jqResult)
+						.attr('brandId', this.brandId)
+						.attr('brandName', this.brandName ? this.brandName : this.brandEname)
+						.click(function(e){
+							jqBrandName.val($(this).attr('brandName'));
+							jqBrandId.val($(this).attr('brandId'))
+								.attr('brandName', $(this).attr('brandName'));							
+						});
+				})
+								
+			} else {
+				jqTip.html('对不起，没找到匹配的品牌');
+			}
+		},
+		error : function() {
+			jqTip.html('系统繁忙，请稍后再试');
+		}});	
+	
 }
