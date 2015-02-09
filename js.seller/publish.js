@@ -3,6 +3,8 @@ $(function(){
 	$('#title').bind('input propertychange', function() {
 		checkLength($(this), 'title_warn', 60);
 	});
+	
+	selectedAttr();
 });
 	
 function publish(){
@@ -578,6 +580,37 @@ function uploadSkuImg(obj) {
 function splitString(url) {
  	imgUrl = url.split("=");
  	return imgUrl[1];
+}
+
+function selectedAttr(){
+	if (!attrValueId) return;
+	var attrArr = attrValueId.split('|||');
+	$.each(attrArr, function() {
+		var attr  = this.split(':::');
+		if (!attr || attr.length != 2) return;
+		var attrId = attr[0], attrValueId = attr[1];
+		var attrCtrl = $('[name="attr"][attrId="' + attrId + '"]');
+		if (attrCtrl.length == 0) return;
+		
+		var displayMode = attrCtrl.attr('displayMode');
+		if (displayMode == '1') {
+			var arr = attrValueId.split('>>>');
+			var attrValueCtrl =  $('[name="attrValue"][attrId="' + attrId + '"]');			
+			attrValueCtrl.find('option[attrValueId="' + arr[0] + '"]').prop('selected', true);
+//			// 二级属性
+//			if (arr.length > 1) {
+//				var attrValue2Ctrl = $('[name="attrValue2"][attrId="' + attrId + '"][attrValueId="' + arr[0] + '"]');
+//				attrValue2Ctrl.find('option[attrValue2Id="' + arr[1] + '"]').prop('selected', true);
+//				attrValue2Ctrl.show();
+//			}
+		} else {
+			var arr = attrValueId.split(',,,');
+			$.each(arr, function(){
+				$('[name="attrValue"][attrId="' + attrId + '"][attrValueId="' + this + '"]').prop('checked', true);
+			});			
+		}
+	});
+	
 }
 
 // prepare attr
