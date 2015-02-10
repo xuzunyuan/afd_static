@@ -320,6 +320,9 @@
 	font-size: 18px;
 	font-weight: normal;
 }
+.specialmain .hd h2 a{
+	color: #333;
+}
 .specialmain .hd-left{
 	float: left;
 }
