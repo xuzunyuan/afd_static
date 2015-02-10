@@ -178,3 +178,10 @@
 	padding: 16px 0 0;
 	border-top: 1px solid #ddd;
 }
+
+.pop-success h2{
+	padding-top: 25px;
+}
+.pop-success dl{
+	padding-left: 80px;
+}
