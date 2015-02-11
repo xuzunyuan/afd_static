@@ -5,6 +5,7 @@ $(function(){
 	});
 	
 	selectedAttr();
+	selectedSkus();
 });
 	
 function publish(){
@@ -74,6 +75,8 @@ function publish(){
 			jq.parent().parent().next().text("请选择品牌！");
 			return;
 		}else{
+			$('#brandId').val(jq.val());
+			$('#brandName').val(jq.text());
 			jq.parent().parent().next().text("");
 		}
 	}
@@ -98,7 +101,7 @@ function publish(){
 					jq.prev().parent().next().text("");
 				}
 			}else{
-				var chks = $('[name="attrValue2"][attrId="' + attrId + '"]').filter(":checked");
+				var chks = $('[name="attrValue"][attrId="' + attrId + '"]').filter(":checked");
 				if (chks.length == 0) {
 					jq.prev().parent().next().text("请选择属性'" + attrName + "'");
 					ref = false;
@@ -256,8 +259,9 @@ function publish(){
 	};
 
 	
-	this.modifyBc = function(){
-		alert("modifyBc");
+	this.modifyBc = function(pathId){
+		if(!pathId) return;
+		window.location.href = "../product/category?pathId="+pathId+"&m=2001";
 	};
 	
 	this.generateSku = function(obj){
@@ -325,7 +329,6 @@ function publish(){
 		//校验
 		table.find('[name="skuStockBalance"]').bind("blur", this.validateSkuStockBalance);
 		
-		
 		// 恢复原有数据
 		var newSkuSalePrice = table.find('input[name="skuSalePrice"]'),
 			newSkuMarketPrice = table.find('input[name="skuMarketPrice"]'),
@@ -358,9 +361,9 @@ function publish(){
 		var jq = $(obj).closest('li').children('.mod-upload').find('img');
 		flg = parseInt(jq.attr("flg"));
 		imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
-		if(imgUrl){
+		if(!!imgUrl){
 			var img = $('input[name="imgUrl"]');
-				img.val(splitString(imgUrl));
+				img.val(imgUrl);
 				img.attr('flg',flg);
 			$('input[name="setImgBtn"]').show();
 			$(obj).hide();
@@ -476,8 +479,8 @@ function recurse(arr, i){
 			
 			html[j] = "<td>"+item.values[j].specValueName+"</td>";
 			if(i == 0){
-				html[j] = "<tr> "+ html[j] +
-						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
+				html[j] = "<tr id=spec"+ item.values[j].specValueId +"> "+ html[j] +
+						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice'  value='' onblur='publish.validateSkuSalePrice();' /></td>" +
 						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
 						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
 		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'>" +
@@ -503,7 +506,7 @@ function recurse(arr, i){
 		var count = next.html.length;
 		for (var j = 0; j < item.values.length; j++) {
 			for (var k = 0; k < count; k++) {
-				var row = "<tr><td>"+item.values[j].specValueName+"</td>" + next.html[k];
+				var row = "<tr id=spec"+ item.values[j].specValueId + (j * count + k) +" ><td>"+item.values[j].specValueName+"</td>" + next.html[k];
 				specValues[j * count + k] = 
 						{'skuSpecId' :  item.skuSpecId + ':::' + item.values[j].specValueId + '|||' + next.specValues[k].skuSpecId,
 						'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName + '|||' + next.specValues[k].skuSpecName};
@@ -567,6 +570,9 @@ function uploadSkuImg(obj) {
 				var flg = $(obj).attr('flg');
 				if (flg) {
 					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(splitString(response.url));
+					if(!!!$('input[name="imgUrl"]').val()){
+						$(obj).closest('li').children('.btnWrap').find('input').trigger('click');
+					}
 					publish.validateSkuImg();
 				}
 			} else {
@@ -580,37 +586,6 @@ function uploadSkuImg(obj) {
 function splitString(url) {
  	imgUrl = url.split("=");
  	return imgUrl[1];
-}
-
-function selectedAttr(){
-	if (!attrValueId) return;
-	var attrArr = attrValueId.split('|||');
-	$.each(attrArr, function() {
-		var attr  = this.split(':::');
-		if (!attr || attr.length != 2) return;
-		var attrId = attr[0], attrValueId = attr[1];
-		var attrCtrl = $('[name="attr"][attrId="' + attrId + '"]');
-		if (attrCtrl.length == 0) return;
-		
-		var displayMode = attrCtrl.attr('displayMode');
-		if (displayMode == '1') {
-			var arr = attrValueId.split('>>>');
-			var attrValueCtrl =  $('[name="attrValue"][attrId="' + attrId + '"]');			
-			attrValueCtrl.find('option[attrValueId="' + arr[0] + '"]').prop('selected', true);
-//			// 二级属性
-//			if (arr.length > 1) {
-//				var attrValue2Ctrl = $('[name="attrValue2"][attrId="' + attrId + '"][attrValueId="' + arr[0] + '"]');
-//				attrValue2Ctrl.find('option[attrValue2Id="' + arr[1] + '"]').prop('selected', true);
-//				attrValue2Ctrl.show();
-//			}
-		} else {
-			var arr = attrValueId.split(',,,');
-			$.each(arr, function(){
-				$('[name="attrValue"][attrId="' + attrId + '"][attrValueId="' + this + '"]').prop('checked', true);
-			});			
-		}
-	});
-	
 }
 
 // prepare attr
@@ -662,6 +637,97 @@ function prepareAttrData() {
 	$('input[name="attrValueName"]').val(attrValueName);
 }
 
+function selectedAttr(){
+	if (!attrValueId) return;
+	var attrArr = attrValueId.split('|||');
+	$.each(attrArr, function() {
+		var attr  = this.split(':::');
+		if (!attr || attr.length != 2) return;
+		var attrId = attr[0], attrValueId = attr[1];
+		var attrCtrl = $('[name="attr"][attrId="' + attrId + '"]');
+		if (attrCtrl.length == 0) return;
+		
+		var displayMode = attrCtrl.attr('displayMode');
+		if (displayMode == '1') {
+			var arr = attrValueId.split('>>>');
+			var attrValueCtrl =  $('[name="attrValue"][attrId="' + attrId + '"]');			
+			attrValueCtrl.find('option[attrValueId="' + arr[0] + '"]').prop('selected', true);
+			if (arr.length > 1) {//二级
+				var attrValue2Ctrl = $('[name="attrValue2"][attrId="' + attrId + '"][attrValueId="' + arr[0] + '"]');
+				attrValue2Ctrl.find('option[attrValue2Id="' + arr[1] + '"]').prop('selected', true);
+				attrValue2Ctrl.show();
+			}
+		} else {
+			var arr = attrValueId.split(',,,');
+			$.each(arr, function(){
+				$('[name="attrValue"][attrId="' + attrId + '"][attrValueId="' + this + '"]').prop('checked', true);
+			});			
+		}
+	});
+}
+
+function selectedSkus(){
+	if(!skuSpecIdArr) return;
+	
+	var chk;
+	for (var i = 0; i < skuSpecIdArr.length; i++) {
+	 	var skuSpecId = skuSpecIdArr[i], skuSpecName = skuSpecNameArr[i];	
+	 	var arrId = skuSpecId.split('|||'), arrName = skuSpecName.split('|||');
+	 	
+	 	for (var j = 0; j < arrId.length; j++) {
+	 		var idPair = arrId[j].split(':::'), namePair = arrName[j].split(':::');
+	 		chk = $('[name="specValue"][skuSpecId="' + idPair[0] + '"][specValueId="' + idPair[1] + '"]');
+	 		chk.prop('checked', true);			
+	 		
+	 		chk.siblings('input').val(namePair[1]);
+	 		chk.siblings('[name="specValueTxt"]') .html(namePair[1]);
+	 		
+	 		if (chk) chk.trigger('change');	
+	 	}
+	}
+	var table = $('#genSpec');
+	specCount = $('ul[specId]').length;
+	
+	for (var i = 0; i < skuSpecIdArr.length; i++) {
+		var skuSpecId = skuSpecIdArr[i];
+		var skuSpecIds = skuSpecId.split('|||');
+		for (var j = 0; j < skuSpecIds.length; j++) {
+			var selectedSpecId  = 0;
+			var specIdPair = skuSpecIds[j].split(':::');
+			
+			var row = $("#spec"+specIdPair[1] + (i * specIdPair[0] +j) ).length;
+			if(row == 1){
+				var skuSpecId_t = setSuperSpecId(skuSpecIdArr[i],(i * specIdPair[0] +j));
+				
+				selectspecid = specIdPair[1] + (i * specIdPair[0] +j);
+ 				var tr = $("#spec"+selectspecid);
+				var skuSalePrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuSalePrice"]');
+				var skuMarketPrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuMarketPrice"]');	
+				var skuStockBalance = tr.find('input[superspecid='+skuSpecId_t+'][name="skuStockBalance"]');
+				$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
+				$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
+				$(skuStockBalance[0]).val(s_stockBalance[i]);
+
+			}
+			
+			skuImgUrl = table.find('input[name="skuImgUrl"]');
+			
+			if (skuImgUrl[i]) {
+				var flg = $(skuImgUrl[i]).attr('flg');
+				$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
+				$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
+			}
+		}
+	}
+}
+
+function setSuperSpecId(skuSpecId,specAdd) {
+	var skuSpecIds = skuSpecId.split('|||');
+    var skuSpecId_t = skuSpecIds[0].split(':::')[1] + specAdd;
+	var tr = $("#spec"+skuSpecId_t);
+	tr.children('td').children('input').attr('superSpecId', skuSpecId_t);
+	return skuSpecId_t;
+}
 
 KindEditor.ready(function(K) {
 		K.create('textarea[name="detail"]', {
