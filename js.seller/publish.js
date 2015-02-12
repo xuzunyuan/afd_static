@@ -4,6 +4,10 @@ $(function(){
 		checkLength($(this), 'title_warn', 60);
 	});
 	
+	if(brandId >0){
+		$('#brand'+brandId).prop('selected', true);	
+	}
+	
 	selectedAttr();
 	selectedSkus();
 });
@@ -265,8 +269,7 @@ function publish(){
 	};
 	
 	this.generateSku = function(obj){
-		editSpec(obj);
-		
+	//TODO 	editSpec(obj);
 		var checkedArray = $('input[name="specValue"]:checked');
 		var selectedSpec = {},specNames = {};
 		specNames.total = 0;
@@ -396,8 +399,6 @@ function publish(){
 				}
 			}
 		});
-		
-//		$('#publishForm').submit();
 	};
 }
 
@@ -430,12 +431,12 @@ function generateSpec(selectedArr){
 	}
 	
 	var thead = "<table class='table table-line'>" +
-			"<colgroup><col width='100' />" +
-			"<col width='100' />" +
-			"<col width='100' />";
+			"<colgroup><col width='' />" +
+			"<col width='85' />" +
+			"<col width='85' />";
 	
 	$(selectedArr).each(function() {
-		thead += "<col width='100' />";
+		thead += "<col width='85' />";
 	});
 	
 	thead += "</colgroup><thead><tr>" ;
@@ -483,10 +484,10 @@ function recurse(arr, i){
 						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice'  value='' onblur='publish.validateSkuSalePrice();' /></td>" +
 						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
 						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
-		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'>" +
-		         		"<input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'>" +
-		         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' >" +
-		         		"</td></tr>";
+		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'></td>" +
+		         		"<td><input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'></td>" +
+		         		"<td><input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' ></td>" +
+		         		"</tr>";
 				
 				var specValueName = item.values[j].specValueName;
 				if (specValueName != null && specValueName != "") {
@@ -504,9 +505,14 @@ function recurse(arr, i){
 	}else{
 		var next = recurse(arr, i + 1);
 		var count = next.html.length;
+
 		for (var j = 0; j < item.values.length; j++) {
 			for (var k = 0; k < count; k++) {
-				var row = "<tr id=spec"+ item.values[j].specValueId + (j * count + k) +" ><td>"+item.values[j].specValueName+"</td>" + next.html[k];
+				var row = '' ;
+				if (i == 0){
+					row = row + "<tr id=spec"+ item.values[j].specValueId + (j * count + k) +" >";
+				}
+				row = row + "<td>"+item.values[j].specValueName+"</td>" + next.html[k];
 				specValues[j * count + k] = 
 						{'skuSpecId' :  item.skuSpecId + ':::' + item.values[j].specValueId + '|||' + next.specValues[k].skuSpecId,
 						'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName + '|||' + next.specValues[k].skuSpecName};
@@ -515,18 +521,19 @@ function recurse(arr, i){
 					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
 							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
 							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
-			         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'>" +
-			         		"<input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'>" +	
-			         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''>" +
-							"</td></tr>";
+			         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'></td>" +
+			         		"<td><input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'></td>" +	
+			         		"<td><input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''></td>" +
+							"</tr>";
 				}
 				
 				html[j * count + k] = row;	
 			}
-			var specValueName = item.values[j].specValueName;
-			if (specValueName != null && specValueName != "") {
+			
+			var skuSpecId = item.values[j].specValueId;
+			if($('input[specvalueid='+skuSpecId+']').next().get(0).tagName == 'IMG'){
 				var jq = $("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
-						"<p>"+item.skuSpecName+"："+specValueName+"</p>" +
+						"<p>"+item.skuSpecName+"："+item.values[j].specValueName+"</p>" +
 						"<div class='btnWrap'>" +
 						"<input type='button' value='设为主图' name='setImgBtn' onclick='publish.setDefaultImg(this);' class='btn btn-def' /></div></li>");
 				jq.appendTo(ul);
@@ -668,7 +675,6 @@ function selectedAttr(){
 
 function selectedSkus(){
 	if(!skuSpecIdArr) return;
-	
 	var chk;
 	for (var i = 0; i < skuSpecIdArr.length; i++) {
 	 	var skuSpecId = skuSpecIdArr[i], skuSpecName = skuSpecNameArr[i];	
@@ -687,20 +693,25 @@ function selectedSkus(){
 	}
 	var table = $('#genSpec');
 	specCount = $('ul[specId]').length;
-	
+
 	for (var i = 0; i < skuSpecIdArr.length; i++) {
 		var skuSpecId = skuSpecIdArr[i];
 		var skuSpecIds = skuSpecId.split('|||');
 		for (var j = 0; j < skuSpecIds.length; j++) {
+			var idSuffix;
 			var selectedSpecId  = 0;
 			var specIdPair = skuSpecIds[j].split(':::');
+			if(specCount > 1 ){
+				idSuffix = (i * specIdPair[0] +j);
+				selectedSpecId = specIdPair[1] + idSuffix;
+			}else{
+				selectedSpecId = specIdPair[1];
+			}
 			
-			var row = $("#spec"+specIdPair[1] + (i * specIdPair[0] +j) ).length;
+			var row = $("#spec"+selectedSpecId).length;
 			if(row == 1){
-				var skuSpecId_t = setSuperSpecId(skuSpecIdArr[i],(i * specIdPair[0] +j));
-				
-				selectspecid = specIdPair[1] + (i * specIdPair[0] +j);
- 				var tr = $("#spec"+selectspecid);
+				var skuSpecId_t = setSuperSpecId(skuSpecIdArr[i],idSuffix);
+ 				var tr = $("#spec"+selectedSpecId);
 				var skuSalePrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuSalePrice"]');
 				var skuMarketPrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuMarketPrice"]');	
 				var skuStockBalance = tr.find('input[superspecid='+skuSpecId_t+'][name="skuStockBalance"]');
@@ -721,9 +732,13 @@ function selectedSkus(){
 	}
 }
 
-function setSuperSpecId(skuSpecId,specAdd) {
+function setSuperSpecId(skuSpecId,idSuffix) {
 	var skuSpecIds = skuSpecId.split('|||');
-    var skuSpecId_t = skuSpecIds[0].split(':::')[1] + specAdd;
+	var skuSpecId_t = skuSpecIds[0].split(':::')[1]
+	if(!!idSuffix){
+		skuSpecId_t += idSuffix;
+	}
+
 	var tr = $("#spec"+skuSpecId_t);
 	tr.children('td').children('input').attr('superSpecId', skuSpecId_t);
 	return skuSpecId_t;
