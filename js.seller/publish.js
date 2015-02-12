@@ -391,11 +391,9 @@ function publish(){
 			async : false,
 			success : function(data) {
 				if (data.success > 0) {
-//					tipsWindown("发布商品成功","submit:<p class='meg'><em>*</em>新发布的商品5分钟后会在\"待上架商品\"列表中显示</p> <p>您可在<a href=\"${ctx}/product/stockProd?m=12\">库存商品管理</a>中查看、修改已发布的商品</P>","","1","john");
-					alert("success");
+					$('#popProduct,#maskProduct').show();
 				} else {
 					alert("error");
-//					tipsWindown("","text:发布商品失败，网络异常请联系网络管理员！","2000","1");
 				}
 			}
 		});
