@@ -710,7 +710,7 @@ function selectedSkus(){
 			
 			var row = $("#spec"+selectedSpecId).length;
 			if(row == 1){
-				var skuSpecId_t = setSuperSpecId(skuSpecIdArr[i],idSuffix);
+				var skuSpecId_t = setSuperSpecId(skuSpecIdArr[i],idSuffix,specCount);
  				var tr = $("#spec"+selectedSpecId);
 				var skuSalePrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuSalePrice"]');
 				var skuMarketPrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuMarketPrice"]');	
@@ -732,10 +732,10 @@ function selectedSkus(){
 	}
 }
 
-function setSuperSpecId(skuSpecId,idSuffix) {
+function setSuperSpecId(skuSpecId,idSuffix,specCount) {
 	var skuSpecIds = skuSpecId.split('|||');
-	var skuSpecId_t = skuSpecIds[0].split(':::')[1]
-	if(!!idSuffix){
+	var skuSpecId_t = skuSpecIds[0].split(':::')[1];
+	if(specCount > 1){
 		skuSpecId_t += idSuffix;
 	}
 
