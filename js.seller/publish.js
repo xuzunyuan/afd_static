@@ -609,19 +609,8 @@ function prepareAttrData() {
 			if (!value) return;
 			
 			var arr = value.split('|||');
-			if (arr[2] === 'true') {
-				var value2 = $('[name="attrValue2"][attrValueId="' + arr[0] + '"]').val();
-				if (!value2) return;
-				
-				var arr2 = value2.split('|||');
-				
-				attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + arr[0] + '>>>' + arr2[0];
-				attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + arr[1] + '>>>' + arr2[1];
-				
-			} else {
-				attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + arr[0];
-				attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + arr[1];
-			}
+			attrValueId = attrValueId + (attrValueId ? '|||' : '') + attrId + ':::' + arr[0];
+			attrValueName = attrValueName + (attrValueName ? '|||' : '') + attrName + ':::' + arr[1];
 			
 		} else {
 			var chks = $('[name="attrValue"][attrId="' + attrId + '"]').filter(":checked");
