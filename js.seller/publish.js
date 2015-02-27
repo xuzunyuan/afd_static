@@ -218,7 +218,7 @@ function publish(){
 		jq.each(function(){
 			var flg = $(this).attr('flg');
 			var imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
-			if(imgUrl == ""){
+			if(!!!imgUrl){
 				$('#errSkuImg').text("请上传全部的sku图片");
 				ref =  false;
 			}else{
@@ -245,7 +245,7 @@ function publish(){
 		var title = $('input[name=title]').val(), subtitle = $('input[name=subtitle]').val(),
 		artNo = $('input[name=artNo]').val(),brand = $('select[name=brand] :selected').val(),detail = $('#detail').val();
 		
-		if(!!!title || !!! artNo || brand < 0 || !!!detail){
+		if(!!!title || !!!artNo || brand < 0 || !!!detail){
 			this.validateTitle();
 			this.validateSubtitle();
 			this.validateArtNo();
@@ -391,9 +391,13 @@ function publish(){
 			async : false,
 			success : function(data) {
 				if (data.success > 0) {
-					$('#popProduct,#maskProduct').show();
+//					$('#popProduct,#maskProduct').show();
+					
+					popWindown("发布商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
+
 				} else {
-					alert("error");
+					popWindown("发布商品失败","publish:网络连接异常，请联系网络管理员！","","1");
+					return;
 				}
 			}
 		});
@@ -678,58 +682,54 @@ function selectedSkus(){
 	 		if (chk) chk.trigger('change');	
 	 	}
 	}
+	
 	var table = $('#genSpec');
 	specCount = $('ul[specId]').length;
-
+	var pairValue = 0;
 	for (var i = 0; i < skuSpecIdArr.length; i++) {
-		var skuSpecId = skuSpecIdArr[i];
-		var skuSpecIds = skuSpecId.split('|||');
+		var skuSpecIds = skuSpecIdArr[i].split('|||');
+		var specIdPair = skuSpecIds[0].split(':::')[1];
 		for (var j = 0; j < skuSpecIds.length; j++) {
-			var idSuffix;
 			var selectedSpecId  = 0;
-			var specIdPair = skuSpecIds[j].split(':::');
-			if(specCount > 1 ){
-				idSuffix = (i * specIdPair[0] +j);
-				selectedSpecId = specIdPair[1] + idSuffix;
-			}else{
-				selectedSpecId = specIdPair[1];
-			}
-			
-			var row = $("#spec"+selectedSpecId).length;
-			if(row == 1){
-				var skuSpecId_t = setSuperSpecId(skuSpecIdArr[i],idSuffix,specCount);
- 				var tr = $("#spec"+selectedSpecId);
-				var skuSalePrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuSalePrice"]');
-				var skuMarketPrice = tr.find('input[superspecid='+skuSpecId_t+'][name="skuMarketPrice"]');	
-				var skuStockBalance = tr.find('input[superspecid='+skuSpecId_t+'][name="skuStockBalance"]');
-				$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
-				$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
-				$(skuStockBalance[0]).val(s_stockBalance[i]);
-
+			for (var m = 0; m < skuSpecIdArr.length; m++) {
+				if(specCount > 1 ){
+					selectedSpecId = specIdPair + (m * specCount +j);
+				}else{
+					selectedSpecId = specIdPair;
+				}
+				var row = $("#spec"+selectedSpecId).length;
+				if(row == 1){
+					if(pairValue == j && i%specCount == pairValue){
+						pairValue++;
+						var tr = $("#spec"+selectedSpecId);
+						tr.children('td').children('input').attr('superSpecId', selectedSpecId);  
+						var skuSalePrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuSalePrice"]');
+						var skuMarketPrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuMarketPrice"]');	
+						var skuStockBalance = tr.find('input[superspecid='+selectedSpecId+'][name="skuStockBalance"]');
+						$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
+						$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
+						$(skuStockBalance[0]).val(s_stockBalance[i]);
+					}
+					if(pairValue == skuSpecIds.length){
+						pairValue = 0;
+						break;
+					}
+				}
 			}
 			
 			skuImgUrl = table.find('input[name="skuImgUrl"]');
-			
 			if (skuImgUrl[i]) {
 				var flg = $(skuImgUrl[i]).attr('flg');
 				$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
 				$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
+				if(skuSortRankArr[i] == 0){
+					$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
+				}
 			}
 		}
 	}
 }
 
-function setSuperSpecId(skuSpecId,idSuffix,specCount) {
-	var skuSpecIds = skuSpecId.split('|||');
-	var skuSpecId_t = skuSpecIds[0].split(':::')[1];
-	if(specCount > 1){
-		skuSpecId_t += idSuffix;
-	}
-
-	var tr = $("#spec"+skuSpecId_t);
-	tr.children('td').children('input').attr('superSpecId', skuSpecId_t);
-	return skuSpecId_t;
-}
 
 KindEditor.ready(function(K) {
 		K.create('textarea[name="detail"]', {
