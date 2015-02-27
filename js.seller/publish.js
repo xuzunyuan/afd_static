@@ -392,9 +392,7 @@ function publish(){
 			success : function(data) {
 				if (data.success > 0) {
 //					$('#popProduct,#maskProduct').show();
-					
 					popWindown("发布商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
-
 				} else {
 					popWindown("发布商品失败","publish:网络连接异常，请联系网络管理员！","","1");
 					return;
@@ -683,22 +681,57 @@ function selectedSkus(){
 	 	}
 	}
 	
-	var table = $('#genSpec');
-	specCount = $('ul[specId]').length;
-	var pairValue = 0;
-	for (var i = 0; i < skuSpecIdArr.length; i++) {
-		var skuSpecIds = skuSpecIdArr[i].split('|||');
-		var specIdPair = skuSpecIds[0].split(':::')[1];
-		for (var j = 0; j < skuSpecIds.length; j++) {
-			var selectedSpecId  = 0;
-			for (var m = 0; m < skuSpecIdArr.length; m++) {
-				if(specCount > 1 ){
-					selectedSpecId = specIdPair + (m * specCount +j);
-				}else{
-					selectedSpecId = specIdPair;
-				}
-				var row = $("#spec"+selectedSpecId).length;
+	setSkus(skuSpecIdArr,0);
+
+	
+}
+
+function setSkus(skuSpecIdArr,k){
+	var table = $('#genSpec');	
+
+	if(k == (skuSpecIdArr.length - 1)){
+		for (var i = 0; i < skuSpecIdArr.length; i++) {
+			var skuSpecIds = skuSpecIdArr[i].split('|||');
+			var selectedSpecId = skuSpecIds[0].split(':::')[1];
+			for (var j = 0; j < skuSpecIds.length; j++) {
+				var row = $("#spec"+selectedSpecId).length; 
 				if(row == 1){
+					var tr = $("#spec"+selectedSpecId);
+					tr.children('td').children('input').attr('superSpecId', selectedSpecId);  
+					var skuSalePrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuSalePrice"]');
+					var skuMarketPrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuMarketPrice"]');	
+					var skuStockBalance = tr.find('input[superspecid='+selectedSpecId+'][name="skuStockBalance"]');
+					$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
+					$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
+					$(skuStockBalance[0]).val(s_stockBalance[i]);
+				}
+				
+				skuImgUrl = table.find('input[name="skuImgUrl"]');
+				if (skuImgUrl[i]) {
+					var flg = $(skuImgUrl[i]).attr('flg');
+					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
+					$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
+					if(skuSortRankArr[i] == 0){
+						$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
+					}
+				}
+			}
+		}
+		
+	}else{
+		setSkus(skuSpecIdArr,k + 1);
+		
+		var specCount = $('ul[specId]').length;
+		var pairValue = 0;
+//		var specValues = $('input[name="specValue"]').filter(":checked").length;
+		
+		for (var i = 0; i < skuSpecIdArr.length; i++) {
+			var skuSpecIds = skuSpecIdArr[i].split('|||');
+			var specIdPair = skuSpecIds[0].split(':::')[1];
+			for (var j = 0; j < skuSpecIds.length; j++) {
+				var selectedSpecId = specIdPair + (k * specCount +j);
+				var row = $("#spec"+selectedSpecId).length; 
+				if(row == 1 ){
 					if(pairValue == j && i%specCount == pairValue){
 						pairValue++;
 						var tr = $("#spec"+selectedSpecId);
@@ -710,26 +743,21 @@ function selectedSkus(){
 						$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
 						$(skuStockBalance[0]).val(s_stockBalance[i]);
 					}
-					if(pairValue == skuSpecIds.length){
-						pairValue = 0;
-						break;
-					}
 				}
-			}
-			
-			skuImgUrl = table.find('input[name="skuImgUrl"]');
-			if (skuImgUrl[i]) {
-				var flg = $(skuImgUrl[i]).attr('flg');
-				$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
-				$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
-				if(skuSortRankArr[i] == 0){
-					$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
+				
+				skuImgUrl = table.find('input[name="skuImgUrl"]');
+				if (skuImgUrl[i]) {
+					var flg = $(skuImgUrl[i]).attr('flg');
+					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
+					$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
+					if(skuSortRankArr[i] == 0){
+						$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
+					}
 				}
 			}
 		}
 	}
 }
-
 
 KindEditor.ready(function(K) {
 		K.create('textarea[name="detail"]', {
