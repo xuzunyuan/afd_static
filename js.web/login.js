@@ -11,6 +11,7 @@ $(function(){
 	$(document).on("click","#logout",function(){
 		$.cookie("_um",null,{domain:".afd.com",path:"/",expires:0});
 		$.cookie("_ut",null,{domain:".afd.com",path:"/",expires:0});
+		location.href = "http://www.afd.com";
 	});
 	
 });
