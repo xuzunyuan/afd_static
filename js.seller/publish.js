@@ -290,15 +290,20 @@ function publish(){
 			}
 			selectedSpec[specId].values.push({'specValueId' : specValueId,
 				'specValueName' : specValueName});
+			
 		}
 		
 		var selectedArr = [];
 		for (var key in selectedSpec) {
 			selectedArr.push(selectedSpec[key]);
 		}
-		 
+		
 		selectedArr.sort(function(a, b) {
 			return (parseInt(a['specOrder']) < parseInt(b['specOrder']) ? -1 : 1);
+		});
+		
+		selectedSpec[specId].values.sort(function(a, b) {
+			return (parseInt(a['specValueId']) < parseInt(b['specValueId']) ? -1 : 1);
 		});
 		
 		var table = $('#genSpec');
@@ -452,7 +457,6 @@ function generateSpec(selectedArr){
 
 	table.append(thead);
 	var rows = recurse(selectedArr, 0).html;
-	
 	$(rows).each(function() {
 		table.find('tbody').append(this);
 		table.find('tbody').parent().after('<div class="note errTxt" id="precErrMsg"></div>');
@@ -479,6 +483,7 @@ function recurse(arr, i){
 					'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName};
 			
 			html[j] = "<td>"+item.values[j].specValueName+"</td>";
+			
 			if(i == 0){
 				html[j] = "<tr id=spec"+ item.values[j].specValueId +"> "+ html[j] +
 						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice'  value='' onblur='publish.validateSkuSalePrice();' /></td>" +
@@ -508,14 +513,20 @@ function recurse(arr, i){
 
 		for (var j = 0; j < item.values.length; j++) {
 			for (var k = 0; k < count; k++) {
+				specValues[j * count + k] = 
+				{'skuSpecId' :  item.skuSpecId + ':::' + item.values[j].specValueId + '|||' + next.specValues[k].skuSpecId,
+				'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName + '|||' + next.specValues[k].skuSpecName};
+				
 				var row = '' ;
 				if (i == 0){
-					row = row + "<tr id=spec"+ item.values[j].specValueId + (j * count + k) +" >";
+					var specId = '';
+					var specs =  specValues[j * count + k].skuSpecId.split('|||');
+					for (var m = 0; m < specs.length; m++) {
+						specId += specs[m].split(':::')[1];
+					}
+					row = row + "<tr id=spec"+ specId +" >";
 				}
 				row = row + "<td>"+item.values[j].specValueName+"</td>" + next.html[k];
-				specValues[j * count + k] = 
-						{'skuSpecId' :  item.skuSpecId + ':::' + item.values[j].specValueId + '|||' + next.specValues[k].skuSpecId,
-						'skuSpecName' : item.skuSpecName + ':::' + item.values[j].specValueName + '|||' + next.specValues[k].skuSpecName};
 				
 				if (i == 0) {
 					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
@@ -543,7 +554,6 @@ function recurse(arr, i){
 			}
 		}
 	}
-	
 	return {'html' : html, 'specValues' : specValues};
 }
 
@@ -681,79 +691,34 @@ function selectedSkus(){
 	 	}
 	}
 	
-	setSkus(skuSpecIdArr,0);
-
-	
-}
-
-function setSkus(skuSpecIdArr,k){
 	var table = $('#genSpec');	
-
-	if(k == (skuSpecIdArr.length - 1)){
-		for (var i = 0; i < skuSpecIdArr.length; i++) {
-			var skuSpecIds = skuSpecIdArr[i].split('|||');
-			var selectedSpecId = skuSpecIds[0].split(':::')[1];
-			for (var j = 0; j < skuSpecIds.length; j++) {
-				var row = $("#spec"+selectedSpecId).length; 
-				if(row == 1){
-					var tr = $("#spec"+selectedSpecId);
-					tr.children('td').children('input').attr('superSpecId', selectedSpecId);  
-					var skuSalePrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuSalePrice"]');
-					var skuMarketPrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuMarketPrice"]');	
-					var skuStockBalance = tr.find('input[superspecid='+selectedSpecId+'][name="skuStockBalance"]');
-					$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
-					$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
-					$(skuStockBalance[0]).val(s_stockBalance[i]);
-				}
-				
-				skuImgUrl = table.find('input[name="skuImgUrl"]');
-				if (skuImgUrl[i]) {
-					var flg = $(skuImgUrl[i]).attr('flg');
-					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
-					$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
-					if(skuSortRankArr[i] == 0){
-						$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
-					}
-				}
-			}
+	var specCount = $('ul[specId]').length;
+	for (var i = 0; i < skuSpecIdArr.length; i++) {
+		var selectedSpecId = '';
+		var specs = skuSpecIdArr[i].split('|||');
+		for (var m = 0; m < specs.length; m++) {
+			selectedSpecId += specs[m].split(':::')[1];
 		}
 		
-	}else{
-		setSkus(skuSpecIdArr,k + 1);
+		var row = $("#spec"+selectedSpecId).length; 
+		if(row == 1 ){
+			var tr = $("#spec"+selectedSpecId);
+			tr.children('td').children('input').attr('superSpecId', selectedSpecId);  
+			var skuSalePrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuSalePrice"]');
+			var skuMarketPrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuMarketPrice"]');	
+			var skuStockBalance = tr.find('input[superspecid='+selectedSpecId+'][name="skuStockBalance"]');
+			$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
+			$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
+			$(skuStockBalance[0]).val(s_stockBalance[i]);
+		}
 		
-		var specCount = $('ul[specId]').length;
-		var pairValue = 0;
-//		var specValues = $('input[name="specValue"]').filter(":checked").length;
-		
-		for (var i = 0; i < skuSpecIdArr.length; i++) {
-			var skuSpecIds = skuSpecIdArr[i].split('|||');
-			var specIdPair = skuSpecIds[0].split(':::')[1];
-			for (var j = 0; j < skuSpecIds.length; j++) {
-				var selectedSpecId = specIdPair + (k * specCount +j);
-				var row = $("#spec"+selectedSpecId).length; 
-				if(row == 1 ){
-					if(pairValue == j && i%specCount == pairValue){
-						pairValue++;
-						var tr = $("#spec"+selectedSpecId);
-						tr.children('td').children('input').attr('superSpecId', selectedSpecId);  
-						var skuSalePrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuSalePrice"]');
-						var skuMarketPrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuMarketPrice"]');	
-						var skuStockBalance = tr.find('input[superspecid='+selectedSpecId+'][name="skuStockBalance"]');
-						$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
-						$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
-						$(skuStockBalance[0]).val(s_stockBalance[i]);
-					}
-				}
-				
-				skuImgUrl = table.find('input[name="skuImgUrl"]');
-				if (skuImgUrl[i]) {
-					var flg = $(skuImgUrl[i]).attr('flg');
-					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
-					$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
-					if(skuSortRankArr[i] == 0){
-						$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
-					}
-				}
+		skuImgUrl = table.find('input[name="skuImgUrl"]');
+		if (skuImgUrl[i]) {
+			var flg = $(skuImgUrl[i]).attr('flg');
+			$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
+			$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
+			if(skuSortRankArr[i] == 0){
+				$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
 			}
 		}
 	}
