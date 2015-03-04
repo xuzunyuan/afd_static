@@ -130,7 +130,7 @@ function publish(){
 				return ref;
 			}else{
 				$("#spacErr").text("");
-				if(!this.validateSkuSalePrice() || !this.validateSkuMarketPrice() || !this.validateSkuStockBalance()){
+				if(!this.validateSkuSalePrice() || !this.validateSkuMarketPrice() || !this.validateSkuStockBalance() || !this.validateSellerNo()){
 					ref = false;
 				}
 			}
@@ -211,6 +211,24 @@ function publish(){
 		return ref;
 	};
 	
+	this.validateSellerNo = function(){
+		var regBSellerNo = /^[1-9][\d]{0,4}$/;
+		ref = true;
+		var sellerNos = $('[name="sellerNo"]');
+		sellerNos.each(function(){
+			sellerNo = $(this).val();
+			if(!!!sellerNo){
+				$('#precErrMsg').text("请填写商家编号！");
+				ref = false;
+			}if(!regBSellerNo.test(sellerNo)){
+				$('#precErrMsg').text("商家编号输入错误，请输入大于0且小于999999！");
+				ref = false;
+			}else{
+				$('#precErrMsg').text("");
+			}
+		});
+		return ref;
+	};
 	this.validateSkuImg = function(){
 		var ref = true;
 		var totalImgCount = $('#skuImg li').length;
@@ -312,6 +330,7 @@ function publish(){
 		var oldSkuSalePriceValue = [],
 			oldSkuMarketPriceValue =[],
 			oldSkuStockBalanceValue = [],
+			oldSellerNoValue = [],
 			oldSkuSpecIdValue = [],
 			oldSkuSpecNameValue = [],
 			oldSkuImgUrlValue = [];
@@ -319,6 +338,7 @@ function publish(){
 		var oldSkuSalePrice = table.find('input[name="skuSalePrice"]'),
 			oldSkuMarketPrice = table.find('input[name="skuMarketPrice"]'),
 			oldSkuStockBalance = table.find('input[name="skuStockBalance"]'),
+			oldSellerNo = table.find('input[name="sellerNo"]'),
 			oldSkuSpecId = table.find('input[name="skuSpecId"]'),
 			oldSkuSpecName = table.find('input[name="skuSpecName"]'),
 			oldSkuImgUrl = table.find('input[name="skuImgUrl"]');
@@ -327,6 +347,7 @@ function publish(){
 			oldSkuSalePriceValue[i] = $(oldSkuSalePrice[i]).val();
 			oldSkuMarketPriceValue[i] = $(oldSkuMarketPrice[i]).val();
 			oldSkuStockBalanceValue[i] = $(oldSkuStockBalance[i]).val();
+			oldSellerNoValue[i] = $(oldSellerNo[i]).val();
 			oldSkuSpecIdValue[i] = $(oldSkuSpecId[i]).val();
 			oldSkuSpecNameValue[i] =  $(oldSkuSpecName[i]).val();
 			oldSkuImgUrlValue[i] = $(oldSkuImgUrl[i]).val();
@@ -341,6 +362,7 @@ function publish(){
 		var newSkuSalePrice = table.find('input[name="skuSalePrice"]'),
 			newSkuMarketPrice = table.find('input[name="skuMarketPrice"]'),
 			newSkuStockBalance = table.find('input[name="skuStockBalance"]'),
+			newSellerNo = table.find('input[name="sellerNo"]'),
 			newSkuSpecId = table.find('input[name="skuSpecId"]'),
 			newSkuImgUrl = table.find('input[name="skuImgUrl"]');
 		
@@ -352,6 +374,7 @@ function publish(){
 					$(newSkuSalePrice[i]).val(oldSkuSalePriceValue[j]);
 					$(newSkuMarketPrice[i]).val(oldSkuMarketPriceValue[j]);
 					$(newSkuStockBalance[i]).val(oldSkuStockBalanceValue[j]);
+					$(newSellerNo[i]).val(oldSellerNoValue[j]);
 					
 					if (oldSkuImgUrlValue[j]) {
 						var flg = $(newSkuImgUrl[i]).attr('flg');
@@ -452,6 +475,7 @@ function generateSpec(selectedArr){
 	thead += "<th>单价</th>" +
 			"<th>特卖价</th>" +
 			"<th>数量</th>" +
+			"<th>商家编号</th>" +
 			"</tr></thead>" +
 			"<tbody>";
 
@@ -489,6 +513,7 @@ function recurse(arr, i){
 						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice'  value='' onblur='publish.validateSkuSalePrice();' /></td>" +
 						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
 						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
+						"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo();' /></td>" +
 		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'></td>" +
 		         		"<td><input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'></td>" +
 		         		"<td><input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' ></td>" +
@@ -532,25 +557,25 @@ function recurse(arr, i){
 					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
 							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
 							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
+							"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo();' /></td>" +
 			         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'></td>" +
 			         		"<td><input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'></td>" +	
 			         		"<td><input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''></td>" +
 							"</tr>";
+					
+					if (k == 0) {
+						var jq = $("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
+								"<p>"+item.skuSpecName+"："+item.values[j].specValueName+"</p>" +
+								"<div class='btnWrap'>" +
+								"<input type='button' value='设为主图' name='setImgBtn' onclick='publish.setDefaultImg(this);' class='btn btn-def' /></div></li>");
+						jq.appendTo(ul);
+						jq.find('img').each(function(){
+							uploadSkuImg(this);
+						});
+					}
 				}
 				
 				html[j * count + k] = row;	
-			}
-			
-			var skuSpecId = item.values[j].specValueId;
-			if($('input[specvalueid='+skuSpecId+']').next().get(0).tagName == 'IMG'){
-				var jq = $("<li><div class='mod-upload'><img src='"+cssUrl+"/img/upload_img.jpg' alt='' flg='" + item.values[j].specValueId + "' onclick='uploadSkuImg(this);' /></div>" +
-						"<p>"+item.skuSpecName+"："+item.values[j].specValueName+"</p>" +
-						"<div class='btnWrap'>" +
-						"<input type='button' value='设为主图' name='setImgBtn' onclick='publish.setDefaultImg(this);' class='btn btn-def' /></div></li>");
-				jq.appendTo(ul);
-				jq.find('img').each(function(){
-					uploadSkuImg(this);
-				});
 			}
 		}
 	}
@@ -707,9 +732,11 @@ function selectedSkus(){
 			var skuSalePrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuSalePrice"]');
 			var skuMarketPrice = tr.find('input[superspecid='+selectedSpecId+'][name="skuMarketPrice"]');	
 			var skuStockBalance = tr.find('input[superspecid='+selectedSpecId+'][name="skuStockBalance"]');
+			var sellerNo = tr.find('input[superspecid='+selectedSpecId+'][name="sellerNo"]');
 			$(skuSalePrice[0]).val(parseFloat(s_salePrice[i]).toFixed(2));
 			$(skuMarketPrice[0]).val(parseFloat(s_marketPrice[i]).toFixed(2));
 			$(skuStockBalance[0]).val(s_stockBalance[i]);
+			$(sellerNo[0]).val(s_sellerNo[i]);
 		}
 		
 		skuImgUrl = table.find('input[name="skuImgUrl"]');
