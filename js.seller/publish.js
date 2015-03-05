@@ -418,10 +418,11 @@ function publish(){
 			cache : false,
 			async : false,
 			success : function(data) {
-				if (data.success > 0) {
-//					$('#popProduct,#maskProduct').show();
+				if (data.success == 0) {
 					popWindown("发布商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
-				} else {
+				}else if(data.success ==1){
+					popWindown("修改商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
+				}else {
 					popWindown("发布商品失败","publish:网络连接异常，请联系网络管理员！","","1");
 					return;
 				}
