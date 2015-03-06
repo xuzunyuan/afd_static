@@ -130,9 +130,6 @@ function publish(){
 				return ref;
 			}else{
 				$("#spacErr").text("");
-				if(!this.validateSkuSalePrice() || !this.validateSkuMarketPrice() || !this.validateSkuStockBalance() || !this.validateSellerNo()){
-					ref = false;
-				}
 			}
 		}
 		return ref ;
@@ -229,6 +226,7 @@ function publish(){
 		});
 		return ref;
 	};
+	
 	this.validateSkuImg = function(){
 		var ref = true;
 		var totalImgCount = $('#skuImg li').length;
@@ -274,7 +272,9 @@ function publish(){
 		if(!this.valaidateAttr() | !this.validateSpec() | !this.validateSkuImg()){
 			ref = false;
 		};
-		
+		if(!this.validateSkuSalePrice() || !this.validateSkuMarketPrice() || !this.validateSkuStockBalance() || !this.validateSellerNo()){
+			ref = false;
+		}
 		prepareAttrData(); 
 		
 		return ref;
@@ -318,10 +318,6 @@ function publish(){
 		
 		selectedArr.sort(function(a, b) {
 			return (parseInt(a['specOrder']) < parseInt(b['specOrder']) ? -1 : 1);
-		});
-		
-		selectedSpec[specId].values.sort(function(a, b) {
-			return (parseInt(a['specValueId']) < parseInt(b['specValueId']) ? -1 : 1);
 		});
 		
 		var table = $('#genSpec');
