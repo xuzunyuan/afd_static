@@ -78,6 +78,12 @@
 	width: 100%;
 	vertical-align: bottom;
 }
+.form-special .item-preview.preview1 img{
+	height: 120px;
+}
+.form-special .item-preview.preview2 img{
+	height: 90px;
+}
 .form-special .item-address .item-cont label {
 	display: block;
 }

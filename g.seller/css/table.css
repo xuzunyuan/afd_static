@@ -252,3 +252,6 @@ table.table-center>tfoot>tr>td,
 	color: #f00;
 	font-size: 18px;
 }
+.table-order .emptyGoods td{
+	padding: 40px 0;
+}
