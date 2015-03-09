@@ -136,7 +136,6 @@ function publish(){
 	};
 	
 	this.validateSkuSalePrice = function(){
-		ref = true;
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		var skuSalePrices = $('[name="skuSalePrice"]');
 		skuSalePrices.each(function(){
@@ -144,16 +143,16 @@ function publish(){
 			marketPrice = parseFloat($(this).parent().next().children().val());
 			if(!regPrice.test(salePrice)){
 				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
-				ref = false;
+				return false;
 			}else if(!!!salePrice){
 				$('#precErrMsg').text("请输入单价！");
-				ref = false;
+				return false;
 			}else if(marketPrice > salePrice){
 				$('#precErrMsg').text("特卖价应小于单价！");
-				ref = false;
+				return false;
 			}else if(salePrice == 0 || salePrice =='0.0' || salePrice =='0.00'){
 				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
-				ref = false;
+				return false;
 			}else{
 				$('#precErrMsg').text("");
 			}
@@ -164,7 +163,6 @@ function publish(){
 	
 	this.validateSkuMarketPrice = function(){
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
-		ref = true;
 		var skuMarketPrices = $('[name="skuMarketPrice"]');
 		skuMarketPrices.each(function(){
 			marketPrice = parseFloat($(this).val());
@@ -172,21 +170,21 @@ function publish(){
 			
 			if(!regPrice.test(marketPrice)){
 				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
-				ref = false;
+				return false;
 			}else if(!!!marketPrice){
 				$('#precErrMsg').text("请输入特卖价！");
-				ref = false;
+				return false;
 			}else if(marketPrice > salePrice){
 				$('#precErrMsg').text("特卖价应小于单价！");
-				ref = false;
+				return false;
 			}else if(marketPrice == 0 || marketPrice =='0.0' || marketPrice =='0.00'){
 				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
-				ref = false;
+				return false;
 			}else{
 				$('#precErrMsg').text("");
+				return true;
 			}
 		});
-		return ref;
 	};
 	
 	this.validateSkuStockBalance = function(){
