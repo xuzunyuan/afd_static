@@ -37,56 +37,74 @@ function publish(){
 	};
 	
 	this.validateTitle = function(){
+		var ret = false;
 		var jq = $('input[name=title]');
 		if($.trim(jq.val()).length == 0 ){
+			location.hash = '#title';
 			jq.parent().next().text("请填写商品标题！");
-			return;
-		}else if(jq.val().length > 20 ){
+			return false;
+		}else if(jq.val().length > 30 ){
+			location.hash = '#title';
 			jq.parent().next().text("字数超长或有误，请填写30个字以内的标题！");
-			return;
+			return false;
 		}else{
 			jq.parent().next().text("");
+			ret = true;
 		}	
+		return ret;
 	};
 	
 	this.validateSubtitle = function(){
+		var ret = false;
 		var jq = $('input[name=subtitle]');
 		if($.trim(jq.val()).length > 100 ){
+			location.hash = '#subtitle';
 			jq.parent().next().text("商品卖点字数超长！");
-			return;
+			return false;
 		}else{
 			jq.parent().next().text("");
+			ret =  true;
 		}
+		return ret;
 	};
 	
 	this.validateArtNo = function(){
+		var ret = false;
 		var regArtNo = /^[a-zA-Z0-9]{12,16}$/;
 	 	var jq = $("input[name=artNo]");
 		if($.trim(jq.val()).length == 0 ){
+			location.hash = '#artNo';
 			jq.parent().next().text("请填写货号！");
-			return;
+			return false;
 		}else if(!regArtNo.test(jq.val())){
+			location.hash = '#artNo';
 			jq.parent().next().text("输入有误，请重新填写货号！");
-			return;
+			return false;
 		}else{
 			jq.parent().next().text("");
+			ret =  true;
 		}
+		return ret;
 	};
 	
 	this.validateBrand = function(){
+		var ret = false;
 		jq = $('select[name=brand] :selected');
 		if(jq.val() < 0){
+			location.hash = '#brand';
 			jq.parent().parent().next().text("请选择品牌！");
-			return;
+			return false;
 		}else{
 			$('#brandId').val(jq.val());
 			$('#brandName').val(jq.text());
 			jq.parent().parent().next().text("");
+			ret = true;
 		}
+		return ret;
 	}
 
 	this.valaidateAttr = function(){
-		ref = true;
+		ret = false;
 		var jq = $('[name="attr"]');
 		jq.each(function(){
 			var require = $(this).attr('require'),
@@ -98,190 +116,232 @@ function publish(){
 			if(displayMode =='1'){
 				var attrValue = $('[name="attrValue"][attrId="' + attrId + '"]').val();
 				if(!!!attrValue){
+					location.hash = '#attrValue';
 					jq.prev().parent().next().text("请选择属性'" + attrName + "'");
-					ref = false;
-					return ref;
+					return false;
 				}else{
 					jq.prev().parent().next().text("");
+					ret = true;
 				}
 			}else{
 				var chks = $('[name="attrValue"][attrId="' + attrId + '"]').filter(":checked");
 				if (chks.length == 0) {
+					location.hash = '#attrValue';
 					jq.prev().parent().next().text("请选择属性'" + attrName + "'");
-					ref = false;
-					return ref;
+					return false;
 				}else{
 					jq.prev().parent().next().text("");
+					ret = true;
 				}
 			}
 		});
-		return ref; 
+		return ret; 
 	};
 	
 	this.validateSpec = function(){
-		ref = true;
+		ret = false;
 		var jq = $('ul[specId]');
 		for(var i = 1; i <= jq.length;i++){
 			var specId = $('ul[var="'+i+'"]').attr('specId');
 			var chks = $('[name="specValue"][skuSpecId="'+specId+'"]').filter(":checked");
 			if (chks.length == 0) {
+				location.hash = '#specValue';
 				$("#spacErr").text("请选择规格！");
-				ref = false;
-				return ref;
+				return false;
 			}else{
 				$("#spacErr").text("");
+				ret = true;
 			}
 		}
-		return ref ;
+		return ret;
 	};
 	
 	this.validateSkuSalePrice = function(){
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		var skuSalePrices = $('[name="skuSalePrice"]');
+		var ret = false;
 		skuSalePrices.each(function(){
 			salePrice = parseFloat($(this).val());
 			marketPrice = parseFloat($(this).parent().next().children().val());
 			if(!regPrice.test(salePrice)){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
 				return false;
 			}else if(!!!salePrice){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("请输入单价！");
 				return false;
 			}else if(marketPrice > salePrice){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价应小于单价！");
 				return false;
 			}else if(salePrice == 0 || salePrice =='0.0' || salePrice =='0.00'){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
 				return false;
 			}else{
 				$('#precErrMsg').text("");
+				ret = true;
 			}
 		});
-		
-		return ref;
+		return ret;
 	};
 	
 	this.validateSkuMarketPrice = function(){
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
 		var skuMarketPrices = $('[name="skuMarketPrice"]');
+		var ret = false;
 		skuMarketPrices.each(function(){
 			marketPrice = parseFloat($(this).val());
 			salePrice = parseFloat($(this).parent().prev().children().val());
 			
 			if(!regPrice.test(marketPrice)){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
 				return false;
 			}else if(!!!marketPrice){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("请输入特卖价！");
 				return false;
 			}else if(marketPrice > salePrice){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价应小于单价！");
 				return false;
 			}else if(marketPrice == 0 || marketPrice =='0.0' || marketPrice =='0.00'){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
 				return false;
 			}else{
 				$('#precErrMsg').text("");
-				return true;
+				ret = true;
 			}
 		});
+		return ret;
 	};
 	
 	this.validateSkuStockBalance = function(){
 		var regBalance = /^[1-9][\d]{0,4}$/;
-		ref = true;
+		var ret = false;
 		var skuStockBalances = $('[name="skuStockBalance"]');
 		skuStockBalances.each(function(){
 			stockBalance = $(this).val();
 			if(!!!stockBalance){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("请填写数量！");
-				ref = false;
+				return false;
 			}if(!regBalance.test(stockBalance)){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("商品数量有误，请输入大于0且小于999999！");
-				ref = false;
+				return false;
 			}else{
 				$('#precErrMsg').text("");
+				ret = true;
 			}
 		});
-		return ref;
+		return ret;
 	};
 	
 	this.validateSellerNo = function(){
 		var regBSellerNo = /^[1-9][\d]{0,4}$/;
-		ref = true;
+		ret = false;
 		var sellerNos = $('[name="sellerNo"]');
 		sellerNos.each(function(){
 			sellerNo = $(this).val();
 			if(!!!sellerNo){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("请填写商家编号！");
-				ref = false;
+				return false;
 			}if(!regBSellerNo.test(sellerNo)){
+				location.hash = "#genSpec";
 				$('#precErrMsg').text("商家编号输入错误，请输入大于0且小于999999！");
-				ref = false;
+				return false;
 			}else{
 				$('#precErrMsg').text("");
+				ret = true;
 			}
 		});
-		return ref;
+		return ret;
 	};
 	
 	this.validateSkuImg = function(){
-		var ref = true;
+		var ret = false;
 		var totalImgCount = $('#skuImg li').length;
 		var jq = $('input[name="skuImgUrl"]');
 		jq.each(function(){
 			var flg = $(this).attr('flg');
 			var imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
 			if(!!!imgUrl){
+				location.hash = "#errSkuImg";
 				$('#errSkuImg').text("请上传全部的sku图片");
-				ref =  false;
+				return false;
 			}else{
 				$('#errSkuImg').text("");	
+				ret = true;
 			}
 		});
-		return ref;
+		return ret;
 	};
 	
 	this.validateDetail = function(){
-		ref = true;
+		ret = false;
 		var jq = $('#detail');
 		if(!!!jq.val()){
+			location.hash = '#detail';
 			jq.parent().parent().next().text("请填写商品描述！");
-			ref = false;
+			return false;
 		}else{
 			jq.parent().parent().next().text("");
+			ret = true;
 		}
-		return ref;
+		return ret;
 	}
 	
 	this.checkFromData = function(){
-		ref = true;
-		var title = $('input[name=title]').val(), subtitle = $('input[name=subtitle]').val(),
-		artNo = $('input[name=artNo]').val(),brand = $('select[name=brand] :selected').val(),detail = $('#detail').val();
+		ret = true;
 		
-		if(!!!title || !!!artNo || brand < 0 || !!!detail){
-			this.validateTitle();
-			this.validateSubtitle();
-			this.validateArtNo();
-			this.validateBrand();
-			this.validateDetail();
-			ref = false;
+		if(!this.validateTitle()){
+			return false;
 		}
-		if(!this.valaidateAttr() | !this.validateSpec() | !this.validateSkuImg()){
-			ref = false;
-		};
-		if(!this.validateSkuSalePrice() || !this.validateSkuMarketPrice() || !this.validateSkuStockBalance() || !this.validateSellerNo()){
-			ref = false;
+		if(!this.validateSubtitle()){
+			return false;
 		}
-		prepareAttrData(); 
-		
-		return ref;
+		if(!this.validateArtNo()){
+			return false;
+		}
+		if(!this.validateBrand()){
+			return false;
+		}
+		if(!this.validateDetail()){
+			return false;
+		}
+		if(!this.valaidateAttr()){
+			return false;
+		}
+		if(!this.validateSpec()){
+			return false;
+		}
+		if(!this.validateSkuImg()){
+			return false;
+		}
+		if(!this.validateSkuSalePrice()){
+			return false;
+		}
+		if(!this.validateSkuMarketPrice()){
+			return false;
+		}
+		if(!this.validateSkuStockBalance()){
+			return false;
+		}
+		if(!this.validateSellerNo()){
+			return false;
+		}		
+		return ret;
 	};
 
 	
 	this.modifyBc = function(pathId){
 		if(!pathId) return;
-		window.location.href = "../product/category?pathId="+pathId+"&m=2001";
+		window.location.hret = "../product/category?pathId="+pathId+"&m=2001";
 	};
 	
 	this.generateSku = function(obj){
@@ -382,7 +442,7 @@ function publish(){
 	};
 	
 	this.setDefaultImg = function(obj){
-		ref = true;
+		ret = true;
 		var jq = $(obj).closest('li').children('.mod-upload').find('img');
 		flg = parseInt(jq.attr("flg"));
 		imgUrl = $('input[name="skuImgUrl"][flg="' + flg + '"]').val();
@@ -394,34 +454,36 @@ function publish(){
 			$(obj).hide();
 		}else{
 			alert('请上传sku图片');
-			ref = false;
+			ret = false;
 		}
 		
-		return ref;
+		return ret;
 	};
 	
 	this.saveProduct = function(){
 		if (!publish.checkFromData()) {
 			return false;
-		}
-
-		$.ajax({
-			url : "../product/save",
-			data : $('#publishForm').serialize(),
-			type : "post",
-			cache : false,
-			async : false,
-			success : function(data) {
-				if (data.success == 0) {
-					popWindown("发布商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
-				}else if(data.success ==1){
-					popWindown("修改商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
-				}else {
-					popWindown("发布商品失败","publish:网络连接异常，请联系网络管理员！","","1");
-					return;
+		}else{
+			prepareAttrData(); 
+			
+			$.ajax({
+				url : "../product/save",
+				data : $('#publishForm').serialize(),
+				type : "post",
+				cache : false,
+				async : false,
+				success : function(data) {
+					if (data.success == 0) {
+						popWindown("发布商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
+					}else if(data.success ==1){
+						popWindown("修改商品成功","publish:您可在<b>“在售商品管理”</b>中查看、修改商品","","1");
+					}else {
+						popWindown("发布商品失败","publish:网络连接异常，请联系网络管理员！","","1");
+						return;
+					}
 				}
-			}
-		});
+			});
+		}
 	};
 }
 
