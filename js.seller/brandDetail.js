@@ -116,7 +116,7 @@ function addProduct(tr) {
 	
 	$(product.skus).each(function(index, sku){
 		var s = '<tr><td><img style="width:50px;height:50px;" src="' + imgGetUrl + '?rid=' + sku.skuImgUrl + '" alt=""></td>' + 
-				'<td>' + sku.skuSpecName + '</td>' +
+				'<td><p>' + sku.skuSpecName.replace(/:::/g, ' : ').replace(/\|\|\|/, '</p><p>') + '</td></p>' +
 				'<td>￥' + sku.marketPrice + '</td>' +
 				'<td><input type="text" class="txt sm w-sm" placeholder="10" name="discount" maxlength="3">折</td>' + 
 				'<td><input type="text" class="txt sm w-sm" placeholder="10" name="showPrice" maxlength="11" marketPrice="' + sku.marketPrice  + '"></td>' +
