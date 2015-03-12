@@ -9,9 +9,9 @@ $(function(){
 	}
 	
 	$(document).on("click","#logout",function(){
-		$.cookie("_um",null,{domain:".afd.com",path:"/",expires:0});
-		$.cookie("_ut",null,{domain:".afd.com",path:"/",expires:0});
-		location.href = "http://www.afd.com";
+		$.cookie("_um",null,{domain:".joyoro.com",path:"/",expires:0});
+		$.cookie("_ut",null,{domain:".joyoro.com",path:"/",expires:0});
+		location.href = "http://www.joyoro.com";
 	});
 	
 });
@@ -49,7 +49,7 @@ function validUser(){
 			var newExpired = serverTime + 2*60*60*1000;
 			var newExpiredDate = new Date();
 			newExpiredDate.setTime(newExpired);
-			$.cookie("_ut",newExpired+"|"+timeDiff,{expires:newExpiredDate,path:"/",domain:".afd.com"});
+			$.cookie("_ut",newExpired+"|"+timeDiff,{expires:newExpiredDate,path:"/",domain:".joyoro.com"});
 		}
 	}
 	return true;
