@@ -11,7 +11,7 @@ $(function(){
 	$(document).on("click","#logout",function(){
 		$.cookie("_um",null,{domain:".juyouli.com",path:"/",expires:0});
 		$.cookie("_ut",null,{domain:".juyouli.com",path:"/",expires:0});
-		location.href = "http://www.juyouli.com";
+		location.href = "http://www.juyouli.com/login.action";
 	});
 	
 });
