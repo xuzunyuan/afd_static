@@ -341,7 +341,7 @@ function publish(){
 	
 	this.modifyBc = function(pathId){
 		if(!pathId) return;
-		window.location.hret = "../product/category?pathId="+pathId+"&m=2001";
+		window.location.href = "../product/category?pathId="+pathId+"&m=2001";
 	};
 	
 	this.generateSku = function(obj){
@@ -517,6 +517,7 @@ function generateSpec(selectedArr){
 	
 	var thead = "<table class='table table-line'>" +
 			"<colgroup><col width='' />" +
+			"<col width='85' />" +
 			"<col width='85' />" +
 			"<col width='85' />";
 	
