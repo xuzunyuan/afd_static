@@ -433,7 +433,7 @@ function publish(){
 					if (oldSkuImgUrlValue[j]) {
 						var flg = $(newSkuImgUrl[i]).attr('flg');
 						$('input[name="skuImgUrl"][flg="' + flg + '"]').val(oldSkuImgUrlValue[j]);
-						$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ oldSkuImgUrlValue[j]);
+						$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ oldSkuImgUrlValue[j]+"&op=s0_w238_h238");
 					}
 					break;
 				}
@@ -801,7 +801,7 @@ function selectedSkus(){
 		if (skuImgUrl[i]) {
 			var flg = $(skuImgUrl[i]).attr('flg');
 			$('input[name="skuImgUrl"][flg="' + flg + '"]').val(s_imgUrl[i]);
-			$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]);
+			$('img[flg="' + flg + '"]').attr("src",imgGetUrl +"?rid="+ s_imgUrl[i]+"&op=s0_w238_h238");
 			if(skuSortRankArr[i] == 0){
 				$('img[flg="' + flg + '"]').closest('li').children('.btnWrap').find('input').trigger('click');
 			}
