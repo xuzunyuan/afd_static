@@ -533,7 +533,7 @@ function generateSpec(selectedArr){
 	thead += "<th>单价</th>" +
 			"<th>特卖价</th>" +
 			"<th>数量</th>" +
-			"<th>商家编号</th>" +
+			"<th rowspan='3'>商家编号</th>" +
 			"</tr></thead>" +
 			"<tbody>";
 
