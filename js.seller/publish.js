@@ -572,9 +572,9 @@ function recurse(arr, i){
 						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
 						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
 						"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo();' /></td>" +
-		         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'></td>" +
-		         		"<td><input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'></td>" +
-		         		"<td><input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' ></td>" +
+		         		"<input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'>" +
+		         		"<input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'>" +
+		         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' >" +
 		         		"</tr>";
 				
 				var specValueName = item.values[j].specValueName;
@@ -616,9 +616,9 @@ function recurse(arr, i){
 							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
 							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
 							"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo();' /></td>" +
-			         		"<td><input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'></td>" +
-			         		"<td><input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'></td>" +	
-			         		"<td><input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''></td>" +
+			         		"<input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'>" +
+			         		"<input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'>" +	
+			         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''>" +
 							"</tr>";
 					
 					if (k == 0) {
