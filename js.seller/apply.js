@@ -65,7 +65,7 @@ function initValidate() {
 function initSubmit() {
 	$('#frm').submit(function(e){
 		if(!$('#chkProtocol').prop('checked')) {
-			$('#protocol_msg').html('请选择同意阿凡达商家入驻条款');
+			$('#protocol_msg').html('请选择同意巨友利商家入驻条款');
 			return false;
 		}
 	});
@@ -74,7 +74,7 @@ function initSubmit() {
 		if($(e.target).prop('checked')) {
 			$('#protocol_msg').html('');
 		} else {
-			$('#protocol_msg').html('请选择同意阿凡达商家入驻条款');
+			$('#protocol_msg').html('请选择同意巨友利商家入驻条款');
 		}
 	});
 	
