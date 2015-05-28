@@ -1,0 +1,103 @@
+/**
+ * style form
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version 	1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * Form
+ * Theme
+ * 
+ * 
+ */
+
+/* Form
+ ---------------------------------------- */
+
+.form {
+	margin-bottom: 10px;
+}
+.form .legend {
+	display: block;
+	width: 100%;
+	margin: 10px 0;
+}
+.formGroup,
+.form .form-item {
+	*zoom: 1;
+}
+.formGroup:after,
+.form .form-item:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.itemGroup {
+	margin-bottom: 10px;
+}
+.form .form-item {
+	margin: 10px 0;
+}
+.form .item-label {
+	float: left;
+	clear: left;
+	width: 100px;
+	min-height: 1px;
+	margin-right: 10px;
+	color: #333;
+	line-height: 26px;
+	text-align: right;
+}
+.form .item-cont {
+	margin-left: 110px;
+	line-height: 26px;
+}
+
+.form .item-label em {
+	margin: 0 5px;
+	color: #f00;
+	font-family: simsun;
+}
+.form .item-cont>.txt,
+.form .item-cont>.btn,
+.form .item-cont>.txt-tel,
+.form .item-cont>.txt-section,
+.form .item-cont>.select,
+.form .item-cont>select,
+.form .itemGroup>.txt,
+.form .itemGroup>.btn,
+.form .itemGroup>.txt-tel,
+.form .itemGroup>.txt-section,
+.form .itemGroup>.select,
+.form .itemGroup>select {
+	margin-right: 10px;
+}
+.form .item-cont>.radio,
+.form .item-cont>.chk,
+.form .itemGroup>.radio,
+.form .itemGroup>.chk {
+	margin-right: 5px;
+}
+.form .item-cont>label,
+.form .itemGroup>label {
+	margin-right: 20px;
+	white-space: nowrap;
+}
+/* form-inline */
+.form.form-inline .form-item {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	margin: 0 10px 15px 0;
+	vertical-align: top;
+}
+
+/* Theme
+ ---------------------------------------- */
+

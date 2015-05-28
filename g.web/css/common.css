@@ -166,7 +166,7 @@
 }
 #topbar .signin a {
 	margin: 0 6px;
-	color: #5D1B97;
+	color: #c50808;
 }
 #topbar .signin .quit {
 	color: #666;
@@ -284,14 +284,15 @@
 #logo {
 	overflow: hidden;
 	float: left;
-	height: 42px;
+	height: 52px;
 	margin: 26px 10px 0 0;
 }
 #logo .logo {
 	float: left;
-	margin-right: 10px;
+	margin:0 20px;
 }
 #logo .slogan {
+	margin-top: 5px;
 	float: left;
 }
 #logo .slogan img {
@@ -324,7 +325,7 @@
 	line-height: 32px;
 	text-align: center;
 	cursor: pointer;
-	background: #f05a96 url(../img/cart-icon.png) no-repeat 0 0;
+	background: #fa722b url(../img/cart-icon.png) no-repeat 0 0;
 	-webkit-border-radius: 0 6px 6px 0;
 	-moz-border-radius: 0 6px 6px 0;
 	border-radius: 0 6px 6px 0;	
@@ -348,7 +349,7 @@
 	left: 2px;
 	bottom: 2px;
 	border-width: 5px;
-	border-color: #f05a96;
+	border-color: #fa722b;
 }
 #shoppingCart>.cart .top-hollow i {
 	top: 2px;
@@ -365,7 +366,7 @@
 	width: 358px;
 	height: 0;
 	background: #fff;
-	border: 1px solid #f05a96;
+	border: 1px solid #f93527;
 }
 /* shoppingCart list */
 
@@ -427,7 +428,7 @@
 	text-decoration: underline;
 }
 .shoppingList .subtotal .price {
-	color: #f05a96;
+	color: #fa722b;
 	font-weight: 700;
 	font-family: arial;
 }
@@ -455,12 +456,12 @@
 }
 .shoppingList .total em {
 	margin: 0 5px;
-	color: #f05a96;
+	color: #fa722b;
 	font-family: arial;
 }
 .shoppingList .total .priceTotal {
 	margin-left: 4px;
-	color: #f05a96;
+	color: #fa722b;
 	font-family: arial;
 }
 .shoppingList .total .priceTotal strong {
@@ -815,7 +816,7 @@
 .crossnav{
 	width: 100%;
 	height: 35px;
-	background: #5D1B99;
+	background: #c50808;
 }
 .crossnav ul{
 	width: 1000px;
@@ -830,7 +831,7 @@
 	font-weight: bold;
 }
 .crossnav ul li a{
-	color: #BB91FD;
+	color: #ff9191;
 }
 .crossnav ul li.on a,
 .crossnav ul li:hover a{
@@ -842,12 +843,12 @@
 	height: 72px;
 	padding: 0 20px;
 	border: 1px solid #e0e0e0;
-	border-bottom-color: #5d1b9a;
+	border-bottom-color: #980000;
 	background: #fff;
 }
 .findpw .auditStep h2{
 	float: left;
-	color: #5d1b9a;
+	color: #c50808;
 	font: bold 20px/72px "microsoft yahei";
 	font-weight: normal;
 }

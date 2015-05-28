@@ -1,0 +1,110 @@
+/**
+ * style tooltip
+ *
+ * @project
+ * @copyright
+ * @author      zhanghaibin
+ * @version 	1.0
+ *
+ */
+
+/**
+ * CSS Menu
+ *
+ * Tooltip
+ * Theme
+ */
+
+/* Tooltip
+ ---------------------------------------- */
+.tooltip {
+	position: absolute;
+	z-index: 500;
+	padding: 6px 0 0;
+}
+.tooltip .arrow {
+	position: absolute;
+	left: 20%;
+	margin: 1px 0 0 -6px;
+	display: block;
+}
+.tooltip .arrow[class*="-hollow"]{
+	/*width: 12px;*/	
+}
+.tooltip .wrap {
+	padding: 8px;
+	background: #fff;
+	border: 1px solid #d2d2d2;
+}
+.tooltip .hd {
+	margin-bottom: 8px;
+	padding: 0 5px 8px;
+	border-bottom: 1px solid #d2d2d2;
+}
+.tooltip .bd {
+
+}
+
+/* guide */
+.tooltip>.arrow b {
+	border-color: #aaa;
+}
+.tooltip[class*="guide-B"]{
+	top: auto;
+	bottom: 0;
+	padding: 0 0 6px;
+}
+.tooltip[class*="guide-B"]>.arrow {
+	top: auto;
+	bottom: 0;
+	margin: 0 0 1px -6px;
+}
+
+.tooltip[class*="guide-R"]{
+	left: auto;
+	right: 0;
+	padding: 0 6px 0 0;
+}
+.tooltip[class*="guide-R"]>.arrow,
+.tooltip[class*="guide-L"]>.arrow {
+	top: 50%;
+	left: auto;
+	right: 0;
+	margin: -6px 1px 0 0;
+	width:6px;
+	height:12px;
+}
+
+.tooltip[class*="guide-L"]{
+	padding: 0 0 0 6px;
+}
+.tooltip[class*="guide-L"]>.arrow {
+	left: 0;
+	right: auto;
+	margin: -6px 0 0 1px;
+}
+.tooltip.guide-TL>.arrow,
+.tooltip.guide-BL>.arrow {/* top left & bottom left */
+	left: 20%;
+}
+.tooltip.guide-TC>.arrow,
+.tooltip.guide-BC>.arrow {/* top center & bottom center */
+	left: 50%;
+}
+.tooltip.guide-TR>.arrow,
+.tooltip.guide-BR>.arrow {/* top right & bottom right */
+	left: 80%;
+}
+
+.tooltip.guide-RT>.arrow,
+.tooltip.guide-LT>.arrow {/* right top & left top */
+	top: 25%;
+}
+.tooltip.guide-RM>.arrow,
+.tooltip.guide-LM>.arrow {/* right middle & left middle */
+	top: 50%;
+}
+.tooltip.guide-RB>.arrow,
+.tooltip.guide-LB>.arrow {/* right bottom & left bottom */
+	top: 75%;
+}

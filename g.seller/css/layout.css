@@ -48,13 +48,19 @@
 	top: -2px;
 	*top: 0;
 	left: 0;
-	width: 20px;
-	height: 20px;
+	width: 18px;
+	height: 18px;
 	margin: 0 8px 0 0;
+	background: url(../img/mainnav_elem.png) no-repeat 0 0;
+	background-position:-93px -18px; 
+}
+#asideNav li.curr .icon,
+#asideNav li:hover .icon{
+	background-position: -93px 0;
 }
 #asideNav li.curr a,
 #asideNav li:hover a {
-	background: #a26cd0;
+	background: #c50808;
 	color: #fff;
 }
 
@@ -65,7 +71,7 @@
 	padding: 4px 10px 0;
 	background: #fff;
 	border: 1px solid #e5e5e5;
-	border-bottom: 2px solid #7a39b2;
+	border-bottom: 2px solid #c50808;
 	line-height: 38px;
 	*zoom: 1;
 }
@@ -76,7 +82,7 @@
 }
 .mainCaption h2 {
 	float: left;
-	color: #7a39b2;
+	color: #c50808;
 	font: 700 18px/38px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
 	cursor: default;
 }
@@ -152,7 +158,7 @@
 	display:block;
 	width:100%;
 	height:24px;
-	color:#a26cd0;
+	color:#005fa9;
 	text-decoration:none;
 }
 .paging .icon {
@@ -188,8 +194,8 @@
 }
 .paging li a.on,
 .paging li span.on{
-	background:#a26cd0;
-	border-color:#a26cd0;
+	background:#ff9d89;
+	border-color:#ff9d89;
 	color: #fff;
 	text-decoration:none;
 }
@@ -226,7 +232,7 @@
 	display:block;
 	width:24px;
 	border:1px solid #ddd;
-	color:#a26cd0;
+	color:#005fa9;
 	line-height:24px;
 	text-align:center;
 }
@@ -385,7 +391,6 @@
 	float: left;
 	width: 246px;
 	height: 106px;
-	background: url(../img/logo1.png) no-repeat;
 	text-indent: -999em;
 }
 .deal .header {
@@ -409,13 +414,13 @@
 .deal .dealNav{
 	height: 35px;
 	width: 100%;
-	background: #7a39b2;
+	background: #c50808;
 }
 .deal .dealNav p{
 	margin-left: 182px;
 	line-height: 35px;
 	color: #fff;
-	background: #6b30a0;
+	background: #980000;
 	width: 170px;
 	height: 35px;
 	text-align: center;
@@ -439,8 +444,155 @@
 	font-size: 14px;
 	padding:5px 0;
 }
-.submit-btn{
-	width: 98px;
-	margin-top: 5px;
+.deal .deal-content h2{
+	font-size: 16px;
 	text-align: center;
+	padding-bottom: 10px;
+}
+/*helpPage
+-----------------------------------*/
+#container>.helpPage{
+	width: 1000px;
+}
+.helpPage{
+	padding-top: 20px;
+	margin-bottom: 50px;
+}
+.helpMain{
+	min-height: 500px;
+	padding:10px;
+	border: 1px solid #dcdcdc;
+	background: #fff;
+}
+.helpMain h2{
+	padding: 8px 10px;
+	font-size: 14px;
+	color: #980000;
+	border-bottom: 1px solid #dcdcdc;
+}
+.helpMain .helpmains{
+	margin: 10px 12px;
+	color: #666;
+}
+.helpMain .helpmains p{
+	line-height: 2;
+}
+.helpMain .helpmains .table{
+	margin: 20px 0;
+}
+.helpMain .helpmains .align-l{
+	text-align: left;
+}
+/*memb-sidebar*/
+.memb-sidebar{
+	float: left;
+	width: 140px;
+	background: #fff;
+	border: 1px solid #dcdcdc;
+}
+.memb-sidebar .menu h2{
+	height: 28px;
+	line-height: 28px;
+	background: #dcdcdc;
+	font-size: 12px;
+}
+.memb-sidebar .menu h2,
+.memb-sidebar .menu ul,
+.memb-sidebar .menu h3{
+	padding-left: 12px;
+}
+.memb-sidebar .menu h3{
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	color: #fff;
+	font-weight: normal;
+	background: #fa722b;
+}
+.memb-sidebar .menu ul{
+	margin: 5px 0;
+}
+.memb-sidebar .menu li a{
+	color: #333;
+}
+.memb-sidebar .menu li a:hover{
+	color: #F35995;
+}
+.memb-sidebar .menu li{
+	line-height: 2;
+}
+.memb-sidebar .menu .arrow{
+	visibility: hidden;
+	margin-right: 10px;
+}
+.memb-sidebar .menu .arrow b{
+	border-width: 3px;
+	border-color: #fa722b;
+}
+.memb-sidebar .menu .arrow i{
+	border-width: 2px;
+}
+.memb-sidebar .menu li.on .arrow{
+	visibility: visible;
+}
+.memb-sidebar .menu li.on a{
+	color: #fa722b;
+	cursor: default;
+}
+/*memb-main*/
+.memb-main{
+	float: left;
+	width: 840px;
+	margin:0 0 50px 16px;
+}
+.memb-main .memg-bd>div{
+	background: #fff;
+	border: 1px solid #dcdcdc;
+}
+.memb-main .buyerInfo{
+	padding: 30px;
+	margin-bottom: 10px;
+}
+.memb-main .info-main dl{
+	*zoom: 1;
+}
+.memb-main .info-main dl:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.memb-main .info-main dt,
+.memb-main .info-main dd{
+	float: left;
+}
+.memb-main .info-main dt{
+	width: 80px;
+	height: 80px;
+	padding: 2px;
+	margin-right: 30px;
+	background: #E7E6E4;
+	border: 1px solid #dcdcdc;
+}
+.memb-main .info-main dt img{
+	width: 80px;
+	height: 80px;
+}
+.memb-main .info-main h2{
+	padding: 15px 0;
+	font-size: 20px;
+}
+.memb-main .info-main p a{
+	margin: 0 10px;
+}
+.memb-main .memb-shopping{
+	padding: 10px;
+}
+.memb-main .memb-shopping h2{
+	height: 32px;
+	margin-bottom: 16px;
+	padding-left: 5px;
+	line-height: 33px;
+	font-size: 14px;
+	border-bottom: 1px solid #dcdcdc;
+	color: #c50808;
 }

@@ -35,8 +35,17 @@
 	font-size: 12px;
 }
 .memb-sidebar .menu h2,
-.memb-sidebar .menu ul{
+.memb-sidebar .menu ul,
+.memb-sidebar .menu h3{
 	padding-left: 12px;
+}
+.memb-sidebar .menu h3{
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	color: #fff;
+	font-weight: normal;
+	background: #fa722b;
 }
 .memb-sidebar .menu ul{
 	margin: 5px 0;
@@ -56,7 +65,7 @@
 }
 .memb-sidebar .menu .arrow b{
 	border-width: 3px;
-	border-color: #F35995;
+	border-color: #fa722b;
 }
 .memb-sidebar .menu .arrow i{
 	border-width: 2px;
@@ -65,10 +74,10 @@
 	visibility: visible;
 }
 .memb-sidebar .menu li.on a{
-	color: #F35995;
+	color: #fa722b;
 	cursor: default;
 }
-/*memb-sidebar*/
+/*memb-main*/
 .memb-main{
 	float: left;
 	width: 840px;
@@ -123,7 +132,7 @@
 	line-height: 33px;
 	font-size: 14px;
 	border-bottom: 1px solid #dcdcdc;
-	color: #5C1B99;
+	color: #c50808;
 }
 /*shoppingNull-----------------------------------*/
 /* cartNull */
@@ -145,6 +154,7 @@
 	vertical-align: top;
 }
 .cartNull dd {
+	padding-top: 25px;
 	margin-left: 135px;
 	text-align: left;
 }
@@ -204,7 +214,7 @@
 	font-size: 16px;
 }
 .memb-main table .nowPrice{
-	color: #622f8e;
+	color: #c50808;
 	font-weight: bold;
 }
 .memb-main table .price{
@@ -521,4 +531,35 @@
 .salereturnList.unusual .salemeg dt{
 	position: relative;
 	z-index: 150;
+}
+/*helpPage
+-----------------------------------*/
+.helpPage{
+	padding-top: 20px;
+	margin-bottom: 50px;
+}
+.helpMain{
+	min-height: 500px;
+	padding:10px;
+	border: 1px solid #dcdcdc;
+	background: #fff;
+}
+.helpMain h2{
+	padding: 8px 10px;
+	font-size: 14px;
+	color: #980000;
+	border-bottom: 1px solid #dcdcdc;
+}
+.helpMain .helpmains{
+	margin: 10px 12px;
+	color: #666;
+}
+.helpMain .helpmains p{
+	line-height: 2;
+}
+.helpMain .helpmains .table{
+	margin: 20px 0;
+}
+.helpMain .helpmains .align-l{
+	text-align: left;
 }

@@ -1,0 +1,233 @@
+/**
+ * style helper
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 	1.0
+ * 
+ * @colordef 	#333 				article text
+ * @colordef	#316cd6				link & visible
+ * @colordef	#ff5c00				hover & active
+ */
+
+/**
+ * CSS Menu
+ * 
+ * ProductGlobal
+ * BrandGlobal
+ * 
+ * HelperGlobal
+ * 
+ * HelperForm
+ * Deposit
+ * Layout
+ * overview
+ */
+
+
+/* Helper Global
+ ---------------------------------------- */
+
+.wrap-helper .section {
+	background: #fff;
+	border: 1px solid #e5e5e5;
+}
+
+/* Helper Form
+ ---------------------------------------- */
+
+.form-helper .mod-tips {
+	margin: 10px 15px 0;
+	padding: 5px 20px;
+}
+.form-helper .mod-tips dd {
+	padding-top: 5px;
+	line-height: 20px;
+}
+.form-helper fieldset {
+	margin: 30px 0;
+	padding: 0 30px;
+}
+.form-helper .legend {
+	margin-bottom: 20px;
+}
+.form-helper .form-item {
+	margin: 0 0 20px;
+}
+.form-helper .item-label {
+	width: 160px;
+	line-height: 32px;
+}
+.form-helper .item-cont {
+	margin-left: 170px;
+	line-height: 32px;
+}
+.form-helper .legend h3 {
+	padding: 0 10px;
+	font: 700 18px/24px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+}
+
+/* Deposit Form
+ ---------------------------------------- */
+
+#deposit {
+	padding-bottom: 60px;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	color: #666;
+}
+#deposit .mod-tips {
+	margin: 10px 15px 0;
+}
+#deposit .mod-tips dd {
+	padding-top: 5px;
+	line-height: 20px;
+}
+#deposit .textInfo {
+	padding: 30px 0 0 30px;
+}
+#deposit .textInfo {
+	margin-left: 30px;
+	padding-left: 28px;
+}
+#deposit .textInfo p {
+	margin-bottom: 10px;
+}
+#deposit .bankInfo {
+	width: 530px;
+	margin: 30px 0 20px;
+	padding: 5px 30px;
+	background: #f0e7f7;
+}
+#deposit .bankInfo p {
+	margin: 15px 0;
+	font-size: 14px;
+}
+#deposit .textInfo .textMark {
+	margin-right: 6px;
+}
+#deposit h3 {
+	margin: 35px 0 0 30px;
+	font: 700 14px/24px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+}
+#deposit h3 a {
+	text-decoration: underline;
+}
+
+/* Layout
+ ---------------------------------------- */
+ /*overview*/
+.overview{
+	margin: 10px;
+	*zoom: 1;
+	color: #333;
+}
+.overview:after,
+.overL-hd:after,
+.overL-hd ul{
+	display: table;
+	clear: both;
+	content: " ";s
+}
+.over-left{
+	width: 720px;
+	float: left;
+}
+.overL-hd{
+	*zoom: 1;
+	padding:20px 10px;
+	margin-bottom: 15px;
+	border: 1px solid #dcdcdc;
+}
+.overL-hd h4{
+	float: left;
+	margin:0px 50px 10px 0;
+	font-size: 16px;
+}
+.overL-hd p{
+	float: left;
+	margin-top: 4px;
+}
+.overL-hd ul{
+	*zoom: 1;
+	padding-top: 15px;
+}
+.overL-hd ul li{
+	float: left;
+	margin-right: 52px;
+}
+.overL-hd ul li b{
+	margin: 0 3px;
+}
+.overL-main{
+	border: 1px solid #dcdcdc;
+}
+.overL-main .hd{
+	height: 32px;
+	padding-left: 10px;
+	line-height: 33px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.overL-main h4{
+	font-size: 14px;
+}
+.overL-main .bd{
+	padding: 15px 10px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.overL-main .bd.last{
+	border: none;
+}
+.overL-main .remindMain{
+	padding: 20px 10px;
+	background:#FEFAF3;
+}
+.overL-main .remindMain ul{
+	margin-top: 10px;
+}
+.overL-main .remindMain h4{
+	font-size: 13px;
+}
+.overL-main .remindMain li{
+	line-height: 2.5;
+}
+.overL-main .remindMain a{
+	margin-right: 70px;
+	color: #666;
+}
+.over-right{
+	overflow: hidden;
+	float: right;
+	width: 270px;
+}
+.over-right .guide{
+	margin-bottom: 6px;
+	border: 1px solid #dcdcdc;
+}
+.over-right h4{
+	height: 35px;
+	padding-left:10px; 
+	line-height: 36px;
+	font-size: 14px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.over-right ul{
+	padding: 10px;
+}
+.over-right li{
+	line-height: 2;
+}
+.over-right li a{
+	margin-left: 6px;
+	color: #333;
+}
+.over-right .sideImg{
+	width: 268px;
+	height: 70px;
+	margin-bottom: 10px;
+	border: 1px solid #dcdcdc;
+}
+.over-right .sideImg img{
+	max-width: 100%;
+}

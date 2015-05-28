@@ -179,32 +179,32 @@ span.btn:hover {
 .btn-primary,
 a.btn-primary,
 span.btn-primary {
-	background: #5d1b9a;
-	border-color: #5d1b9a;
+	background: #c50808;
+	border-color: #c50808;
 	color: #fff;
 }
 .btn-primary:hover {
-	background: #8349b8;
-	border-color: #8349b8;
+	background: #f93527;
+	border-color: #f93527;
 }
 .btn-primary:active {
-	background: #8349b8;
-	border-color: #8349b8;
+	background: #f93527;
+	border-color: #f93527;
 }
 .btn-assist,
 a.btn-assist,
 span.btn-assist {
-	background: #f05a96;
-	border-color: #f05a96;
+	background: #fa722b;
+	border-color: #fa722b;
 	color: #fff;
 }
 .btn-assist:hover {
-	background: #fc79ad;
-	border-color: #fc79ad;
+	background: #ff8c50;
+	border-color: #ff8c50;
 }
 .btn-assist:active {
-	background: #fc79ad;
-	border-color: #fc79ad;
+	background: #ff8c50;
+	border-color: #ff8c50;
 }
 .btn-bezelFree,
 a.btn-bezelFree,
@@ -598,7 +598,7 @@ select,
 	background: #fff;
 	height: 35px;
 	border-bottom: 1px solid #fff;
-	color: #ff0087;
+	color: #fa722b;
 }
 .selectArea-list .tabs li:hover {
 	background: #f9f9f9;

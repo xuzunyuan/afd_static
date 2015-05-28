@@ -72,7 +72,7 @@
 .cartList-caption caption {
 	padding: 0 20px;
 	background: #fff;
-	color: #5d1b9a;
+	color: #c50808;
 	font-size: 14px;
 	line-height: 40px;
 	text-align: left;
@@ -154,7 +154,7 @@
 	color: #333;
 }
 .cartList-group .subtotal {
-	color: #622f8e;
+	color: #c50808;
 	font-size: 16px;
 	text-align: center;
 }
@@ -162,7 +162,7 @@
 .cartList-group .price {
 	margin-bottom: 2px;
 	font-size: 16px;
-	color: #622f8e;
+	color: #c50808;
 }
 .cartList-group .price {
 	color:#999;
@@ -525,7 +525,7 @@
 }
 .orderSubmit .priceTotal span {
 	margin-left: 10px;
-	color: #f05a96;
+	color: #fa722b;
 	font: bold 30px arial;
 	vertical-align: middle;
 }
@@ -677,7 +677,7 @@
 }
 .shippingAddr>.wrap>.hd h3,
 .payMode>.wrap>.hd h3 {
-	color: #5d1b9a;
+	color: #c50808;
 	font-size: 14px;
 }
 .shippingAddr>.wrap>.hd h3 {
@@ -1132,7 +1132,7 @@
 	height: 30px;
 	padding: 0 10px;
 	border-bottom: 1px solid #E5E5E5;
-	color: #5d1b9a;
+	color: #c50808;
 	line-height: 30px;
 }
 .orderPay>.wrap>.hd h3 {
@@ -1335,14 +1335,14 @@
 	left: 87%;
 }
 .orderFlow-process .tooltip>.arrow b{
-	border-color:#9971E5;
+	border-color:#f93527;
 }
 .orderFlow-process .arrow.xl>i{
 	border-color: #F8F7FD;
 }
 .orderFlow-process .tooltip .wrap{
 	background: #F8F7FD;
-	border: 1px solid #BEA4EE;
+	border: 1px solid #f93527;
 }
 .orderFlow-process .tooltip .bd{
 	padding: 20px 22px;
@@ -1374,7 +1374,7 @@
 	margin-bottom: 8px;
 	line-height: 30px;
 	font-size: 14px;
-	color: #5E1B9C;
+	color: #c50808;
 	border-bottom: 1px solid #dcdcdc;
 }
 .orderMeg .getMeg{
@@ -1441,7 +1441,7 @@
 	vertical-align: middle;
 	margin-left: 10px;
 	font-size: 24px;
-	color: #F2699D;
+	color: #fa722b;
 }
 .orderFlow-process .logistics{
 	padding: 25px 20px 5px;

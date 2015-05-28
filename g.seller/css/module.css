@@ -256,7 +256,7 @@
 	left:50%;
 	z-index:20;
 	display:block;
-	width:22px;
+	width:23px;
 	height:22px;
 	margin-left:-11px;
 	background:url(../img/step.png) no-repeat 0 0;
@@ -278,21 +278,13 @@
 	color:#666;
 	text-align:center;
 }
-.mod-step .last .disc{
-	background-position: 0 -25px;
-}
-.mod-step .now .disc{
-	background-position:-50px 0;
+.mod-step .now .disc,
+.mod-step .past .disc{
+	background-position:-26px 0;
 }
 .mod-step .now .strip,
-.mod-step .over .strip{
-	background:#7a39b2;
-}
-.mod-step .past .disc{
-	background-position:-25px 0;
-}
 .mod-step .past .strip{
-	background:#a16cd4;
+	background:#c50808;
 }
 /*.mod-step .stop .disc{
 	background-position:-115px -111px;
@@ -303,7 +295,9 @@
 .mod-step .over .disc{
 	background-position:-50px -25px;
 }
-
+.mod-step .last .disc{
+	background-position:-50px 0px;
+}
 /* Message Module
  ---------------------------------------- */
 

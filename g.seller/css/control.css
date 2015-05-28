@@ -64,12 +64,12 @@ input[type="reset"] {
 .txt:hover,
 textarea:hover,
 select:hover {
-	border-color: #a5a5a5;
+	border-color: #fd6505;
 }
 .txt:focus,
 textarea:focus,
 select:focus {
-	border-color: #7a39b2 !important;
+	border-color: #fd6505 !important;
 }
 .focus {
 	/* IE7 patch */
@@ -170,17 +170,17 @@ span.btn:hover {
 .btn-primary,
 a.btn-primary,
 span.btn-primary {
-	background: #7a39b2;
-	border-color: #7a39b2;
+	background: #c50808;
+	border-color: #c50808;
 	color: #fff;
 }
 .btn-primary:hover {
-	background: #a26cd0;
-	border-color: #a26cd0;
+	background: #f93527;
+	border-color: #f93527;
 }
 .btn-primary:active {
-	background: #a26cd0;
-	border-color: #a26cd0;
+	background: #f93527;
+	border-color: #f93527;
 }
 .btn-bezelFree,
 a.btn-bezelFree,

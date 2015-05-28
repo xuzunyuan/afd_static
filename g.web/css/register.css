@@ -72,8 +72,8 @@
 }
 .signin-hd {
 	padding: 0 18px;
-	border-bottom: 1px solid #5d1b9a;
-	color: #5d1b9a;
+	border-bottom: 1px solid #c50808;
+	color: #c50808;
 	font: bold 20px/42px "microsoft yahei";
 }
 
@@ -110,7 +110,7 @@
 }
 .wrap-login .form .legend h2 {
 	float: left;
-	color:#5d1b9a;
+	color:#c50808;
 	font-weight:normal;
 	font-size:26px;
 	line-height:40px;

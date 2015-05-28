@@ -1,0 +1,401 @@
+/**
+ * style module
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 	1.0
+ * 
+ * @colordef 	#333 				article text
+ * @colordef	#316cd6				link & visible
+ * @colordef	#ff5c00				hover & active
+ */
+
+/**
+ * CSS Menu
+ * 
+ * Tips
+ * - fruitless
+ * TipsPop
+ * AttrChk
+ * Upload
+ * UploadPreview
+ * Step
+ * Message
+ * OrderInfo
+ * 
+ */
+
+/* Tips Module
+ ---------------------------------------- */
+
+.mod-tips {
+	padding: 10px 25px;
+	background: #fff2df;
+	border: 1px solid #ffdfb4;
+	color: #666;
+	font-size: 12px;
+}
+.mod-tips dl {
+	*zoom: 1;
+}
+.mod-tips dl:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.mod-tips .imgIcon {
+	float: left;
+	margin-right: 20px;
+}
+.mod-tips dd {
+	padding-top: 5px;
+	line-height: 20px;
+}
+.mod-tips dd p {
+	margin-bottom: 5px;
+}
+.mod-tips h4 {
+	color: #f00;
+	font-size: 14px;
+}
+
+/* fruitless */
+.mod-tips.fruitless {
+	padding: 50px 0;
+	text-align: center;
+}
+
+/* TipsPop Module
+ ---------------------------------------- */
+
+.mod-tipsPop {
+	position:relative;
+	top: -2px;
+	*top: 0;
+	left:0;
+	z-index: 50;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+}
+.mod-tipsPop .icon{
+	display:block;
+	width:14px;
+	height:14px;
+	background-position:-28px -29px;
+	cursor:pointer;
+}
+.mod-tipsPop .tip{
+	position:absolute;
+	left: 7px;
+	bottom:16px;
+	z-index: -1;
+	visibility: hidden;
+	opacity: 0;
+	max-width:300px;
+	padding:4px 10px;
+	background:#fff;
+	border:1px solid #e4e4e4;
+	-webkit-box-shadow:2px 2px 4px #999;
+	box-shadow:2px 2px 4px #999;
+	color:#666;
+	line-height:18px;
+	font-weight: normal;
+}
+/* tipsPop hover */
+.mod-tipsPop:hover .icon{
+	background-position:-42px -29px;
+}
+.mod-tipsPop:hover .tip{
+	z-index: 51;
+	visibility: visible;
+	opacity: 1;
+}
+/* tip direction */
+.mod-tipsPop.tip-rb .tip {
+	top: 16px;
+	bottom: auto;
+}
+.mod-tipsPop.tip-lt .tip {
+	right: 7px;
+	left: auto;
+}
+.mod-tipsPop.tip-lb .tip {
+	right: 7px;
+	left: auto;
+	top: 16px;
+	bottom: auto;	
+}
+/* tipsPop theme */
+.mod-tipsPop.tips-help .icon {
+	background-position:0 -29px;
+}
+.mod-tipsPop.tips-help:hover .icon {
+	background-position:-14px -29px;
+}
+
+/* tipsPop-deliver */
+.tipsPop-deliver .tips-title {
+	padding: 0 5px;
+	cursor: default;
+}
+.tipsPop-deliver .tips-title .arrow {
+	margin-left: 4px;
+}
+.mod-tipsPop.tipsPop-deliver .tip {
+	top: 20px;
+}
+
+
+/* AttrChk Module
+ ---------------------------------------- */
+
+.mod-attrChk {
+	*zoom: 1;
+}
+.mod-attrChk:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.mod-attrChk li{
+	float:left;
+	min-width:126px;
+	margin:0 4px 10px 0;
+	line-height:28px;
+}
+.mod-attrChk li .chk{
+	margin: 0 5px 0 0;
+}
+.mod-attrChk .colorBlock{
+	width:13px;
+	height:13px;
+	margin:0 5px 0 0;
+}
+.mod-attrChk li .txt{
+	display:none;
+	width:60px;
+	margin:0;
+	padding:2px 5px;
+}
+
+/* Upload Module
+ ---------------------------------------- */
+
+.mod-upload {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 98px;
+	height: 98px;
+	border: 1px solid #e6e6e6;
+	cursor: pointer;
+}
+.mod-upload img {
+	width: 100%;
+	height: 100%;
+	vertical-align: bottom;
+}
+
+/* UploadPreview Module
+ ---------------------------------------- */
+
+.mod-UploadPreview {
+	overflow:hidden;
+	width:98px;
+	height:98px;
+	border:1px solid #e6e6e6;
+}
+.mod-UploadPreview .imgBox {
+	position:relative;
+	top:0;
+	left:0;
+	z-index:10;
+	overflow:hidden;
+	width:98px;
+	height:72px;
+	background:#fff;
+	border:1px solid #48a7e7;
+	border-width:13px 0;
+	line-height:70px;
+}
+.mod-UploadPreview img{
+	display:inline;
+	width:100%;
+	height:100%;
+}
+
+/* Step Module
+ ---------------------------------------- */
+
+.mod-step{
+	padding:3px 5px;
+	*zoom:1;
+}
+.mod-step:after{
+	visibility:hidden;
+	display:block;
+	clear:both;
+	height:0;
+	content:"";
+}
+.mod-step li{
+	position:relative;
+	top:0;
+	left:0;
+	float:left;
+	width:104px;
+	padding-top:30px;
+	text-align:center;
+}
+.mod-step li .disc{
+	position:absolute;
+	top:0;
+	left:50%;
+	z-index:20;
+	display:block;
+	width:22px;
+	height:22px;
+	margin-left:-11px;
+	background:url(../img/step.png) no-repeat 0 0;
+	color:#fff;
+	font:12px/22px arial;
+	cursor:default;
+}
+.mod-step li .strip{
+	position:absolute;
+	top:9px;
+	left:0;
+	z-index:10;
+	display:block;
+	width:100%;
+	height:4px;
+	background:#bababa;
+}
+.mod-step p{
+	color:#666;
+	text-align:center;
+}
+.mod-step .last .disc{
+	background-position: 0 -25px;
+}
+.mod-step .now .disc{
+	background-position:-50px 0;
+}
+.mod-step .now .strip,
+.mod-step .over .strip{
+	background:#7a39b2;
+}
+.mod-step .past .disc{
+	background-position:-25px 0;
+}
+.mod-step .past .strip{
+	background:#a16cd4;
+}
+/*.mod-step .stop .disc{
+	background-position:-115px -111px;
+}
+.mod-step .stop .strip{
+	background:#e60012;
+}*/
+.mod-step .over .disc{
+	background-position:-50px -25px;
+}
+
+/* Message Module
+ ---------------------------------------- */
+
+.mod-message {
+	margin-bottom: 10px;
+	padding: 0 6px;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	line-height: 22px;
+}
+.mod-message .hd {
+	border-bottom: 1px solid #e5e5e5;
+}
+.mod-message .hd .title {
+	padding: 5px 0;
+	color: #666;
+	line-height: 22px;
+	font-size: 14px;
+}
+.mod-message .hd .title .btn {
+	margin-left: 10px;
+}
+.mod-message .bd {
+	padding: 6px 0;
+}
+.mod-message .msg-text .icon {
+	position: relative;
+	top: -1px;
+	*top: 0;
+	left: 0;
+	margin-right: 8px;
+}
+
+/* OrderInfo Module
+ ---------------------------------------- */
+
+.mod-orderInfo{
+	overflow: hidden;
+	background:#fff;
+}
+.mod-orderInfo .item{
+	padding:20px 30px 5px;
+	border:1px solid #e5e5e5;
+	border-top:0;
+}
+.mod-orderInfo .table{
+	width:100%;
+	margin: 0;
+}
+.mod-orderInfo caption{
+	padding-bottom:10px;
+	font-weight:bold;
+	text-align:left;
+}
+.mod-orderInfo th,
+.mod-orderInfo td{
+	/*overflow: hidden;*/
+	/*line-height:24px;*/
+	white-space:nowrap;
+}
+.mod-orderInfo td{
+	vertical-align:top;
+	/*padding-left: 7px;*/
+}
+.mod-orderInfo .newest{
+	color: #329832;
+}
+
+.form-item .item-label{
+	float: left;
+	margin-bottom: 5px;
+}
+.uploadImg ul{
+	*zoom: 1;
+	margin-bottom: 10px;
+}
+.uploadImg ul:after{
+	display: table;
+	clear: both;
+	content: " ";
+}
+.uploadImg li{
+	float: left;
+	overflow: hidden;
+	width: 80px;
+	margin-right: 10px;
+}
+.uploadImg li img{
+	width: 78px;
+	height: 78px;
+	border: 1px solid #dcdcdc;
+}
+.uploadImg li p{
+	text-align: center;
+}

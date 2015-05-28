@@ -357,9 +357,8 @@
 	float: right;
 	margin-top: 10px;
 }
-.specialmain  .hd-right button{
+.specialmain  .hd-right a{
 	margin-left: 2px;
-	line-height: 30px;
 }
 .specialmain  .hd-right b{
 	font-size: 26px;
@@ -375,10 +374,6 @@
 .specialmain .bd{
 	height: 320px;
 	border-top: 1px solid #dcdcdc;
-}
-.specialmain .bd img{
-	width: 100%;
-	height: 100%;
 }
 .specialList table{
 	margin-bottom: 10px;

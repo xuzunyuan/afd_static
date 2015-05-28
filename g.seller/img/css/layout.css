@@ -1,0 +1,446 @@
+/**
+ * style layout
+ * 
+ * @project		
+ * @copyright	
+ * @author		zhanghaibin
+ * @version 	1.0
+ * 
+ * @colordef 	#333 				article text
+ * @colordef	#316cd6				link & visible
+ * @colordef	#ff5c00				hover & active
+ */
+
+/**
+ * CSS Menu
+ *
+ * AsideNav
+ * MainCaption
+ * Screening
+ * Paging
+ * TableElement
+ * deal
+ */
+
+/* AsideNav
+ ---------------------------------------- */
+
+#asideNav {
+	background: #fff;
+	border: 1px solid #e2e2e2;
+}
+#asideNav ul {
+	padding: 16px 0 6px;
+}
+#asideNav li {
+	margin: 0  0 10px;
+	font: 16px/32px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+	white-space: nowrap;
+}
+#asideNav li a {
+	display: block;
+	padding: 0 10px;
+	color: #333;
+	text-decoration: none;
+}
+#asideNav li .icon {
+	position: relative;
+	top: -2px;
+	*top: 0;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	margin: 0 8px 0 0;
+}
+#asideNav li.curr a,
+#asideNav li:hover a {
+	background: #a26cd0;
+	color: #fff;
+}
+
+/* MainCaption
+ ---------------------------------------- */
+
+.mainCaption {
+	padding: 4px 10px 0;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	border-bottom: 2px solid #7a39b2;
+	line-height: 38px;
+	*zoom: 1;
+}
+.mainCaption:after {
+	display: table;
+	clear: both;
+	content: " ";
+}
+.mainCaption h2 {
+	float: left;
+	color: #7a39b2;
+	font: 700 18px/38px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
+	cursor: default;
+}
+.mainCaption.mc-mb {
+	margin-bottom: 10px;
+}
+
+/* Screening
+ ---------------------------------------- */
+
+.screening {
+	position: relative;
+	margin: 0 0 10px;
+	padding: 25px 0 0 10px;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	color: #666;
+}
+.screening legend {
+	display: none;
+}
+.screening .formGroup {
+	width: 900px;
+}
+.screening .item-label {
+	color: #666;
+}
+.screening .searchBtn {
+	position: absolute;
+	bottom: 25px;
+	right: 16px;
+}
+
+/* Paging
+ ---------------------------------------- */
+
+.paging{
+	height:26px;
+	border:1px solid #e5e5e5;
+	margin:-1px 0 10px 0;
+	padding: 34px 14px 30px;
+	background: #fff;
+}
+.paging .pagingWrap{
+	float:right;
+	color:#666;
+	font-size:12px;
+	font-weight:normal;
+}
+.paging .pagAll{
+	float: left;
+	padding:5px 10px;
+}
+.paging .pagAll span{
+	padding: 0 5px;
+	font-weight: bold;
+}
+.paging .pageup,
+.paging .pagedown{
+	display:block;
+	float:left;
+	width:64px;
+	height:24px;
+	background:#fff;
+	border:1px solid #ddd;
+	color:#a26cd0;
+	line-height:24px;
+	text-align:center;
+	cursor:default;
+}
+.paging .pageup a,
+.paging .pagedown a{
+	display:block;
+	width:100%;
+	height:24px;
+	color:#a26cd0;
+	text-decoration:none;
+}
+.paging .icon {
+	position:relative;
+	top: -1px;
+	*top: 0;
+	left: 0;
+	width:5px;
+	height:9px;
+	background-position: -13px -20px;
+}
+.paging .pagedown .icon {
+	background-position: -20px -20px;
+}
+.paging .pageup:hover a,
+.paging .pagedown:hover a{
+	color:#fd6505;
+	text-decoration:none;
+}
+.paging .pageup:hover .icon{
+	background-position:-26px -20px;
+}
+.paging .pagedown:hover .icon{
+	background-position:-33px -20px;
+}
+.paging .pageup:hover,
+.paging .pagedown:hover,
+.paging li a:hover,
+.paging li span:hover{
+	border-color:#fd6505;
+	color:#fd6505;
+	text-decoration:none;
+}
+.paging li a.on,
+.paging li span.on{
+	background:#a26cd0;
+	border-color:#a26cd0;
+	color: #fff;
+	text-decoration:none;
+}
+.paging .disabled,
+.paging .disabled a,
+.paging .disabled:hover,
+.paging .disabled:hover a{
+	background:#efefef;
+	border-color:#ddd;
+	color:#666;
+	text-decoration:none;
+	cursor:default;
+}
+.paging .pageup.disabled .icon{
+	background-position:0 -20px;
+}
+.paging .pagedown.disabled .icon{
+	background-position:-7px -20px;
+}
+
+.paging ul{
+	float:left;
+	height:26px;
+	margin-right:4px;
+}
+.paging li{
+	float:left;
+	height:26px;
+	margin-left:4px;
+	color:#a26cd0;
+}
+.paging li a,
+.paging li span{
+	display:block;
+	width:24px;
+	border:1px solid #ddd;
+	color:#a26cd0;
+	line-height:24px;
+	text-align:center;
+}
+.paging li a{
+	background:#fff;
+}
+.paging li .on{
+	cursor:default;
+}
+.paging li b{
+	margin:0 2px 0 5px;
+	font-family:arial;
+	line-height:24px;
+}
+.paging .goto{
+	float:left;
+}
+.paging .goto span{
+	display:inline-block;
+	margin:0 5px;
+	line-height:24px;
+	vertical-align:top;
+}
+.paging .goto input{
+	width:30px;
+	height:14px;
+	margin-top:2px;
+	padding:2px 0;
+	line-height:14px;
+	text-align:center;
+	border:1px solid #abadb3;
+}
+.paging .goto .btn{
+	margin-top:1px;
+	*margin-top:2px;
+	width:36px;
+	height:22px;
+	padding:0;
+	color:#333;
+}
+
+/* Table Element
+ ---------------------------------------- */
+
+/* product img */
+.table .pro-img,
+.table .brand-img,
+.table .order-img {
+	border: 1px solid #d1d1d1;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+.table .pro-img img,
+.table .brand-img img,
+.table .order-img img {
+	width: 100%;
+	height: 100%;
+	vertical-align: bottom;
+}
+.table .pro-img {
+	width: 50px;
+	height: 50px;
+}
+.table .order-img {
+	width: 64px;
+	height: 64px;
+}
+
+/* brand img */
+.table .brand-img {
+	width: 80px;
+	height: 80px;
+}
+
+/* operate */
+.table .td-operate a,
+.table .td-operate span {
+	margin: 0 5px;
+}
+.table .td-operate p {
+	margin-bottom: 4px;
+}
+/* product name */
+.table .o-product {
+	text-align: left;
+}
+.table .o-product a {
+	color: #666;
+}
+.table .o-product span {
+	margin-right: 20px;
+}
+/* order select */
+.table .o-select {
+	text-align: left;
+}
+.table .o-select>span {
+	margin-right: 40px;
+}
+.table .o-deliverStatus {
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 50;
+}
+.table .o-deliverStatus>span {
+	margin-right: 15px;
+}
+/* requestError */
+.requestError #container{
+	min-height:460px;
+	background: #fff;
+}
+.requestError #footer{
+	padding-top:30px;
+}
+
+.requestError .re-content{
+	width:660px;
+	margin:80px auto;
+}
+.requestError .ico{
+	float:left;
+	width:200px;
+	margin-right:50px;
+}
+.requestError .re-text{
+	float:left;
+	width:410px;
+	color:#7b7b7b;
+}
+.requestError .re-text h3,
+.requestError .re-text h4{
+	padding-left:10px;
+	font:25px/normal "microsoft yahei";
+}
+.requestError .re-text h4{
+	margin-bottom:20px;
+	font-size:17px;
+}
+/*deal-----------------------------------*/
+.deal .topBar {
+	height: 30px;
+	line-height: 30px;
+	background: rgb(235,235,235);
+}
+.deal #header>.wrap {
+	width: 990px;
+	height: 30px;
+	margin:0 auto;
+	line-height: 30px;
+	color: #6c6c6c;
+}
+.deal .header .logo {
+	float: left;
+	width: 246px;
+	height: 106px;
+	background: url(../img/logo1.png) no-repeat;
+	text-indent: -999em;
+}
+.deal .header {
+	position: relative;
+	z-index: 400;
+	width: 990px;
+	height: 106px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.deal .header .logo a {
+	display: block;
+	height: 100%;
+	height: 75px;
+}
+.deal .logout{
+	font-size: 12px;
+	width: 990px;
+	margin: 0 auto;
+}
+.deal .dealNav{
+	height: 35px;
+	width: 100%;
+	background: #7a39b2;
+}
+.deal .dealNav p{
+	margin-left: 182px;
+	line-height: 35px;
+	color: #fff;
+	background: #6b30a0;
+	width: 170px;
+	height: 35px;
+	text-align: center;
+	padding:0 20px;
+	font-size: 16px;
+}
+.deal .deal-content{
+	width: 990px;
+	margin: 20px auto;
+}
+.deal .deal-content h1{
+	font-size: 18px;
+	text-align: center;
+	padding-bottom: 10px;
+}
+.deal .deal-content p{
+	font-size: 14px;
+	line-height: 2;
+}
+.deal .deal-content h4{
+	font-size: 14px;
+	padding:5px 0;
+}
+.submit-btn{
+	width: 98px;
+	margin-top: 5px;
+	text-align: center;
+}

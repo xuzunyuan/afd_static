@@ -127,7 +127,7 @@
 .g-buy .subTitle {
 	margin: 0 0 5px;
 	padding: 0 10px;
-	color: #EF5996;
+	color: #fa722b;
 	font: 14px/1.4 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';	
 	font-weight: bold;
 }
@@ -186,7 +186,7 @@
 .g-buy .barginPrice dd>span,
 .g-buy .ywPrice dd>span {
 	font: 700 22px/38px 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';	
-	color: #F25896;
+	color: #fa722b;
 }
 .g-buy .barginPrice dd em,
 .g-buy .ywPrice dd em {
@@ -391,7 +391,7 @@
 }
 .goodsDetails h2 span{
 	margin-left: 2px;
-	color: #FE367E;
+	color: #fa722b;
 	font-size: 18px;
 	font-weight: normal;
 }

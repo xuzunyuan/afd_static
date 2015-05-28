@@ -134,19 +134,31 @@
 #logo {
 	overflow: hidden;
 	float: left;
-	height: 42px;
+	height: 52px;
 	margin: 26px 2px 0 0;
 }
 #logo .logo {
 	float: left;
+	margin:0 20px;
 }
 #logo h1 {
 	float: left;
+	margin-top: 5px;
 	padding: 0 16px;
 	border-left: 1px solid #a7a7a7;
 	font: 700 20px/42px 'Helvetica Neue', Helvetica, 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1','Hiragino Sans GB';
 }
-
+#logo .slogan {
+ 	margin-top: 5px;
+ 	float: left;
+}
+#safeguard {
+  float: right;
+  margin: 23px 0 0;
+}
+#safeguard img{
+	height: 54px;
+}
 /* site */
 #site {
 	float: right;
@@ -205,7 +217,7 @@
 
 #mainNav {
 	height: 40px;
-	background: #7a39b2;
+	background: #c50808;
 }
 #mainNav>.wrap {
 	width: 1200px;
@@ -246,6 +258,9 @@
 #mainNav .nav-04 .icon {
 	background-position: -54px 0;
 }
+#mainNav .nav-05 .icon {
+	background-position: -72px 0;
+}
 #mainNav .nav-01:hover .icon,
 #mainNav .nav-01.curr .icon {
 	background-position: 0 -18px;
@@ -262,15 +277,18 @@
 #mainNav .nav-04.curr .icon {
 	background-position: -54px -18px;
 }
-
+#mainNav .nav-05:hover .icon,
+#mainNav .nav-05.curr .icon {
+	background-position: -72px -18px;
+}
 /* mainNav hover */
 #mainNav li:hover a,
 #mainNav li.curr a {
 	padding: 0;
-	background: #e9d9f6;
-	border: 1px solid #e1cef1;
+	background: #ffdcd5;
+	border: 1px solid #facac0;
 	border-width: 1px 0;
-	color: #7a39b2;
+	color: #c50808;
 }
 
 /* Footer

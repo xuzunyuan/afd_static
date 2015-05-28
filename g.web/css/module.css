@@ -467,7 +467,7 @@
 	display: block;
 	width: 96px;
 	height: 4px;
-	background: #fb79ad;
+	background: #ff8c50;
 }
 .mod-step .first.over .num {
 	background-position: 0 -36px;
@@ -523,7 +523,7 @@
 }
 .mod-step.theme-reg .over .strip-over,
 .mod-step.theme-reg .now .strip-over {
-	background: #5d1b9a;
+	background: #bb0808;
 }
 
 /* OrderGoods Module
@@ -897,7 +897,7 @@
 .bank-item:hover,
 .bank-item.on {
 	padding: 0;
-	border: 2px solid #5d1b99;
+	border: 2px solid #c50808;
 }
 
 
@@ -1942,7 +1942,7 @@
 	text-align: left;
 }
 .address-mod:hover{
-	border-color:#BDA3ED;
+	border-color:#f93527;
 }
 .address-mod:hover .address-title{
 	background: #E9E8EE;
@@ -1952,7 +1952,7 @@
 	margin-left: 10px;
 }
 .address-mod.on{
-	border-color:#BDA3ED;
+	border-color:#f93527;
 }
 .address-mod.last{
 	margin-bottom: 0px;
@@ -2021,7 +2021,7 @@
 }
 /* hover */
 .mod-goodsShow>a:hover {
-	border-color: #f05a96;
+	border-color: #f93527;
 	-webkit-box-shadow: 2px 2px 10px #b2b2b2;
 	color: #666;
 }
@@ -2052,7 +2052,7 @@
 	text-align:center;
 }
 .train-nav li.bef{
-	background: url(../img/train-nav-bg-bef.gif) repeat-x;
+	background: url(../img/train-nav-bg-bef.png) repeat-x;
 }
 .train-nav li.bef a,
 .train-nav li.bef a:hover{
@@ -2060,8 +2060,8 @@
 }
 .train-nav li.first-child{
 	width:225px;
-	margin-left:0;
-	border-left:1px solid rgb(207,207,207);
+	margin-left:0;/*
+	border-left:1px solid rgb(207,207,207);*/
 }
 .train-nav li.last-child{
 	width:225px;
@@ -2077,17 +2077,17 @@
 .train-nav li i.head{
 	float:right;
 	right:-17px;
-	background:url(../img/train-nav-head.gif) 0 -32px no-repeat;
+	background:url(../img/train-nav-head.png) 0 -32px no-repeat;
 }
 .train-nav li.bef i.head{
-	background:url(../img/train-nav-head-bef.gif) no-repeat;
+	background:url(../img/train-nav-head-bef.png) no-repeat;
 }
 .train-nav li i.end{
 	left:-17px;
-	background:url(../img/train-nav-end.gif) 0 -32px no-repeat;
+	background:url(../img/train-nav-end.png) 0 -32px no-repeat;
 }
 .train-nav li.bef i.end{
-	background:url(../img/train-nav-end-bef.gif) no-repeat;
+	background:url(../img/train-nav-end-bef.png) no-repeat;
 }
 .train-nav li a,
 .train-nav li a:hover{
@@ -2103,13 +2103,13 @@
 	margin-left:20px;
 }
 .train-nav li.on{
-	background:url(../img/train-nav-bg-on.gif) repeat-x;
+	background:url(../img/train-nav-bg-on.png) repeat-x;
 }
 .train-nav li.on i.head{
-	background:url(../img/train-nav-head.gif) 0 0 no-repeat;
+	background:url(../img/train-nav-head.png) 0 0 no-repeat;
 }
 .train-nav li.on i.end{
-	background:url(../img/train-nav-end.gif) 0 0 no-repeat;
+	background:url(../img/train-nav-end.png) 0 0 no-repeat;
 }
 .train-nav li.on a{
 	color:#fff;
