@@ -18,7 +18,7 @@ function popWindown(title,content,time,showbg){
 	
 	var	windown_html = 
 		"<div class=\"mask\" id='windownbg' style=\"display: none;\"></div>" +
-		"<div class=\"popup popup-primary\" style=\"width:500px;margin-left:-250px;\" id=\"windown-box\" >" +
+		"<div class=\"popup popup-primary\" style=\" position:fixed;left:50%;top:50%;margin-top:-85px;width:500px;margin-left:-250px;\" id=\"windown-box\" >" +
 			"<div class=\"hd\" id=\"windown-title\"><h2></h2><i class=\"close\" id=\"windown-close\"></i></div>" +
 			"<div class=\"bd\" id=\"windown-content\">" +
 			"</div>" +
