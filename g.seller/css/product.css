@@ -375,6 +375,9 @@
 	height: 320px;
 	border-top: 1px solid #dcdcdc;
 }
+.specialmain .bd img{
+	width: 100%;
+}
 .specialList table{
 	margin-bottom: 10px;
 }

@@ -274,7 +274,11 @@ a.btn.p-xl,
 span.btn.p-xl {
 	padding: 0 80px;
 }
-
+.submit-btn {
+  width: 98px;
+  margin-top: 5px;
+  text-align: center;
+}
 /* text */
 .txt {
 	width: 106px;
