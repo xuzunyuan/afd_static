@@ -12,6 +12,9 @@ function initValidate() {
 				return CheckUtil.checkEmail($(this).val());
 			}
 		},
+		submitHandler: function(form){ 
+            alert("提交表单");   
+        }, 
 		description : {
 			coName : {
 				required : '请填写公司名称',
