@@ -14,6 +14,7 @@ function initValidate() {
 		},
 		submitHandler: function(form){ 
             alert("提交表单");   
+            saveReceipt();
         }, 
 		description : {
 			coName : {
