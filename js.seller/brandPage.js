@@ -114,7 +114,10 @@ function initSubmit() {
 
 function showErrMsg(msgId, msg) {
 	$('#' + msgId).html(msg);
-	location.hash = '#' + msgId;
+	
+	if(msg.length > 0){
+		location.hash = '#' + msgId;
+	}
 }
 
 function initUpload() {
