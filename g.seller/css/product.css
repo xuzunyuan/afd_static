@@ -372,6 +372,7 @@
 	*margin-top: 0;
 }
 .specialmain .bd{
+	width: 1022px;
 	height: 320px;
 	border-top: 1px solid #dcdcdc;
 }

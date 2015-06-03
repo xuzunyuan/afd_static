@@ -117,20 +117,20 @@ function publish(){
 				var attrValue = $('[name="attrValue"][attrId="' + attrId + '"]').val();
 				if(!!!attrValue){
 					location.hash = '#attrValue';
-					jq.prev().parent().next().text("请选择属性'" + attrName + "'");
+					$("#attrValueErr").text("请选择属性'" + attrName + "'");
 					return false;
 				}else{
-					jq.prev().parent().next().text("");
+					$("#attrValueErr").text("");
 					ret = true;
 				}
 			}else{
 				var chks = $('[name="attrValue"][attrId="' + attrId + '"]').filter(":checked");
 				if (chks.length == 0) {
 					location.hash = '#attrValue';
-					jq.prev().parent().next().text("请选择属性'" + attrName + "'");
+					$("#attrValueErr").text("请选择属性'" + attrName + "'");
 					return false;
 				}else{
-					jq.prev().parent().next().text("");
+					$("#attrValueErr").text("");
 					ret = true;
 				}
 			}

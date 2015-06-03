@@ -3,23 +3,14 @@ $(function(){
 	initUpload();	
 	
 });
-
 function initValidate() {
-	$('#frm').validate({
+     $('#receiptForm').validate({
+            valid:function() { saveReceipt(); },
 		onBlur : true,
-		conditional : {		
-			confirmBizManEmail : function() {
-				return CheckUtil.checkEmail($(this).val());
-			}
-		},
-		submitHandler: function(form){ 
-            alert("提交表单");   
-            saveReceipt();
-        }, 
+            sendForm : false,
 		description : {
 			coName : {
-				required : '请填写公司名称',
-				pattern : '请填写公司名称'
+				required : '请填写公司名称'
 			},
 			taxNo : {
 				required : '请填写公司税号'
@@ -32,19 +23,7 @@ function initValidate() {
 			},
 			bankAcctNo : {
 				required : '请填写银行账号'
-			},
-			btImg : {
-				required : '请上传营业执照副本扫描件'
-			},
-			orgCodeImg : {
-				required : '请上传组织机构代码电子版'
-			},
-			taxImg : {
-				required : '请上传税务登记证电子版'
-			},
-			imgQualiUrl : {
-				required : '请上传一般纳税人资质证明'
-			},
+			},						
 			rName : {
 				required : '请填写收件人姓名'
 			},
@@ -54,10 +33,6 @@ function initValidate() {
 			},			
 			rAddress : {
 				required : '请填写收件地址'
-			},
-			bizManEmail : {
-				required : '请填写电子邮箱',
-				conditional : '请填写正确的电子邮箱'
 			}				
 		}
 	});
@@ -66,7 +41,7 @@ function initValidate() {
 function saveReceipt() {
 	
 	$.ajax({
-		url : "../helper/saveReceipt",
+		url : "/helper/saveReceipt",
 		data : $('#receiptForm').serialize(),
 		type : "post",
 		cache : false,
