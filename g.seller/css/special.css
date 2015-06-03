@@ -95,7 +95,16 @@
 .form-special .add-btn {
 	margin-right: 10px;
 }
-
+.preview1{
+	overflow: hidden;
+	width: 576px;
+	height: 120px;
+}
+.preview2{
+	overflow: hidden;
+	width: 220px;
+	height: 90px;
+}
 /* Layout
  ---------------------------------------- */
 
