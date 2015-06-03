@@ -541,8 +541,8 @@ function generateSpec(selectedArr){
 	var rows = recurse(selectedArr, 0).html;
 	$(rows).each(function() {
 		table.find('tbody').append(this);
-		table.find('tbody').parent().after('<div class="note errTxt" id="precErrMsg"></div>');
 	});
+	table.find('tbody').parent().after('<div class="note errTxt" id="precErrMsg"></div>');
 	
 	var flg = $('input[name="imgUrl"]').attr('flg');
 	if(parseInt(flg) > 0){
@@ -673,7 +673,7 @@ function uploadSkuImg(obj) {
 					if(!!!$('input[name="imgUrl"]').val()){
 						$(obj).closest('li').children('.btnWrap').find('input').trigger('click');
 					}
-					publish.validateSkuImg();
+					//publish.validateSkuImg();
 				}
 			} else {
 				alert(response.message);
