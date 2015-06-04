@@ -103,9 +103,10 @@ function publish(){
 		return ret;
 	}
 
-	this.valaidateAttr = function(){
-		ret = false;
-		var jq = $('[name="attr"]');
+	this.valaidateAttr = function(attrId){
+		ret = true;
+		var jq = attrId?$('[name="attr"][attrId="' + attrId + '"]'):$('[name="attr"]');
+		
 		jq.each(function(){
 			var require = $(this).attr('require'),
 			displayMode = $(this).attr('displayMode'),
@@ -116,81 +117,96 @@ function publish(){
 			if(displayMode =='1'){
 				var attrValue = $('[name="attrValue"][attrId="' + attrId + '"]').val();
 				if(!!!attrValue){
-					location.hash = '#attrValue';
-					$("#attrValueErr").text("请选择属性'" + attrName + "'");
+					location.hash = '#attrValAnc'+attrId;
+					$("#attrValueErr"+attrId).text("请选择" + attrName);
+					ret = false;
 					return false;
 				}else{
-					$("#attrValueErr").text("");
-					ret = true;
+					$("#attrValueErr"+attrId).text("");
 				}
 			}else{
 				var chks = $('[name="attrValue"][attrId="' + attrId + '"]').filter(":checked");
 				if (chks.length == 0) {
-					location.hash = '#attrValue';
-					$("#attrValueErr").text("请选择属性'" + attrName + "'");
+					location.hash = '#attrValAnc'+attrId;
+					$("#attrValueErr"+attrId).text("请选择" + attrName);
+					ret = false;
 					return false;
 				}else{
-					$("#attrValueErr").text("");
-					ret = true;
+					$("#attrValueErr"+attrId).text("");
 				}
 			}
 		});
+		
 		return ret; 
 	};
 	
-	this.validateSpec = function(){
-		ret = false;
-		var jq = $('ul[specId]');
-		for(var i = 1; i <= jq.length;i++){
-			var specId = $('ul[var="'+i+'"]').attr('specId');
+	this.validateSpec = function(srcElem){
+		ret = true;
+		var jq = srcElem?$(srcElem).parent().parent():$('ul[specId]');
+		
+		jq.each(function(){
+			var specId = $(this).attr('specId');
+			
 			var chks = $('[name="specValue"][skuSpecId="'+specId+'"]').filter(":checked");
 			if (chks.length == 0) {
-				location.hash = '#specValue';
-				$("#spacErr").text("请选择规格！");
+				location.hash = '#specValAnc'+specId;
+				var specName = $(this).attr('specName');
+				$("#spacErr"+specId).text("请选择" + specName);
+				ret = false;
 				return false;
 			}else{
-				$("#spacErr").text("");
-				ret = true;
+				$("#spacErr"+specId).text("");
 			}
-		}
+		})
+		
 		return ret;
 	};
 	
-	this.validateSkuSalePrice = function(){
+	this.validateSkuSalePrice = function(srcElem){
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
-		var skuSalePrices = $('[name="skuSalePrice"]');
-		var ret = false;
+		var skuSalePrices = srcElem?$(srcElem):$('[name="skuSalePrice"]');
+		var ret = true;
+		
 		skuSalePrices.each(function(){
 			salePrice = parseFloat($(this).val());
 			marketPrice = parseFloat($(this).parent().next().children().val());
 			if(!regPrice.test(salePrice)){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else if(!!!salePrice){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("请输入单价！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else if(marketPrice > salePrice){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价应小于单价！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else if(salePrice == 0 || salePrice =='0.0' || salePrice =='0.00'){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("单价输入有误，请输入大于0且小于999999！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else{
 				$('#precErrMsg').text("");
-				ret = true;
 			}
 		});
+		
 		return ret;
 	};
 	
-	this.validateSkuMarketPrice = function(){
+	this.validateSkuMarketPrice = function(srcElem){
 		var regPrice = /^([1-9]+[0-9]*|[0])([\.][0-9]{1,2})?$/;	
-		var skuMarketPrices = $('[name="skuMarketPrice"]');
-		var ret = false;
+		var skuMarketPrices = srcElem?$(srcElem):$('[name="skuMarketPrice"]');
+		var ret = true;
+		
 		skuMarketPrices.each(function(){
 			marketPrice = parseFloat($(this).val());
 			salePrice = parseFloat($(this).parent().prev().children().val());
@@ -198,73 +214,91 @@ function publish(){
 			if(!regPrice.test(marketPrice)){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else if(!!!marketPrice){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("请输入特卖价！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else if(marketPrice > salePrice){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价应小于单价！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else if(marketPrice == 0 || marketPrice =='0.0' || marketPrice =='0.00'){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("特卖价输入有误，请输入大于0且小于999999！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else{
 				$('#precErrMsg').text("");
-				ret = true;
 			}
 		});
+		
 		return ret;
 	};
 	
-	this.validateSkuStockBalance = function(){
+	this.validateSkuStockBalance = function(srcElem){
 		var regBalance = /^[1-9][\d]{0,4}$/;
-		var ret = false;
-		var skuStockBalances = $('[name="skuStockBalance"]');
+		var ret = true;
+		var skuStockBalances = srcElem?$(srcElem):$('[name="skuStockBalance"]');
+		
 		skuStockBalances.each(function(){
 			stockBalance = $(this).val();
 			if(!!!stockBalance){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("请填写数量！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}if(!regBalance.test(stockBalance)){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("商品数量有误，请输入大于0且小于999999！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else{
 				$('#precErrMsg').text("");
-				ret = true;
 			}
 		});
+		
 		return ret;
 	};
 	
-	this.validateSellerNo = function(){
+	this.validateSellerNo = function(srcElem){
 		var regBSellerNo = /^[1-9][\d]{0,4}$/;
-		ret = false;
-		var sellerNos = $('[name="sellerNo"]');
+		ret = true;
+		
+		var sellerNos = srcElem?$(srcElem):$('[name="sellerNo"]');
 		sellerNos.each(function(){
 			sellerNo = $(this).val();
 			if(!!!sellerNo){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("请填写商家编号！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}if(!regBSellerNo.test(sellerNo)){
 				location.hash = "#genSpec";
 				$('#precErrMsg').text("商家编号输入错误，请输入大于0且小于999999！");
+				ret = false;
+				$(this).focus();
 				return false;
 			}else{
 				$('#precErrMsg').text("");
-				ret = true;
 			}
 		});
+		
 		return ret;
 	};
 	
 	this.validateSkuImg = function(){
-		var ret = false;
+		var ret = true;
 		var totalImgCount = $('#skuImg li').length;
 		var jq = $('input[name="skuImgUrl"]');
 		jq.each(function(){
@@ -273,12 +307,13 @@ function publish(){
 			if(!!!imgUrl){
 				location.hash = "#errSkuImg";
 				$('#errSkuImg').text("请上传全部的sku图片");
+				ret = false;
 				return false;
 			}else{
 				$('#errSkuImg').text("");	
-				ret = true;
 			}
 		});
+		
 		return ret;
 	};
 	
@@ -311,16 +346,10 @@ function publish(){
 		if(!this.validateBrand()){
 			return false;
 		}
-		if(!this.validateDetail()){
-			return false;
-		}
 		if(!this.valaidateAttr()){
 			return false;
 		}
 		if(!this.validateSpec()){
-			return false;
-		}
-		if(!this.validateSkuImg()){
 			return false;
 		}
 		if(!this.validateSkuSalePrice()){
@@ -334,7 +363,14 @@ function publish(){
 		}
 		if(!this.validateSellerNo()){
 			return false;
-		}		
+		}	
+		if(!this.validateSkuImg()){
+			return false;
+		}
+		if(!this.validateDetail()){
+			return false;
+		}
+		
 		return ret;
 	};
 
@@ -568,10 +604,10 @@ function recurse(arr, i){
 			
 			if(i == 0){
 				html[j] = "<tr id=spec"+ item.values[j].specValueId +"> "+ html[j] +
-						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice'  value='' onblur='publish.validateSkuSalePrice();' /></td>" +
-						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
-						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
-						"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo();' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuSalePrice'  value='' onblur='publish.validateSkuSalePrice(this);' /></td>" +
+						"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice(this);' /></td>" +
+						"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance(this);' /></td>" +
+						"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo(this);' /></td>" +
 		         		"<input type='hidden' name='skuSpecId' value='" + specValues[j].skuSpecId + "'>" +
 		         		"<input type='hidden' name='skuSpecName' value='" + specValues[j].skuSpecName + "'>" +
 		         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value='' >" +
@@ -612,10 +648,10 @@ function recurse(arr, i){
 				row = row + "<td>"+item.values[j].specValueName+"</td>" + next.html[k];
 				
 				if (i == 0) {
-					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice();' /></td>" +
-							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice();' /></td>" +
-							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance();' /></td>" +
-							"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo();' /></td>" +
+					row	+= "<td><input type='text' class='txt lg w-sm' name='skuSalePrice' value='' onblur='publish.validateSkuSalePrice(this);' /></td>" +
+							"<td><input type='text' class='txt lg w-sm' name='skuMarketPrice' value='' onblur='publish.validateSkuMarketPrice(this);' /></td>" +
+							"<td><input type='text' class='txt lg ' name='skuStockBalance' value='' onblur='publish.validateSkuStockBalance(this);' /></td>" +
+							"<td><input type='text' class='txt lg ' name='sellerNo' value='' onblur='publish.validateSellerNo(this);' /></td>" +
 			         		"<input type='hidden' name='skuSpecId' value='" + specValues[j * count + k].skuSpecId + "'>" +
 			         		"<input type='hidden' name='skuSpecName' value='" + specValues[j * count + k].skuSpecName + "'>" +	
 			         		"<input type='hidden' name='skuImgUrl' flg='" + item.values[j].specValueId + "' value=''>" +
