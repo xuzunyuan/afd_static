@@ -156,8 +156,13 @@ function uploadify(btn, img, hidden) {
 				onUploadSuccess : function(file, data, response) {
 					if(response) {
 						var d = $.parseJSON(data);
-		
-						$('#' + img).attr('src', imgGetUrl + '?rid=' + d.rid);
+						
+						if(img == 'imgShowBannerImg'){
+							$('#' + img).attr('src', imgGetUrl + '?rid=' + d.rid + '&op=s2_w576_h111');
+						}else if(img == 'imgHomeBannerImg'){
+							$('#' + img).attr('src', imgGetUrl + '?rid=' + d.rid + '&op=s2_w220_h219');
+						}
+						
 						$('#' + hidden).val(d.rid);
 						$('#' + btn).parent().find('div.errTxt').html('');
 					}

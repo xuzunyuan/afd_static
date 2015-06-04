@@ -78,7 +78,7 @@ function initProduct() {
 				
 				$(data).each(function(){
 					var tr = $('<tr><td><input type="checkbox" class="chk" name="chkProduct"/></td>' +
-					  '<td><div class="pro-img"><img src="' + imgGetUrl + '?rid=' + this.skus[0].skuImgUrl + '" alt=""></div></td>' +
+					  '<td><div class="pro-img"><img src="' + imgGetUrl + '?rid=' + this.skus[0].skuImgUrl + '&op=s2_w50_h50" alt=""></div></td>' +
 					  '<td>' + (this.prodCode ? this.prodCode : '') + '</td>' +
 					  '<td class="table-left"><p>' + this.title + '</p></td>' +
 					  '<td>' + this.brandName + '</td>' +
@@ -115,7 +115,7 @@ function addProduct(tr) {
 			   '<tbody class="interleave-even"></tbody></table>').insertBefore($('#paging'));
 	
 	$(product.skus).each(function(index, sku){
-		var s = '<tr><td><img style="width:50px;height:50px;" src="' + imgGetUrl + '?rid=' + sku.skuImgUrl + '" alt=""></td>' + 
+		var s = '<tr><td><img src="' + imgGetUrl + '?rid=' + sku.skuImgUrl + '&op=s2_w50_h50" alt=""></td>' + 
 				'<td><p>' + sku.skuSpecName.replace(/:::/g, ' : ').replace(/\|\|\|/, '</p><p>') + '</td></p>' +
 				'<td>￥' + sku.marketPrice + '</td>' +
 				'<td><input type="text" class="txt sm w-sm" placeholder="10" name="discount" maxlength="3">折</td>' + 

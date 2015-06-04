@@ -702,7 +702,7 @@ function uploadSkuImg(obj) {
 		onComplete: function(file, response) {
 			response = eval("("+response+")");
 			if (!!response.url) {
-				$(obj).attr("src",response.url);
+				$(obj).attr("src",response.url + '&op=s2_w98_h98');
 				var flg = $(obj).attr('flg');
 				if (flg) {
 					$('input[name="skuImgUrl"][flg="' + flg + '"]').val(splitString(response.url));

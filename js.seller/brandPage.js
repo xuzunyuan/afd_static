@@ -155,7 +155,7 @@ function uploadify(btn, img, hidden) {
 					if(response) {
 						var d = $.parseJSON(data);
 		
-						$('#' + img).attr('src', imgGetUrl + '?rid=' + d.rid);
+						$('#' + img).attr('src', imgGetUrl + '?rid=' + d.rid + '&op=s2_w97_h97');
 						$('#' + hidden).val(d.rid);
 						$('#' + btn).parent().siblings('div.errTxt').html('');
 					}
