@@ -18,7 +18,24 @@ function initValidate() {
 			registerAddr : {
 				required : '请填写公司地址'
 			},
-			bankAcctName : {
+			telNo : {
+				required : '请填写公司电话',
+				pattern : '请正确填写电话号码'
+			},
+			telArea:{
+				required : '请填写公司电话区号',
+				pattern : '请正确填写电话区号'
+			},	
+			telExt:{
+				pattern : '请正确填写电话分机号'
+			},	
+			qualiUrl :{
+				required : '请上传一般纳税人资质证明'
+			},
+			taxImg:{
+				required : '请上传税务登记证'
+			},
+			bankAcctName$ : {
 				required : '请填写开户银行'
 			},
 			bankAcctNo : {
